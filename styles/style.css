@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  background: none;
+  vertical-align: baseline;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+div, button, span, input, textarea, img, i {
+	display: block;
+	position: relative;
+	float: left;
+}
+
+img {
+	background-size: cover!important;
+	background-repeat: no-repeat!important;
+	background-position: center center!important;
+	object-fit: cover !important;
+	-o-object-fit: cover !important;
+}
+
+.buttonHoverClass {
+	color: rgba(255,255,255,0.6);
+}
+
+.changeContentPageEffectClass {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: rgba(255, 255 ,255, 0);
+	z-index: 1;
+	animation-name: changeContentPageEffectClassName;
+	animation-duration: 700ms;
+}
+
+@keyframes changeContentPageEffectClassName {
+	0% {background: rgba(255, 255 ,255, 100);}
+	100% {background: rgba(255, 255 ,255, 0);}
+}
+
+.repeatContentByJsonClass {
+  position: relative;
+  float: left;
+  width: auto;
+  height: auto;
+  background: #eee;
+}

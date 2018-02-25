@@ -1,0 +1,25 @@
+@font-face{
+	font-family: ng;
+	src:url(../fonts/NanumGothic.otf);
+	src:local(※), url(../fonts/NanumGothic.otf)format('opentype');
+}
+@font-face{
+	font-family: ng-b;
+	src:url(../fonts/NanumGothicBold.otf);
+	src:local(※), url(../fonts/NanumGothicBold.otf)format('opentype');
+}
+@font-face{
+	font-family: ng-eb;
+	src:url(../fonts/NanumGothicExtraBold.otf);
+	src:local(※), url(../fonts/NanumGothicExtraBold.otf)format('opentype');
+}
+@font-face{
+	font-family: ng-l;
+	src:url(../fonts/NanumGothicLight.otf);
+	src:local(※), url(../fonts/NanumGothicLight.otf)format('opentype');
+}
+
+.f-ng {font-family:'나눔고딕', 'NanumGothic', ng !important;}
+.f-ngb {font-family:'NanumGothicBold', ng-b !important;}
+.f-ngeb {font-family:'NanumGothicExtraBold', ng-eb !important;}
+.f-ngl {font-family:'NanumGothicLight', ng-l !important;}
