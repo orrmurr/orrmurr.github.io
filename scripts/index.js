@@ -1,6 +1,6 @@
 // initialize
 $(document).ready( function() {
-	$("#content").load("templates/render.html");
+	$("#content").load("templates/home.html");
 });
 
 // menu buttons
