@@ -1,27 +1,26 @@
 // initialize
-$(document).ready( function() {
-	$("#content").load("templates/home.html");
+$(document).ready( function(){
+	$("#content").load("templates/render.html");
 });
 
 // menu buttons
-var menuButtons = [
-  {button:'home', hover:false},
-  {button:'render', hover:false},
-  {button:'illust', hover:false},
-  {button:'typography', hover:false}
-];
+// var menuButtons = [
+//   {button:'home', hover:false},
+//   {button:'render', hover:false},
+//   {button:'illust', hover:false},
+//   {button:'typography', hover:false}
+// ];
 
 // 해당 div 다른 html 파일로 바꾸기
-var changeContentPage = function(changeContentPage) {
-  if (changeContentPage == 'home') {
+var changeContentPage = function(changeContentPage){
+  if (changeContentPage == 'home'){
     $("#content").load('templates/home.html');
   }
-  else {
+  else{
     $("#content").load('templates/'+changeContentPage.innerHTML.trim()+'.'+'html');
   }
   buttonHover(changeContentPage);
 	changeContentPageEffect();
-	repeatContentByJson();
 };
 
 // button hover function
@@ -38,24 +37,39 @@ var buttonHover = function(changeContentPage){
 
 // change content page effect
 var changeContentPageEffect = function(){
-	var getChangeContentPageEffect = document.getElementById("changeContentPageEffectId");
-	getChangeContentPageEffect.classList.remove("changeContentPageEffectClass");
-	getChangeContentPageEffect.offsetWidth = getChangeContentPageEffect.offsetWidth;
-	getChangeContentPageEffect.classList.add("changeContentPageEffectClass");
+	var createDiv = document.createElement("div");
+	createDiv.setAttribute("class", "changeContentPageEffectClass");
+	document.getElementById("contentFrame").appendChild(createDiv);
+	setTimeout(function(){
+		document.getElementById("contentFrame").removeChild(createDiv);
+	}, 700);
 };
 
 // repeat content by Json list
-var repeatContentByJson = function() {
-    var createImg = document.createElement("img");
-    createImg.setAttribute("class", "repeatContentByJsonClass");
-    createImg.setAttribute("src", "https://source.unsplash.com/random");
-    document.getElementById("repeatContentId").appendChild(createImg);
-}
+var repeatContentByJson = function(changeContentPage){
+};
+if(changeContentPage){
+};
+$(document).on("mouseenter", "#test", function(){
+	var createImg = document.createElement("div");
+	createImg.setAttribute("class", "repeatContentByJsonClass");
+	createImg.innerHTML = 'test <br>';
+	document.getElementById("repeatContentId").appendChild(createImg);
+
+	// var createImg = document.createElement("img");
+	// createImg.setAttribute("class", "repeatContentByJsonClass");
+	// createImg.setAttribute("src", "//source.unsplash.com/random");
+	// document.getElementById("repeatContentId").appendChild(createImg);
+	co('test');
+});
 
 
 
 
+var al = function(ale){
+	alert(ale);
+};
 
-var test = function(){
-	alert('test');
+var co = function(con){
+	console.log(con);
 };
