@@ -22,6 +22,7 @@ $(document).ready( function(){
 			$("#content").load('templates/'+this.id+'.'+'html');
 			buttonHover(this.id);
 			changeContentPageEffect();
+			repeatContentByJson(this.id);
 		}, false);
 	}
 	$("#content").load("templates/home.html");
@@ -40,36 +41,25 @@ var buttonHover = function(menuButton){
 // change content page effect
 var changeContentPageEffect = function(){
 	var createDiv = document.createElement("div");
+	var getContentFrame = document.getElementById("contentFrame");
 	createDiv.setAttribute("class", "changeContentPageEffectClass");
-	document.getElementById("contentFrame").appendChild(createDiv);
+	getContentFrame.appendChild(createDiv);
 	setTimeout(function(){
-		document.getElementById("contentFrame").removeChild(createDiv);
+		getContentFrame.removeChild(createDiv);
 	}, 700);
 };
 
-
 // repeat content by Json list
-
-
-
-
-
-
-$(document).on("mouseenter", "#test", function(){
-	var createImg = document.createElement("div");
-	createImg.setAttribute("class", "repeatContentByJsonClass");
-	createImg.innerHTML = 'test <br>';
-	document.getElementById("repeatContentId").appendChild(createImg);
-
-	// var createImg = document.createElement("img");
-	// createImg.setAttribute("class", "repeatContentByJsonClass");
-	// createImg.setAttribute("src", "//source.unsplash.com/random");
-	// document.getElementById("repeatContentId").appendChild(createImg);
-	co('test');
-});
-
-
-
+var repeatContentByJson = function(repeatContentByJsonId){
+	if(repeatContentByJsonId != 'home'){
+		setTimeout(function(){
+			var createImg = document.createElement("img");
+			createImg.setAttribute("class", "repeatContentByJsonClass");
+			createImg.setAttribute("src", "//source.unsplash.com/random");
+			document.getElementById("repeatContentId").appendChild(createImg);
+		}, 10);
+	};
+};
 
 var al = function(ale){
 	alert(ale);
