@@ -1,38 +1,40 @@
 // initialize
 $(document).ready( function(){
-	$("#content").load("templates/render.html");
+	// menu buttons
+	var menuButtons = [
+		"home",
+		"render",
+		"illust",
+		"typography"
+	];
+	for(var i = 0; i < menuButtons.length; i++){
+		if(i>0){
+			var createSpan = document.createElement("span");
+			createSpan.setAttribute("class", "buttonClass f-ngl");
+			createSpan.id = menuButtons[i];
+			var buttonName = document.createTextNode(menuButtons[i]);
+			createSpan.appendChild(buttonName)
+			document.getElementById("buttons").appendChild(createSpan);
+		}
+		// 해당 div 다른 html 파일로 바꾸기
+		var getButtonId = document.getElementById(menuButtons[i]);
+		getButtonId.addEventListener("mouseenter", function(){
+			$("#content").load('templates/'+this.id+'.'+'html');
+			buttonHover(this.id);
+			changeContentPageEffect();
+		}, false);
+	}
+	$("#content").load("templates/home.html");
 });
 
-// menu buttons
-// var menuButtons = [
-//   {button:'home', hover:false},
-//   {button:'render', hover:false},
-//   {button:'illust', hover:false},
-//   {button:'typography', hover:false}
-// ];
-
-// 해당 div 다른 html 파일로 바꾸기
-var changeContentPage = function(changeContentPage){
-  if (changeContentPage == 'home'){
-    $("#content").load('templates/home.html');
-  }
-  else{
-    $("#content").load('templates/'+changeContentPage.innerHTML.trim()+'.'+'html');
-  }
-  buttonHover(changeContentPage);
-	changeContentPageEffect();
-};
-
 // button hover function
-var buttonHover = function(changeContentPage){
-	var getButtonHoverClass = document.getElementsByClassName("buttonHoverClass");
-	for (var i = 0; i < getButtonHoverClass.length; i++) {
-		getButtonHoverClass[i].style.color = "rgba(255,255,255,0.6)"
-	}
-	// 홈은 스타일 바꿀 필요 없음
-	if (changeContentPage != 'home') {
-		changeContentPage.style.color = "rgba(255,255,255,0.3)";
-	}
+var buttonHover = function(menuButton){
+	var getButtonClass = document.getElementsByClassName("buttonClass");
+	var getButtonId = document.getElementById(menuButton);
+	for (var i = 0; i < getButtonClass.length; i++) {
+		getButtonClass[i].style.color = "rgba(255,255,255,0.6)"
+	};
+	getButtonId.style.color = "rgba(255,255,255,0.3)";
 };
 
 // change content page effect
@@ -45,11 +47,14 @@ var changeContentPageEffect = function(){
 	}, 700);
 };
 
+
 // repeat content by Json list
-var repeatContentByJson = function(changeContentPage){
-};
-if(changeContentPage){
-};
+
+
+
+
+
+
 $(document).on("mouseenter", "#test", function(){
 	var createImg = document.createElement("div");
 	createImg.setAttribute("class", "repeatContentByJsonClass");
