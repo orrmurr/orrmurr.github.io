@@ -1,38 +1,32 @@
 [
 	{
 		"id":0,
-		"title":"",
-		"img":":",
-		"content":""
+		"title":"render1",
+		"img":"../images/test.png",
 	},
 	{
 		"id":1,
-		"title":"",
-		"img":":",
-		"content":""
+		"title":"render2",
+		"img":"../images/test2.png",
 	},
 	{
 		"id":2,
-		"title":"",
-		"img":":",
-		"content":""
+		"title":"render3",
+		"img":"../images/test.png",
 	},
 	{
 		"id":3,
-		"title":"",
-		"img":":",
-		"content":""
+		"title":"render4",
+		"img":"../images/test2.png",
 	},
 	{
 		"id":4,
-		"title":"",
-		"img":":",
-		"content":""
+		"title":"render5",
+		"img":"../images/test.png",
 	},
 	{
 		"id":5,
-		"title":"",
-		"img":":",
-		"content":""
+		"title":"render6",
+		"img":"../images/test2.png",
 	}
 ]
