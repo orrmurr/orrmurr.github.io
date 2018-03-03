@@ -4,9 +4,6 @@ var getContentFrame = document.getElementById("contentFrame");
 var createToTopButton = function(){
   var createSpan = document.createElement("span");
   var createTextNode = document.createTextNode("top");
-  if (getToTopButton){
-    getContentFrame.removeChild(createSpan);
-  }
   createSpan.appendChild(createTextNode);
   createSpan.id = "toTopButton";
   createSpan.setAttribute("class", "f-ng goToTop");
