@@ -1,32 +1,26 @@
 [
 	{
-		"id":0,
 		"title":"typography1",
-		"img":"../images/test.png",
+		"img":"../images/test.png"
 	},
-	{
-		"id":1,
+	/* {
 		"title":"typography2",
-		"img":"../images/test2.png",
+		"img":"../images/test2.png"
 	},
 	{
-		"id":2,
 		"title":"typography3",
-		"img":"../images/test.png",
+		"img":"../images/test.png"
 	},
 	{
-		"id":3,
 		"title":"typography4",
-		"img":"../images/test2.png",
+		"img":"../images/test2.png"
 	},
 	{
-		"id":4,
 		"title":"typography5",
-		"img":"../images/test.png",
+		"img":"../images/test.png"
 	},
 	{
-		"id":5,
 		"title":"typography6",
-		"img":"../images/test2.png",
-	}
+		"img":"../images/test2.png"
+	} */
 ]

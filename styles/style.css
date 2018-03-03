@@ -15,7 +15,7 @@ html {
 	overflow-y: scroll;
 }
 
-div, button, span, input, textarea, img, i {
+body, div, button, span, input, textarea, img, i {
 	display: block;
 	position: relative;
 	float: left;
