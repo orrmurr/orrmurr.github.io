@@ -15,11 +15,17 @@ for(var i = 0; i < headerButtons.length; i++){
 		document.getElementById("buttons").appendChild(createSpan);
 	}
 	// 해당 div 다른 html 파일로 바꾸기
-	var getButtonId = document.getElementById(headerButtons[i]);
-	getButtonId.addEventListener("mouseenter", function(){
+	var getHeaderButtonsId = document.getElementById(headerButtons[i]);
+	getHeaderButtonsId.addEventListener("mouseenter", function(){
 		$("#content").load('templates/'+this.id+'.'+'html');
 		buttonHover(this.id);
 		changeContentPageEffect();
 		repeatContentByJson(this.id);
-	}, false);
+  }, false);
+  getHeaderButtonsId.addEventListener("click", function(){
+		$("#content").load('templates/'+this.id+'.'+'html');
+		buttonHover(this.id);
+		changeContentPageEffect();
+		repeatContentByJson(this.id);
+  }, false);
 }

@@ -1,5 +1,6 @@
 // initialize
 $(document).ready( function(){
+	importJs('addEventListnerMouseenterAndClick');
 	importJs('headerButtons');
 	importJs('buttonHover');
 	importJs('changeContentPageEffect');

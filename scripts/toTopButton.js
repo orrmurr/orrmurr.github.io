@@ -13,20 +13,21 @@ var createToTopButton = function(){
 createToTopButton();
 
 // 버튼 보이기 && 숨기기
-var getToTopButton = document.getElementById("toTopButton");
+var getToTopButtonId = document.getElementById("toTopButton");
 var headerHeight = document.body.offsetHeight - getContentFrame.clientHeight;
 window.onscroll = function(){
   document.body.scrollTop;
   if (document.body.scrollTop > headerHeight){
-    getToTopButton.style.display = "block";
+    getToTopButtonId.style.display = "block";
   } else {
-    getToTopButton.style.display = "none";
+    getToTopButtonId.style.display = "none";
   }
 };
 
 // 맨 위로
-getToTopButton.addEventListener("mouseenter", function(){
+var toTopButtonFunction = function(){
   var speed = 500; // 스크롤속도
   $(".goToTop").css("cursor", "pointer");
   $('body, html').animate({scrollTop:0}, speed);
-}, false);
+};
+addEventListnerMouseenterAndClick(getToTopButtonId, toTopButtonFunction);
