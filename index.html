@@ -9,28 +9,33 @@
 
 	<body style="width:100%; height:100%;">
 		<div style="width:100%; height:100%;">
+			<!-- background:linear-gradient(135deg, #301432, #333333, #10043d); -->
 			<!-- header -->
-			<div style="width:100%; background:linear-gradient(135deg, #301432, #333333, #10043d);">
-				<!-- title -->
-				<div style="width:100%; padding-top:45px; padding-bottom:20px;">
-					<!-- click ttegululu area -->
-					<div id="home" style="left:50%; transform:translate(-50%, 0%); cursor:pointer; padding-top:20px; padding-bottom:10px;">
-						<span class="f-ng" style="width:100%; text-align:center; font-size:30px; color:#8365B5;">
-							떼구룰루
-						</span>
-						<span class="f-ngb" style="width:100%; text-align:center; font-size:14px; color:#ffffff; opacity:0.3; padding-top:5px;">
-							TTEGULULU
-						</span>
+			<div style="width:100%; height:100%; border-bottom:1px solid #eee; padding-top:10px; padding-bottom:10px;">
+				<div style="left:50%; transform:translate(-50%, 0%);">
+					<!-- ttegululu icon -->
+					<div id="ttegululuIcon" class="buttonHover" style="width:50px; height:50px; border-radius:50%; cursor:pointer;">
+						<img style="width:30px; height:30px; top:50%; left:50%; transform:translate(-50%, -50%); background:#eee; border-radius:50%;" src="../images/test20180221.png">
 					</div>
+					<!-- gallery icon -->
+					<div id="galleryIcon" class="buttonHover" style="width:50px; height:50px; color:#aaa; cursor:pointer; border-radius:50%; margin-left:11px;">
+						<i class="icon-gallery iconClass" style="left:51%; font-size:60px;"></i>
+					</div>
+					<!-- search icon -->
+					<div id="searchIcon" class="buttonHover" style="width:50px; height:50px; color:#aaa; cursor:pointer; border-radius:50%; margin-left:10px;">
+						<i class="icon-search iconClass" style="font-size:60px;"></i>
+					</div>
+					<!-- search extend -->
+					<!-- <div style="width:calc(100% - 390px); height:50px; padding-top:5px; padding-bottom:5px;">
+						<input class="f-ng" type="text" onkeyup="enterKey();" placeholder="검색" style="width:100%; height:100%; border-radius:3px; background:#eee; padding:10px;">
+					</div> -->
 				</div>
-				<!-- buttons -->
-				<div id="buttons" style="left:50%; transform:translate(-50%,0%);"></div>
 			</div>
 
-			<!-- content -->
-			<div id="contentFrame" style="width:100%;">
-				<!-- changeContentPage div -->
-				<div id="content" style="width:100%; max-width:calc(100% - 100px); left:50%; transform:translate(-50%,0%);"></div>
+			<!-- gallery -->
+			<div id="galleryFrame" style="width:100%;">
+				<!-- change gallery page div -->
+				<div id="gallery" style="width:100%; max-width:calc(100% - 100px); left:50%; transform:translate(-50%,0%);"></div>
 			</div>
 		</div>
 

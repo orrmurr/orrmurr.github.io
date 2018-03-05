@@ -29,6 +29,19 @@ img {
 	-o-object-fit: cover !important;
 }
 
+input {
+	outline: none;
+}
+
+::-webkit-input-placeholder {color: #eee;} /* Chrome */
+:-ms-input-placeholder {color: #eee;} /* IE 10+ */
+::-moz-placeholder {color: #eee; opacity: 1;} /* Firefox 19+ */
+:-moz-placeholder {color: #eee;} /* Firefox 4 - 18 */
+
+.buttonHover:hover {
+	background: #eee;
+}
+
 .buttonClass {
 	color: rgba(255,255,255,0.6);
 	font-size:18px;
@@ -39,7 +52,7 @@ img {
 	cursor:pointer;
 }
 
-.changeContentPageEffectClass {
+.changeGalleryPageEffectClass {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -47,16 +60,16 @@ img {
 	height: 100%;
 	background: rgba(255, 255 ,255, 0);
 	z-index: 1;
-	animation-name: changeContentPageEffectClassName;
+	animation-name: changeGalleryPageEffectClassName;
 	animation-duration: 700ms;
 }
 
-@keyframes changeContentPageEffectClassName {
+@keyframes changeGalleryPageEffectClassName {
 	0% {background: rgba(255, 255 ,255, 100);}
 	100% {background: rgba(255, 255 ,255, 0);}
 }
 
-.repeatContentByJsonClass {
+.repeatGalleryByJsonClass {
 	left: 50%;
 	transform: translate(-50%, 0%);
 	width: 100%;

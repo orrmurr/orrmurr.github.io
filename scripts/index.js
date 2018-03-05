@@ -1,11 +1,15 @@
 // initialize
 $(document).ready( function(){
+	importJs('enterKey');
 	importJs('addEventListnerMouseenterAndClick');
-	importJs('headerButtons');
-	importJs('buttonHover');
-	importJs('changeContentPageEffect');
-	importJs('repeatContentByJson');
+	importJs('repeatGalleryByJson');
+	importJs('changeGalleryPageEffect');
+	importJs('headerButtonsFunction');
 	importJs('scrollPaging');
 	importJs('toTopButton');
-	$("#content").load("templates/home.html");
+	$("#gallery").load("../templates/gallery.html");
+	// DOM생성뒤에 실행
+	setTimeout(function(){
+		repeatGalleryByJson();
+	}, 30);
 });

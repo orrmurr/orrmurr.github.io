@@ -23,56 +23,62 @@
   position: relative;
 }
 
-.icon-email:before{ content: "\0041"; }/*A*/
-.icon-:before{ content: "\0042"; }/*B*/
-.icon-:before{ content: "\0043"; }/*C*/
-.icon-:before{ content: "\0044"; }/*D*/
-.icon-:before{ content: "\0045"; }/*E*/
-.icon-:before{ content: "\0046"; }/*F*/
-.icon-:before{ content: "\0047"; }/*G*/
-.icon-:before{ content: "\0048"; }/*H*/
-.icon-:before{ content: "\0049"; }/*I*/
-.icon-:before{ content: "\004A"; }/*J*/
-.icon-:before{ content: "\004B"; }/*K*/
-.icon-:before{ content: "\004C"; }/*L*/
-.icon-:before{ content: "\004D"; }/*M*/
-.icon-:before{ content: "\004E"; }/*N*/
-.icon-:before{ content: "\004F"; }/*O*/
-.icon-:before{ content: "\0050"; }/*P*/
-.icon-:before{ content: "\0051"; }/*Q*/
-.icon-:before{ content: "\0052"; }/*R*/
-.icon-:before{ content: "\0053"; }/*S*/
-.icon-:before{ content: "\0054"; }/*T*/
-.icon-:before{ content: "\0055"; }/*U*/
-.icon-:before{ content: "\0056"; }/*V*/
-.icon-:before{ content: "\0057"; }/*W*/
-.icon-:before{ content: "\0058"; }/*X*/
-.icon-:before{ content: "\0059"; }/*Y*/
-.icon-:before{ content: "\005A"; }/*Z*/
+.iconClass {
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-.icon-:before{ content: "\0061"; }/*a*/
-.icon-:before{ content: "\0062"; }/*b*/
-.icon-:before{ content: "\0063"; }/*c*/
-.icon-:before{ content: "\0064"; }/*d*/
-.icon-:before{ content: "\0065"; }/*e*/
-.icon-:before{ content: "\0066"; }/*f*/
-.icon-:before{ content: "\0067"; }/*g*/
-.icon-:before{ content: "\0068"; }/*h*/
-.icon-:before{ content: "\0069"; }/*i*/
-.icon-:before{ content: "\006A"; }/*j*/
-.icon-:before{ content: "\006B"; }/*k*/
-.icon-:before{ content: "\006C"; }/*l*/
-.icon-:before{ content: "\006D"; }/*m*/
-.icon-:before{ content: "\006E"; }/*n*/
-.icon-:before{ content: "\006F"; }/*o*/
-.icon-:before{ content: "\0070"; }/*p*/
-.icon-:before{ content: "\0071"; }/*q*/
-.icon-:before{ content: "\0072"; }/*r*/
-.icon-:before{ content: "\0073"; }/*s*/
-.icon-:before{ content: "\0074"; }/*t*/
-.icon-:before{ content: "\0075"; }/*u*/
-.icon-:before{ content: "\0076"; }/*v*/
-.icon-:before{ content: "\0077"; }/*w*/
-.icon-:before{ content: "\0078"; }/*x*/
-.icon-:before{ content: "\0079"; }/*y*/
-.icon-:before{ content: "\007A"; }/*z*/
+.icon-email:before { content: "\0041"; }/*A*/
+.icon-gallery:before { content: "\0042"; }/*B*/
+.icon-search:before { content: "\0043"; }/*C*/
+.icon-:before { content: "\0044"; }/*D*/
+.icon-:before { content: "\0045"; }/*E*/
+.icon-:before { content: "\0046"; }/*F*/
+.icon-:before { content: "\0047"; }/*G*/
+.icon-:before { content: "\0048"; }/*H*/
+.icon-:before { content: "\0049"; }/*I*/
+.icon-:before { content: "\004A"; }/*J*/
+.icon-:before { content: "\004B"; }/*K*/
+.icon-:before { content: "\004C"; }/*L*/
+.icon-:before { content: "\004D"; }/*M*/
+.icon-:before { content: "\004E"; }/*N*/
+.icon-:before { content: "\004F"; }/*O*/
+.icon-:before { content: "\0050"; }/*P*/
+.icon-:before { content: "\0051"; }/*Q*/
+.icon-:before { content: "\0052"; }/*R*/
+.icon-:before { content: "\0053"; }/*S*/
+.icon-:before { content: "\0054"; }/*T*/
+.icon-:before { content: "\0055"; }/*U*/
+.icon-:before { content: "\0056"; }/*V*/
+.icon-:before { content: "\0057"; }/*W*/
+.icon-:before { content: "\0058"; }/*X*/
+.icon-:before { content: "\0059"; }/*Y*/
+.icon-:before { content: "\005A"; }/*Z*/
+
+.icon-:before { content: "\0061"; }/*a*/
+.icon-:before { content: "\0062"; }/*b*/
+.icon-:before { content: "\0063"; }/*c*/
+.icon-:before { content: "\0064"; }/*d*/
+.icon-:before { content: "\0065"; }/*e*/
+.icon-:before { content: "\0066"; }/*f*/
+.icon-:before { content: "\0067"; }/*g*/
+.icon-:before { content: "\0068"; }/*h*/
+.icon-:before { content: "\0069"; }/*i*/
+.icon-:before { content: "\006A"; }/*j*/
+.icon-:before { content: "\006B"; }/*k*/
+.icon-:before { content: "\006C"; }/*l*/
+.icon-:before { content: "\006D"; }/*m*/
+.icon-:before { content: "\006E"; }/*n*/
+.icon-:before { content: "\006F"; }/*o*/
+.icon-:before { content: "\0070"; }/*p*/
+.icon-:before { content: "\0071"; }/*q*/
+.icon-:before { content: "\0072"; }/*r*/
+.icon-:before { content: "\0073"; }/*s*/
+.icon-:before { content: "\0074"; }/*t*/
+.icon-:before { content: "\0075"; }/*u*/
+.icon-:before { content: "\0076"; }/*v*/
+.icon-:before { content: "\0077"; }/*w*/
+.icon-:before { content: "\0078"; }/*x*/
+.icon-:before { content: "\0079"; }/*y*/
+.icon-:before { content: "\007A"; }/*z*/

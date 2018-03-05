@@ -17,15 +17,15 @@ for(var i = 0; i < headerButtons.length; i++){
 	// 해당 div 다른 html 파일로 바꾸기
 	var getHeaderButtonsId = document.getElementById(headerButtons[i]);
 	getHeaderButtonsId.addEventListener("mouseenter", function(){
-		$("#content").load('templates/'+this.id+'.'+'html');
+		$("#gallery").load('templates/'+this.id+'.'+'html');
 		buttonHover(this.id);
-		changeContentPageEffect();
-		repeatContentByJson(this.id);
+		changegalleryPageEffect();
+		repeatgalleryByJson(this.id);
   }, false);
   getHeaderButtonsId.addEventListener("click", function(){
-		$("#content").load('templates/'+this.id+'.'+'html');
+		$("#gallery").load('templates/'+this.id+'.'+'html');
 		buttonHover(this.id);
-		changeContentPageEffect();
-		repeatContentByJson(this.id);
+		changegalleryPageEffect();
+		repeatgalleryByJson(this.id);
   }, false);
 }
