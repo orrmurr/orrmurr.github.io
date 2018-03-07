@@ -9,6 +9,7 @@
   border-radius: 0;
   box-shadow: none;
   box-sizing: border-box;
+	list-style-type: none;
 }
 
 html {
@@ -42,16 +43,6 @@ input {
 	background: #eee;
 }
 
-.buttonClass {
-	color: rgba(255,255,255,0.6);
-	font-size:18px;
-	padding-left:20px;
-	padding-top:13px;
-	padding-right:20px;
-	padding-bottom:13px;
-	cursor:pointer;
-}
-
 .changeGalleryPageEffectClass {
 	position: absolute;
 	top: 0px;
@@ -69,12 +60,15 @@ input {
 	100% {background: rgba(255, 255 ,255, 0);}
 }
 
-.repeatGalleryByJsonClass {
-	left: 50%;
-	transform: translate(-50%, 0%);
-	width: 100%;
-  max-width: 1000px;
-  background: #eee;
-	margin-top: 10%;
-	margin-bottom: 10%;
+#NewWaterfall li {
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+#NewWaterfall li.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.1s, top 0.5s;
 }

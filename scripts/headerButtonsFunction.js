@@ -7,6 +7,9 @@ var headerButtonsFunction = function(getThis){
 		$("#gallery").load('../templates/gallery.html');
 		changeGalleryPageEffect(getThis.id);
 		repeatGalleryByJson();
+		setTimeout(function(){
+			$('#NewWaterfall').NewWaterfall();
+		}, setTimeoutDelay);
 	}
 };
 addEventListnerMouseenterAndClick("ttegululuIcon", headerButtonsFunction);

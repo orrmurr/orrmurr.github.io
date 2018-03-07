@@ -6,3 +6,6 @@ var buttonHover = function(headerButton){
 	};
 	getButtonId.style.color = "rgba(255,255,255,0.3)";
 };
+
+
+// <!-- background:linear-gradient(135deg, #301432, #333333, #10043d); -->

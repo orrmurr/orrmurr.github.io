@@ -7,7 +7,7 @@ var createToTopButton = function(){
   createSpan.appendChild(createTextNode);
   createSpan.id = "toTopButton";
   createSpan.setAttribute("class", "f-ngb goToTop buttonHover");
-  createSpan.setAttribute("style", "display:none; position:fixed; right:5%; bottom:5%; width:50px; height:50px; font-size:15px; text-align:center; color:#999; background:#ffffff; box-shadow:0px 3px 3px #ccc; cursor:pointer; border-radius: 50%; padding-top:15px; z-index:1;");
+  createSpan.setAttribute("style", "display:none; position:fixed; right:5%; bottom:5%; width:50px; height:50px; font-size:15px; text-align:center; color:#999; background:#ffffff; box-shadow:0px 1px 3px #ccc; cursor:pointer; border-radius: 50%; padding:15px 0 0 0; z-index:1;");
   getGalleryFrame.appendChild(createSpan);
 };
 createToTopButton();

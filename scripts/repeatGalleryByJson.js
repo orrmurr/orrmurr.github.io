@@ -8,26 +8,26 @@ var repeatGalleryByJson = function(){
 				getJsonDataToStringify = JSON.stringify(eval('(' + getJsonData + ')'));
 				// 최신순으로 정렬 / 오름차순
 				$.parseJSON(getJsonDataToStringify).reverse().forEach(function(dataValue, dataIndex, dataArr){
-					// // div
-					var createDiv = document.createElement("div");
-					createDiv.id = dataIndex;
-					createDiv.setAttribute("class", "buttonHover");
-					createDiv.setAttribute("style", "display: inline-block; width:100%; border-radius:6px; padding:8px; cursor:pointer;");
-					document.getElementById("repeatGalleryId").appendChild(createDiv);
-					// // img
+					// li
+					var createUl = document.createElement("li");
+					createUl.id = "li"+dataIndex;
+					createUl.setAttribute("class", "buttonHover");
+					createUl.setAttribute("style", "border-radius:6px; cursor:pointer;");
+					document.getElementById("NewWaterfall").appendChild(createUl);
+					// img
 					var createImg = document.createElement("img");
-					createImg.setAttribute("style", "width:100%; border-radius:8px;");
+					createImg.setAttribute("style", "width:100%; border-radius:15px; padding:8px;");
 					createImg.setAttribute("src", "../images/"+dataValue.img);
-					document.getElementById(createDiv.id).appendChild(createImg);
-					// // title
+					document.getElementById(createUl.id).appendChild(createImg);
+					// title
 					var createSpan = document.createElement("span");
 					var createTextNode = document.createTextNode(dataArr.length-dataIndex+". "+dataValue.title);
 					createSpan.appendChild(createTextNode);
 					createSpan.setAttribute("class", "f-ng");
-					createSpan.setAttribute("style", "width:100%; max-width:1000px; font-size:12px; text-align:right; color:#ccc; padding:4px;");
-					document.getElementById(createDiv.id).appendChild(createSpan);
+					createSpan.setAttribute("style", "width:100%; font-size:12px; text-align:right; color:#ccc; padding:0 9px 9px;");
+					document.getElementById(createUl.id).appendChild(createSpan);
 				});
 			}
 		});
-	}, 30);
+	}, setTimeoutDelay);
 };
