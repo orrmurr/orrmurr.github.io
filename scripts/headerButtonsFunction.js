@@ -8,10 +8,11 @@ var headerButtonsFunction = function(getThis){
 	if (getThis.id == "galleryIcon") {
 		$("#gallery").load('../templates/gallery.html');
 		changeGalleryPageEffect(getThis.id);
+		// parseJsonData();
 		repeatGalleryByJson();
 		setTimeout(function(){
 			$('#NewWaterfall').NewWaterfall();
-		}, setTimeoutDelay);
+		}, setTimeoutDelay*2);
 	}
 	if (getThis.id == "searchIcon") {
 		toggleSearch = !toggleSearch;

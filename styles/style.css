@@ -34,10 +34,10 @@ input {
 	outline: none;
 }
 
-::-webkit-input-placeholder {color: #eee;} /* Chrome */
-:-ms-input-placeholder {color: #eee;} /* IE 10+ */
-::-moz-placeholder {color: #eee; opacity: 1;} /* Firefox 19+ */
-:-moz-placeholder {color: #eee;} /* Firefox 4 - 18 */
+::-webkit-input-placeholder {color: #bbb;} /* Chrome */
+:-ms-input-placeholder {color: #bbb;} /* IE 10+ */
+::-moz-placeholder {color: #bbb; opacity: 1;} /* Firefox 19+ */
+:-moz-placeholder {color: #bbb;} /* Firefox 4 - 18 */
 
 .buttonHover:hover {
 	background: #eee;
@@ -98,6 +98,15 @@ input {
 	margin:0 10px 0 11px;
 }
 
+#searchExtendIcon{
+	display:none;
+	position:absolute;
+	left:100%;
+	width:100%;
+	height:50px;
+	padding:5px 0 5px 10px;
+}
+
 @media ( max-width: 750px ) {
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:80px;
@@ -112,6 +121,15 @@ input {
 		left: 50%;
 		font-size:90px;
 		transform: translate(-50%, -50%);
+	}
+	#searchExtendIcon{
+		display:none;
+		position:absolute;
+		top:12%;
+		left:-5%;
+		width:70%;
+		height:65px;
+		padding:5px 0 5px 10px;
 	}
 }
 /* 반응형 끝 */
