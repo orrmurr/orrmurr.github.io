@@ -23,12 +23,6 @@
   position: relative;
 }
 
-.iconClass {
-  top: 34%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .icon-email:before { content: "\0041"; }/*A*/
 .icon-gallery:before { content: "\0042"; }/*B*/
 .icon-search:before { content: "\0043"; }/*C*/
