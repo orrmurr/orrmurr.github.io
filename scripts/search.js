@@ -1,32 +1,11 @@
-var search = function(inputValue){
-  var getInputValue = inputValue.value;
-  $("#NewWaterfall > li").hide();
-  var temp = $("#NewWaterfall > li > span:contains(" + getInputValue + ")");
+var search = function(getInput){
+  $("#NewWaterfall > li > img").hide();
+  $("#NewWaterfall > li > span").hide();
+  var temp = $("#NewWaterfall > li > span:contains(" + getInput.value + ")");
   if(temp){
-    $(temp).parent().show();
+    $(temp).parent().children().show();
   } else {
-    $("#NewWaterfall > li").show();
+    $("#NewWaterfall > li > img").show();
+    $("#NewWaterfall > li > span").show();
   }
-  // console.log(temp);
-
-
-
-
-  // if(window.event.keyCode == 13){
-  //   var getInputValue = document.getElementById("searchExtendIconInput").value;
-  //   getParseJsonData.filter(function(filtered){
-  //     if(filtered.title == getInputValue){
-  //       getParseJsonData = filtered.title;
-  //       repeatGalleryByJson();
-  //     }
-  //     if(filtered.img == getInputValue){
-  //       getParseJsonData = filtered.img;
-  //       repeatGalleryByJson();
-  //     }
-  //
-  //   });
-  //   setTimeout(function(){
-  //     $('#NewWaterfall').NewWaterfall();
-  //   }, setTimeoutDelay);
-  // }
 };

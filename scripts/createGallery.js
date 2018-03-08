@@ -3,7 +3,7 @@ var createGallery = function(dataValue, dataIndex, dataArr){
   createUl = document.createElement("li");
   createUl.id = dataArr.length-dataIndex+dataValue.title;
   createUl.setAttribute("class", "buttonHover");
-  createUl.setAttribute("style", "border-radius:6px; cursor:pointer;");
+  createUl.setAttribute("style", " border-radius:6px; cursor:pointer;");
   document.getElementById("NewWaterfall").appendChild(createUl);
   // img
   createImg = document.createElement("img");
