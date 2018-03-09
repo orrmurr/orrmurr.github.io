@@ -107,6 +107,10 @@ input {
 	padding:5px 0 5px 10px;
 }
 
+#searchExtendIconInput {
+	border-radius:20px;
+}
+
 @media ( max-width: 750px ) {
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:80px;
@@ -130,6 +134,9 @@ input {
 		width:70%;
 		height:65px;
 		padding:5px 0 5px 10px;
+	}
+	#searchExtendIconInput {
+		border-radius:50px;
 	}
 }
 /* 반응형 끝 */

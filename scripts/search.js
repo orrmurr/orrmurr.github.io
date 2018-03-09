@@ -1,11 +1,13 @@
-var search = function(getInput){
+var searchGalleryHide = function(){
   $("#NewWaterfall > li > img").hide();
   $("#NewWaterfall > li > span").hide();
-  var temp = $("#NewWaterfall > li > span:contains(" + getInput.value + ")");
-  if(temp){
-    $(temp).parent().children().show();
-  } else {
-    $("#NewWaterfall > li > img").show();
-    $("#NewWaterfall > li > span").show();
+};
+
+var search = function(getInput){
+  searchGalleryHide();
+  var getInputValue = $("#NewWaterfall > li > span:contains(" + getInput.value + ")");
+  $(getInputValue).parent().children().show();
+  if(getInputValue.length == getParseJsonData.length){
+    searchGalleryHide();
   }
 };

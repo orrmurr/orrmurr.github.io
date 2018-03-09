@@ -8,20 +8,35 @@ var headerButtonsFunction = function(getThis){
 	if (getThis.id == "galleryIcon") {
 		$("#gallery").load('../templates/gallery.html');
 		changeGalleryPageEffect(getThis.id);
-		// parseJsonData();
-		repeatGalleryByJson();
+		repeatGalleryByJsonInitialize(); //repeatGalleryByJson Setting 초기화
 		setTimeout(function(){
-			$('#NewWaterfall').NewWaterfall();
-		}, setTimeoutDelay*2);
+			repeatGalleryByJson();
+			scrollPaging();
+			setTimeout(function(){
+				$('#NewWaterfall').NewWaterfall();
+			}, setTimeoutDelay);
+		}, setTimeoutDelay);
 	}
 	if (getThis.id == "searchIcon") {
+		// toggle search input
 		toggleSearch = !toggleSearch;
 		if(toggleSearch){
 			document.getElementById("searchExtendIcon").style.display = "block";
-		}
-		else{
+		} else{
 			document.getElementById("searchExtendIcon").style.display = "none";
 		}
+		// load all gallery
+		$("#gallery").load('../templates/gallery.html');
+		changeGalleryPageEffect(getThis.id);
+		setTimeout(function(){
+			getParseJsonData.forEach(function(dataValue, dataIndex, dataArr){
+			  createGallery(dataValue, dataArr.length-dataIndex, dataArr);
+			});
+			setTimeout(function(){
+				$('#NewWaterfall').NewWaterfall();
+				searchGalleryHide();
+			}, setTimeoutDelay);
+		}, setTimeoutDelay);
 	}
 };
 addEventListnerMouseenterAndClick("ttegululuIcon", headerButtonsFunction);

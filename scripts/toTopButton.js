@@ -15,14 +15,14 @@ createToTopButton();
 // 버튼 보이기 && 숨기기
 var getToTopButtonId = document.getElementById("toTopButton");
 var headerHeight = document.body.offsetHeight - getGalleryFrame.clientHeight;
-window.onscroll = function(){
-  document.body.scrollTop;
+var toTopButton = function(){
   if (document.body.scrollTop > headerHeight){
     getToTopButtonId.style.display = "block";
   } else {
     getToTopButtonId.style.display = "none";
   }
 };
+toTopButton();
 
 // 맨 위로
 var toTopButtonFunction = function(){
