@@ -52,7 +52,7 @@ input {
 	background: rgba(255, 255 ,255, 0);
 	z-index: 1;
 	animation-name: changeGalleryPageEffectClassName;
-	animation-duration: 700ms;
+	animation-duration: 400ms; /* changeGallery page effect > getGalleryFrame.removeChild() 세팅 같이 바꿔줘야 됨 */
 }
 
 @keyframes changeGalleryPageEffectClassName {
@@ -101,8 +101,8 @@ input {
 #searchExtendIcon{
 	display:none;
 	position:absolute;
-	left:100%;
-	width:100%;
+	left:-15%;
+	width:80%;
 	height:50px;
 	padding:5px 0 5px 10px;
 }
@@ -111,16 +111,15 @@ input {
 	border-radius:20px;
 }
 
-.galleryImgClickClass {
+.galleryClickDiv2 {
 	width:40%;
 	left:50%;
 	transform:translate(-50%,0%);
-	border-radius:15px;
-	animation-name: galleryImgClickClassName;
+	animation-name: galleryClickDiv2Name;
 	animation-duration: 300ms;
 }
 
-@keyframes galleryImgClickClassName {
+@keyframes galleryClickDiv2Name {
 	0% {width:40%; opacity: 0;}
 	50% {width:42%;}
 	100% {width:40%; opacity: 1;}
@@ -155,18 +154,17 @@ input {
 		border-radius:50px;
 	}
 
-	.galleryImgClickClass {
+	.galleryClickDiv2 {
 		width:100%;
 		left:50%;
 		transform:translate(-50%,0%);
 		border-radius:0px;
-		animation-name: galleryImgClickClassName;
+		animation-name: galleryClickDiv2Name;
 		animation-duration: 300ms;
 	}
 
-	@keyframes galleryImgClickClassName {
+	@keyframes galleryClickDiv2Name {
 		0% {width:90%; opacity: 0;}
-		/* 50% {width:42%;} */
 		100% {width:100%; opacity: 1;}
 	}
 }

@@ -22,8 +22,13 @@ var headerButtonsFunction = function(getThis){
 		toggleSearch = !toggleSearch;
 		if(toggleSearch){
 			document.getElementById("searchExtendIcon").style.display = "block";
+			document.getElementById("ttegululuIcon").style.visibility = "hidden";
+			document.getElementById("galleryIcon").style.visibility = "hidden";
 		} else{
 			document.getElementById("searchExtendIcon").style.display = "none";
+			document.getElementById("ttegululuIcon").style.visibility = "visible";
+			document.getElementById("galleryIcon").style.visibility = "visible";
+			document.getElementById("searchExtendIconInput").value = null;
 		}
 		// load all gallery
 		$("#gallery").load('../templates/gallery.html');

@@ -1,6 +1,6 @@
 // initialize
 $(document).ready( function(){
-	setTimeoutDelay = 80;
+	setTimeoutDelay = 100;
 	importJs('parseJsonData');
 	importJs('addEventListnerMouseenterAndClick');
 	importJs('toTopButton');

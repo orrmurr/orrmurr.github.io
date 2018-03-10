@@ -5,5 +5,5 @@ var changeGalleryPageEffect = function(){
 	getGalleryFrame.appendChild(createDiv);
 	setTimeout(function(){
 		getGalleryFrame.removeChild(createDiv);
-	}, 700); // 사라지는 속도 - style.css .changeGalleryPageEffectClass animation-duration: 700ms;
+	}, 400); // 사라지는 속도 - style.css .changeGalleryPageEffectClass animation-duration: 700ms;
 };
