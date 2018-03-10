@@ -1,3 +1,10 @@
+/* css variable */
+:root {
+	--changeGalleryPageEffectClass: 200ms; /* changeGalleryPageEffect > getGalleryFrame.removeChild() 세팅 똑같이 바꿔줘야 됨 */
+	--galleryClickDiv2AnimationDuration: 200ms; /* 위에꺼랑 세팅 똑같이 바꿔줘야 됨 */
+}
+
+/* setting */
 * {
 	margin: 0;
 	padding: 0;
@@ -52,7 +59,7 @@ input {
 	background: rgba(255, 255 ,255, 0);
 	z-index: 1;
 	animation-name: changeGalleryPageEffectClassName;
-	animation-duration: 400ms; /* changeGallery page effect > getGalleryFrame.removeChild() 세팅 같이 바꿔줘야 됨 */
+	animation-duration: var(--changeGalleryPageEffectClass);
 }
 
 @keyframes changeGalleryPageEffectClassName {
@@ -116,12 +123,11 @@ input {
 	left:50%;
 	transform:translate(-50%,0%);
 	animation-name: galleryClickDiv2Name;
-	animation-duration: 300ms;
+	animation-duration:var(--galleryClickDiv2AnimationDuration);
 }
 
 @keyframes galleryClickDiv2Name {
-	0% {width:40%; opacity: 0;}
-	50% {width:42%;}
+	0% {width:38%; opacity: 0;}
 	100% {width:40%; opacity: 1;}
 }
 
@@ -160,11 +166,11 @@ input {
 		transform:translate(-50%,0%);
 		border-radius:0px;
 		animation-name: galleryClickDiv2Name;
-		animation-duration: 300ms;
+		animation-duration: var(--galleryClickDiv2AnimationDuration);
 	}
 
 	@keyframes galleryClickDiv2Name {
-		0% {width:90%; opacity: 0;}
+		0% {width:98%; opacity: 0;}
 		100% {width:100%; opacity: 1;}
 	}
 }
