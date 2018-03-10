@@ -56,7 +56,7 @@ input {
 }
 
 @keyframes changeGalleryPageEffectClassName {
-	0% {background: rgba(255, 255 ,255, 100);}
+	0% {background: rgba(255, 255 ,255, 1);}
 	100% {background: rgba(255, 255 ,255, 0);}
 }
 
@@ -111,11 +111,27 @@ input {
 	border-radius:20px;
 }
 
-@media ( max-width: 750px ) {
+.galleryImgClickClass {
+	width:40%;
+	left:50%;
+	transform:translate(-50%,0%);
+	border-radius:15px;
+	animation-name: galleryImgClickClassName;
+	animation-duration: 300ms;
+}
+
+@keyframes galleryImgClickClassName {
+	0% {width:40%; opacity: 0;}
+	50% {width:42%;}
+	100% {width:40%; opacity: 1;}
+}
+
+@media ( max-width: 900px ) {
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:80px;
 		height:80px;
 	}
+
 	#ttegululuIcon img{
 		width:50px;
 		height:50px;
@@ -137,6 +153,21 @@ input {
 	}
 	#searchExtendIconInput {
 		border-radius:50px;
+	}
+
+	.galleryImgClickClass {
+		width:100%;
+		left:50%;
+		transform:translate(-50%,0%);
+		border-radius:0px;
+		animation-name: galleryImgClickClassName;
+		animation-duration: 300ms;
+	}
+
+	@keyframes galleryImgClickClassName {
+		0% {width:90%; opacity: 0;}
+		/* 50% {width:42%;} */
+		100% {width:100%; opacity: 1;}
 	}
 }
 /* 반응형 끝 */
