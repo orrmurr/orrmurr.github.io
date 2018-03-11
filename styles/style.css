@@ -1,7 +1,6 @@
 /* css variable */
 :root {
-	--changeGalleryPageEffectClass: 200ms; /* changeGalleryPageEffect > getGalleryFrame.removeChild() 세팅 똑같이 바꿔줘야 됨 */
-	--galleryClickDiv2AnimationDuration: 200ms; /* 위에꺼랑 세팅 똑같이 바꿔줘야 됨 */
+	--animationDurationSetting: 100ms; /* changeGalleryPageEffect.js && galleryClick.js 세팅 똑같이 바꿔줘야 됨 */
 }
 
 /* setting */
@@ -59,7 +58,7 @@ input {
 	background: rgba(255, 255 ,255, 0);
 	z-index: 1;
 	animation-name: changeGalleryPageEffectClassName;
-	animation-duration: var(--changeGalleryPageEffectClass);
+	animation-duration: var(--animationDurationSetting);
 }
 
 @keyframes changeGalleryPageEffectClassName {
@@ -118,19 +117,35 @@ input {
 	border-radius:20px;
 }
 
-.galleryClickDiv2 {
+.galleryClickDivClass {
+	width:100%;
+	height:100%;
+	background:#fff;
+	cursor:pointer;
+	padding:0 0 100%;  /* 패딩 안주면 검색 후 오프클릭 영역이 줄어듬 */
+	animation-name: galleryClickDivClassName;
+	animation-duration:var(--animationDurationSetting);
+}
+
+@keyframes galleryClickDivClassName {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+.galleryClickDiv2Class {
 	width:40%;
 	left:50%;
 	transform:translate(-50%,0%);
-	animation-name: galleryClickDiv2Name;
-	animation-duration:var(--galleryClickDiv2AnimationDuration);
+	animation-name: galleryClickDiv2ClassName;
+	animation-duration:var(--animationDurationSetting);
 }
 
-@keyframes galleryClickDiv2Name {
-	0% {width:38%; opacity: 0;}
+@keyframes galleryClickDiv2ClassName {
+	0% {width:39%; opacity: 0;}
 	100% {width:40%; opacity: 1;}
 }
 
+/* ------------------ 구분선 ------------------ */
 @media ( max-width: 900px ) {
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:80px;
@@ -160,17 +175,17 @@ input {
 		border-radius:50px;
 	}
 
-	.galleryClickDiv2 {
+	.galleryClickDiv2Class {
 		width:100%;
 		left:50%;
 		transform:translate(-50%,0%);
 		border-radius:0px;
-		animation-name: galleryClickDiv2Name;
-		animation-duration: var(--galleryClickDiv2AnimationDuration);
+		animation-name: galleryClickDiv2ClassName;
+		animation-duration: var(--animationDurationSetting);
 	}
 
-	@keyframes galleryClickDiv2Name {
-		0% {width:98%; opacity: 0;}
+	@keyframes galleryClickDiv2ClassName {
+		0% {width:99%; opacity: 0;}
 		100% {width:100%; opacity: 1;}
 	}
 }

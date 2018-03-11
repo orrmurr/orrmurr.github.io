@@ -3,11 +3,11 @@ var toggleSearch = false;
 var headerButtonsFunction = function(getThis){
 	if (getThis.id == "ttegululuIcon") {
 		$("#gallery").load('../templates/ttegululu.html');
-		changeGalleryPageEffect(getThis.id);
+		changeGalleryPageEffect();
 	}
 	if (getThis.id == "galleryIcon") {
 		$("#gallery").load('../templates/gallery.html');
-		changeGalleryPageEffect(getThis.id);
+		changeGalleryPageEffect();
 		repeatGalleryByJsonInitialize(); //repeatGalleryByJson Setting 초기화
 		setTimeout(function(){
 			repeatGalleryByJson();
@@ -32,7 +32,7 @@ var headerButtonsFunction = function(getThis){
 		}
 		// load all gallery
 		$("#gallery").load('../templates/gallery.html');
-		changeGalleryPageEffect(getThis.id);
+		changeGalleryPageEffect();
 		setTimeout(function(){
 			getParseJsonData.forEach(function(dataValue, dataIndex, dataArr){
 			  createGallery(dataValue, dataArr.length-dataIndex, dataArr);

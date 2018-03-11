@@ -5,5 +5,5 @@ var changeGalleryPageEffect = function(){
 	getGalleryFrame.appendChild(createDiv);
 	setTimeout(function(){
 		getGalleryFrame.removeChild(createDiv);
-	}, 200); // 사라지는 속도 - style.css > css variable 세팅 똑같이 바꿔줘야 됨
+	}, 100); // style.css > animationDurationSetting 세팅 똑같이 바꿔줘야 됨
 };
