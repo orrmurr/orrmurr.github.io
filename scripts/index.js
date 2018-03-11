@@ -19,5 +19,4 @@ $(document).ready( function(){
 			$('#NewWaterfall').NewWaterfall();
 		}, setTimeoutDelay);
 	}, setTimeoutDelay);
-
 });
