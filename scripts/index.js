@@ -3,10 +3,10 @@ $(document).ready( function(){
 	setTimeoutDelay = 100;
 	importJs('parseJsonData');
 	importJs('addEventListnerMouseenterAndClick');
+	importJs('newWaterfall');
 	setTimeout(function(){
 		importJs('toTopButton');
 		importJs('search');
-		importJs('newWaterfall');
 		importJs('createGallery');
 		importJs('changeGalleryPageEffect');
 		$("#gallery").load("../templates/gallery.html");
