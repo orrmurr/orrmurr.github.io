@@ -1,6 +1,6 @@
 // initialize
 $(document).ready( function(){
-	setTimeoutDelay = 200;
+	setTimeoutDelay = 100;
 	importJs('parseJsonData');
 	importJs('addEventListnerMouseenterAndClick');
 	setTimeout(function(){
@@ -16,7 +16,9 @@ $(document).ready( function(){
 			importJs('repeatGalleryByJson');
 			importJs('scrollPaging');
 			importJs('galleryClick');
-			$('#NewWaterfall').NewWaterfall();
+			setTimeout(function(){
+				$('#NewWaterfall').NewWaterfall();
+			}, setTimeoutDelay);
 		}, setTimeoutDelay);
 	}, setTimeoutDelay);
 });
