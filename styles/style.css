@@ -146,7 +146,7 @@ input {
 }
 
 /* ------------------ 구분선 ------------------ */
-@media all and (max-width : 524px){
+@media only screen and (max-width : 1024px){
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:80px;
 		height:80px;
