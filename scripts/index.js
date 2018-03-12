@@ -1,26 +1,22 @@
 // initialize
 $(document).ready( function(){
+	setTimeoutDelay = 100;
 	importJs('parseJsonData');
+	importJs('addEventListnerMouseenterAndClick');
 	setTimeout(function(){
-		setTimeoutDelay = getParseJsonData.length; //getParseJsonData 로딩후 적용
-		importJs('addEventListnerMouseenterAndClick');
+		importJs('toTopButton');
+		importJs('search');
 		importJs('newWaterfall');
+		importJs('createGallery');
+		importJs('changeGalleryPageEffect');
+		$("#gallery").load("../templates/gallery.html");
+		// DOM 생성, JSON 데이터 가져온 뒤 실행
 		setTimeout(function(){
-			importJs('toTopButton');
-			importJs('search');
-			importJs('createGallery');
-			importJs('changeGalleryPageEffect');
-			// DOM 생성, JSON 데이터 가져온 뒤 실행
-			setTimeout(function(){
-				$("#gallery").load("../templates/gallery.html");
-				importJs('headerButtonsFunction');
-				importJs('repeatGalleryByJson');
-				importJs('scrollPaging');
-				importJs('galleryClick');
-				setTimeout(function(){
-					$('#NewWaterfall').NewWaterfall();
-				}, setTimeoutDelay);
-			}, setTimeoutDelay);
+			importJs('headerButtonsFunction');
+			importJs('repeatGalleryByJson');
+			importJs('scrollPaging');
+			importJs('galleryClick');
+			$('#NewWaterfall').NewWaterfall();
 		}, setTimeoutDelay);
-	}, 100);
+	}, setTimeoutDelay);
 });
