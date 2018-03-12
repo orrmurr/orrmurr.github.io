@@ -22,6 +22,6 @@ $(document).ready( function(){
 				}, setTimeoutDelay);
 			}, setTimeoutDelay);
 		}, setTimeoutDelay);
-	}, 100);
+	}, 500);
 
 });
