@@ -80,71 +80,70 @@ input {
 }
 
 /* ------------------ 반응형 ------------------ */
-@media ( min-width: 900px ){
-	#ttegululuIcon, #galleryIcon, #searchIcon {
-		width:50px;
-		height:50px;
-		color:#aaa;
-		cursor:pointer;
-		border-radius:50%;
-	}
 
-	#ttegululuIcon img{
-		width:30px;
-		height:30px;
-	}
+#ttegululuIcon, #galleryIcon, #searchIcon {
+	width:50px;
+	height:50px;
+	color:#aaa;
+	cursor:pointer;
+	border-radius:50%;
+}
 
-	#galleryIcon i, #searchIcon i{
-		top: 34%;
-		left: 50%;
-		font-size:60px;
-		transform: translate(-50%, -50%);
-	}
+#ttegululuIcon img{
+	width:30px;
+	height:30px;
+}
 
-	#galleryIcon{
-		margin:0 10px 0 11px;
-	}
+#galleryIcon i, #searchIcon i{
+	top: 34%;
+	left: 50%;
+	font-size:60px;
+	transform: translate(-50%, -50%);
+}
 
-	#searchExtendIcon{
-		display:none;
-		position:absolute;
-		left:-15%;
-		width:80%;
-		height:50px;
-		padding:5px 0 5px 10px;
-	}
+#galleryIcon{
+	margin:0 10px 0 11px;
+}
 
-	#searchExtendIconInput {
-		border-radius:20px;
-	}
+#searchExtendIcon{
+	display:none;
+	position:absolute;
+	left:-15%;
+	width:80%;
+	height:50px;
+	padding:5px 0 5px 10px;
+}
 
-	.galleryClickDivClass {
-		width:100%;
-		height:100%;
-		background:#fff;
-		cursor:pointer;
-		padding:0 0 100%;  /* 패딩 안주면 검색 후 오프클릭 영역이 줄어듬 */
-		animation-name: galleryClickDivClassName;
-		animation-duration:var(--animationDurationSetting);
-	}
+#searchExtendIconInput {
+	border-radius:20px;
+}
 
-	@keyframes galleryClickDivClassName {
-		0% {opacity: 0;}
-		100% {opacity: 1;}
-	}
+.galleryClickDivClass {
+	width:100%;
+	height:100%;
+	background:#fff;
+	cursor:pointer;
+	padding:0 0 100%;  /* 패딩 안주면 검색 후 오프클릭 영역이 줄어듬 */
+	animation-name: galleryClickDivClassName;
+	animation-duration:var(--animationDurationSetting);
+}
 
-	.galleryClickDiv2Class {
-		width:40%;
-		left:50%;
-		transform:translate(-50%,0%);
-		animation-name: galleryClickDiv2ClassName;
-		animation-duration:var(--animationDurationSetting);
-	}
+@keyframes galleryClickDivClassName {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
 
-	@keyframes galleryClickDiv2ClassName {
-		0% {width:39%; opacity: 0;}
-		100% {width:40%; opacity: 1;}
-	}
+.galleryClickDiv2Class {
+	width:40%;
+	left:50%;
+	transform:translate(-50%,0%);
+	animation-name: galleryClickDiv2ClassName;
+	animation-duration:var(--animationDurationSetting);
+}
+
+@keyframes galleryClickDiv2ClassName {
+	0% {width:39%; opacity: 0;}
+	100% {width:40%; opacity: 1;}
 }
 
 /* ------------------ 구분선 ------------------ */
