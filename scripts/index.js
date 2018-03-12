@@ -10,10 +10,9 @@ $(document).ready( function(){
 			importJs('search');
 			importJs('createGallery');
 			importJs('changeGalleryPageEffect');
-			$("#gallery").load("../templates/gallery.html");
-			$("#gallery").load("../templates/gallery.html");
 			// DOM 생성, JSON 데이터 가져온 뒤 실행
 			setTimeout(function(){
+				$("#gallery").load("../templates/gallery.html");
 				importJs('headerButtonsFunction');
 				importJs('repeatGalleryByJson');
 				importJs('scrollPaging');
