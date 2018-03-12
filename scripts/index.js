@@ -16,7 +16,9 @@ $(document).ready( function(){
 			importJs('repeatGalleryByJson');
 			importJs('scrollPaging');
 			importJs('galleryClick');
-			$('#NewWaterfall').NewWaterfall();
+			setTimeout(function(){
+				$('#NewWaterfall').NewWaterfall();
+			}, setTimeoutDelay);			
 		}, setTimeoutDelay);
 	}, setTimeoutDelay);
 });
