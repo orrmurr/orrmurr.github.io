@@ -1,6 +1,6 @@
 // initialize
 $(document).ready( function(){
-	setTimeoutDelay = 100;
+	setTimeoutDelay = 200;
 	importJs('parseJsonData');
 	importJs('addEventListnerMouseenterAndClick');
 	setTimeout(function(){
