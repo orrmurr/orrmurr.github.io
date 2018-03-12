@@ -118,6 +118,24 @@ input {
 		border-radius:20px;
 	}
 
+	#toTopButton {
+		display:none;
+		position:fixed;
+		right:5%;
+		bottom:5%;
+		width:50px;
+		height:50px;
+		font-size:15px;
+		text-align:center;
+		color:#999;
+		background:#ffffff;
+		box-shadow:0px 1px 3px #ccc;
+		cursor:pointer;
+		border-radius: 50%;
+		padding:15px 0 0 0;
+		z-index:1;
+	}
+
 	.galleryClickDivClass {
 		width:100%;
 		height:100%;
@@ -148,53 +166,74 @@ input {
 }
 
 /* ------------------ 구분선 ------------------ */
-#ttegululuIcon, #galleryIcon, #searchIcon {
-	width:80px;
-	height:80px;
-	color:#aaa;
-	cursor:pointer;
-	border-radius:50%;
-}
+@media ( max-width: 900px ){
+	#ttegululuIcon, #galleryIcon, #searchIcon {
+		width:80px;
+		height:80px;
+		color:#aaa;
+		cursor:pointer;
+		border-radius:50%;
+	}
 
-#ttegululuIcon img{
-	width:50px;
-	height:50px;
-}
-#galleryIcon i, #searchIcon i{
-	top: 36%;
-	left: 50%;
-	font-size:90px;
-	transform: translate(-50%, -50%);
-}
+	#ttegululuIcon img{
+		width:50px;
+		height:50px;
+	}
+	#galleryIcon i, #searchIcon i{
+		top: 36%;
+		left: 50%;
+		font-size:90px;
+		transform: translate(-50%, -50%);
+	}
 
-#galleryIcon{
-	margin:0 10px 0 11px;
-}
+	#galleryIcon{
+		margin:0 10px 0 11px;
+	}
 
-#searchExtendIcon{
-	display:none;
-	position:absolute;
-	top:12%;
-	left:-5%;
-	width:70%;
-	height:65px;
-	padding:5px 0 5px 10px;
-}
-#searchExtendIconInput {
-	border-radius:50px;
-}
+	#searchExtendIcon{
+		display:none;
+		position:absolute;
+		top:12%;
+		left:-5%;
+		width:70%;
+		height:65px;
+		padding:5px 0 5px 10px;
+	}
 
-.galleryClickDiv2Class {
-	width:100%;
-	left:50%;
-	transform:translate(-50%,0%);
-	border-radius:0px;
-	animation-name: galleryClickDiv2ClassName;
-	animation-duration: var(--animationDurationSetting);
-}
+	#searchExtendIconInput {
+		border-radius:50px;
+	}
 
-@keyframes galleryClickDiv2ClassName {
-	0% {width:99%; opacity: 0;}
-	100% {width:100%; opacity: 1;}
+	#toTopButton {
+		display:none;
+		position:fixed;
+		right:5%;
+		bottom:5%;
+		width:70px;
+		height:70px;
+		font-size:25px;
+		text-align:center;
+		color:#999;
+		background:#ffffff;
+		box-shadow:0px 1px 3px #ccc;
+		cursor:pointer;
+		border-radius: 50%;
+		padding:18px 0 0 0;
+		z-index:1;
+	}
+
+	.galleryClickDiv2Class {
+		width:100%;
+		left:50%;
+		transform:translate(-50%,0%);
+		border-radius:0px;
+		animation-name: galleryClickDiv2ClassName;
+		animation-duration: var(--animationDurationSetting);
+	}
+
+	@keyframes galleryClickDiv2ClassName {
+		0% {width:99%; opacity: 0;}
+		100% {width:100%; opacity: 1;}
+	}
 }
 /* 반응형 끝 */
