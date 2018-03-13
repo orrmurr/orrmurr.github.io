@@ -80,6 +80,7 @@ input {
 }
 
 /* ------------------ 반응형 ------------------ */
+@media ( min-width: 900px ){
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:50px;
 		height:50px;
@@ -144,9 +145,10 @@ input {
 		0% {width:39%; opacity: 0;}
 		100% {width:40%; opacity: 1;}
 	}
+}
 
 /* ------------------ 구분선 ------------------ */
-@media all and ( max-width: 900px ){
+@media ( max-width: 900px ){
 	#ttegululuIcon, #galleryIcon, #searchIcon {
 		width:80px;
 		height:80px;
