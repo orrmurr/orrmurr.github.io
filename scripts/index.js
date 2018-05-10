@@ -4,7 +4,6 @@ $(document).ready( function(){
 	importJs('parseJsonData');
 	importJs('addEventListnerMouseenterAndClick');
 	setTimeout(function(){
-		importJs('historyAPI');
 		importJs('toTopButton');
 		importJs('search');
 		importJs('newWaterfall');
