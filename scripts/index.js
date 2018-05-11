@@ -1,7 +1,8 @@
 // initialize
 $(document).ready( function(){
 	setTimeoutDelay = 200;
-	importJs('parseJsonData');
+	importJs('getFileNameFromFolder');
+	// importJs('parseJsonData');
 	importJs('addEventListnerMouseenterAndClick');
 	setTimeout(function(){
 		importJs('toTopButton');
@@ -12,8 +13,8 @@ $(document).ready( function(){
 		$("#gallery").load("../templates/gallery.html");
 		// DOM 생성, JSON 데이터 가져온 뒤 실행
 		setTimeout(function(){
-			importJs('headerButtonsFunction');
-			importJs('repeatGalleryByJson');
+			importJs('repeatGallery');
+			importJs('headerButtons');
 			importJs('scrollPaging');
 			importJs('galleryClick');
 			setTimeout(function(){

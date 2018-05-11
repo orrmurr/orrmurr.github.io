@@ -4,7 +4,7 @@ var scrollPaging = function(){
     if (window.scrollY >= windowInnerHeight){
       if(!galleryClickToggle){
         windowInnerHeight += window.innerHeight;
-        repeatGalleryByJson();
+        repeatGallery();
       }
     }
     toTopButton(); //top button show&hide

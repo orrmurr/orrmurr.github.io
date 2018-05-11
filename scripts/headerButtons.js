@@ -1,6 +1,6 @@
 // 해당 div 다른 html 파일로 바꾸기
 var toggleSearch = false;
-var headerButtonsFunction = function(getThis){
+var headerButtons = function(getThis){
 	if (getThis.id == "ttegululuIcon") {
 		$("#gallery").load('../templates/ttegululu.html');
 		changeGalleryPageEffect();
@@ -8,9 +8,9 @@ var headerButtonsFunction = function(getThis){
 	if (getThis.id == "galleryIcon") {
 		$("#gallery").load('../templates/gallery.html');
 		changeGalleryPageEffect();
-		repeatGalleryByJsonInitialize(); //repeatGalleryByJson Setting 초기화
+		repeatGalleryInitialize(); //repeatGallery Setting 초기화
 		setTimeout(function(){
-			repeatGalleryByJson();
+			repeatGallery();
 			scrollPaging();
 			setTimeout(function(){
 				$('#NewWaterfall').NewWaterfall();
@@ -30,11 +30,11 @@ var headerButtonsFunction = function(getThis){
 			document.getElementById("galleryIcon").style.visibility = "visible";
 			document.getElementById("searchExtendIconInput").value = null;
 		}
-		// load all gallery
+		// load all gallery (images 폴더 파일 전체 불러오기)
 		$("#gallery").load('../templates/gallery.html');
 		changeGalleryPageEffect();
 		setTimeout(function(){
-			getParseJsonData.forEach(function(dataValue, dataIndex, dataArr){
+			getFileNameFromFolder.forEach(function(dataValue, dataIndex, dataArr){
 			  createGallery(dataValue, dataArr.length-dataIndex, dataArr);
 			});
 			setTimeout(function(){
@@ -44,6 +44,6 @@ var headerButtonsFunction = function(getThis){
 		}, setTimeoutDelay);
 	}
 };
-addEventListnerMouseenterAndClick("ttegululuIcon", headerButtonsFunction);
-addEventListnerMouseenterAndClick("galleryIcon", headerButtonsFunction);
-addEventListnerMouseenterAndClick("searchIcon", headerButtonsFunction);
+addEventListnerMouseenterAndClick("ttegululuIcon", headerButtons);
+addEventListnerMouseenterAndClick("galleryIcon", headerButtons);
+addEventListnerMouseenterAndClick("searchIcon", headerButtons);
