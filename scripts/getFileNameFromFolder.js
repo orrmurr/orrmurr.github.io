@@ -3,11 +3,12 @@ var getFileNameFromFolder = function(){
   var fileExtension = [".png", "jpg", ".jpeg", ".gif"];
   $.ajax({
       url: '../images',
+      type: "GET",
       success: function (data) {
          getFileNameFromFolder = [];
          for (var i = 0; i < fileExtension.length; i++) {
            $(data).find("a:contains(" + fileExtension[i] + ")").each(function () {
-             var filename = this.href;
+             var filename = this.href.replace(window.location.host, "").replace("http:///images/", "");
              console.log(filename);
              getFileNameFromFolder.push(filename);
            });
