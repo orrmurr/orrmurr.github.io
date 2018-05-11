@@ -7,7 +7,8 @@ var getFileNameFromFolder = function(){
          getFileNameFromFolder = [];
          for (var i = 0; i < fileExtension.length; i++) {
            $(data).find("a:contains(" + fileExtension[i] + ")").each(function () {
-             var filename = this.href.replace(window.location.host, "").replace("http:///images/", "");
+             var filename = this.href;
+             console.log(filename);
              getFileNameFromFolder.push(filename);
            });
          }
