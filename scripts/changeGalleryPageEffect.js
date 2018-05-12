@@ -1,4 +1,4 @@
-var changeGalleryPageEffect = function(){
+function changeGalleryPageEffect(){
 	var createDiv = document.createElement("div");
 	var getGalleryFrame = document.getElementById("galleryFrame");
 	createDiv.setAttribute("class", "changeGalleryPageEffectClass");

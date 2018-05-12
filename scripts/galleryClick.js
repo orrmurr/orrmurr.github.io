@@ -1,6 +1,6 @@
 var galleryClickToggle = false;
 
-var galleryClick = function(getThis){
+function galleryClick(getThis){
   galleryClickToggle = true;
   var windowScrollY = window.scrollY + "px";
   var getThisInnerHtml = $(getThis.innerHTML);
@@ -30,7 +30,7 @@ var galleryClick = function(getThis){
   document.getElementById(createDiv2.id).appendChild(createSpan);
 };
 
-var galleryClickDivRemove = function(){
+function galleryClickDivRemove(){
   $("#galleryClickDiv").animate({ opacity : "0" },100, function(){ // style.css > animationDurationSetting 세팅 똑같이 바꿔줘야 됨
     $("#galleryClickDiv").remove();
   });

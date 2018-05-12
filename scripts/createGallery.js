@@ -1,4 +1,4 @@
-var createGallery = function(dataValue, dataIndex, dataArr){
+function createGallery(dataValue, dataIndex, dataArr){
   // li
   createli = document.createElement("li");
   createli.id = dataIndex+dataValue;

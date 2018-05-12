@@ -1,4 +1,4 @@
-var parseJsonData = function(){
+function parseJsonData(){
   $.ajax({
     url: "../json/gallery.json",
     dataType: "text",

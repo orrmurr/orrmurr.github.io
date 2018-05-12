@@ -1,8 +1,7 @@
-var getFileNameFromFolder = function(){
+function getFileNameFromFolder(){
   $.ajax({
       url: "../images",
       dataType: "text",
-      crossDomain:true,
       success: function (data) {
         getFileNameFromFolder = data.split("\n");
         getFileNameFromFolder.pop();

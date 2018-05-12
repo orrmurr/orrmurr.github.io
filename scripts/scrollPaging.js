@@ -1,4 +1,4 @@
-var scrollPaging = function(){
+function scrollPaging(){
   var windowInnerHeight = window.innerHeight;
   window.onscroll = function(){
     if (window.scrollY >= windowInnerHeight){
@@ -10,4 +10,3 @@ var scrollPaging = function(){
     toTopButton(); //top button show&hide
   };
 };
-scrollPaging();

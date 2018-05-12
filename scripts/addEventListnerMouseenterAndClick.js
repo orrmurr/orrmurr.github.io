@@ -1,4 +1,4 @@
-var addEventListnerMouseenterAndClick = function(getId, getFunction){
+function addEventListnerMouseenterAndClick(getId, getFunction){
   var varGetId = document.getElementById(getId);
   varGetId.addEventListener("mouseenter", function(){
     getFunction(this);

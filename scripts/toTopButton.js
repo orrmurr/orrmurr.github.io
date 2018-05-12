@@ -1,7 +1,7 @@
 var getGalleryFrame = document.getElementById("galleryFrame");
 
 // 버튼 생성 && 삭제
-var createToTopButton = function(){
+function createToTopButton(){
   var createSpan = document.createElement("span");
   var createTextNode = document.createTextNode("top");
   createSpan.appendChild(createTextNode);
@@ -15,7 +15,7 @@ createToTopButton();
 // 버튼 보이기 && 숨기기
 var getToTopButtonId = document.getElementById("toTopButton");
 var headerHeight = document.body.offsetHeight - getGalleryFrame.clientHeight;
-var toTopButton = function(){
+function toTopButton(){
   if (document.body.scrollTop > headerHeight){
     getToTopButtonId.style.display = "block";
   } else {
@@ -25,7 +25,7 @@ var toTopButton = function(){
 toTopButton();
 
 // 맨 위로
-var toTopButtonFunction = function(){
+function toTopButtonFunction(){
   var speed = 500; // 스크롤속도
   $(".goToTop").css("cursor", "pointer");
   $('body, html').animate({scrollTop:0}, speed);
