@@ -4,10 +4,10 @@ function loadGallery(){
   changeGalleryPageEffect();
   repeatGalleryInitialize(); //repeatGallery Setting 초기화
   setTimeout(function(){
-    repeatGallery();
+    $('#NewWaterfall').NewWaterfall();
     scrollPaging();
     setTimeout(function(){
-      $('#NewWaterfall').NewWaterfall();
+      repeatGallery();
     }, setTimeoutDelay);
   }, setTimeoutDelay);
 };
@@ -17,11 +17,11 @@ function loadAllGallery(){
   $("#gallery").load('../templates/gallery.html');
   changeGalleryPageEffect();
   setTimeout(function(){
-    getFileNameFromImagesFolder.forEach(function(dataValue, dataIndex, dataArr){
-      createGallery(dataValue, dataArr.length-dataIndex, dataArr);
-    });
+    $('#NewWaterfall').NewWaterfall();
     setTimeout(function(){
-      $('#NewWaterfall').NewWaterfall();
+      getFileNameFromImagesFolder.forEach(function(dataValue, dataIndex, dataArr){
+        createGallery(dataValue, dataArr.length-dataIndex, dataArr);
+      });
       searchGalleryHide();
     }, setTimeoutDelay);
   }, setTimeoutDelay);
