@@ -1,4 +1,5 @@
 function getFileNameFromFolder(){
+  console.log(location.href+"images");
   $.ajax({
       url: "../images",
       dataType: "text",
