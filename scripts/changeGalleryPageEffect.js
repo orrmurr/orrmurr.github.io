@@ -5,5 +5,5 @@ function changeGalleryPageEffect(){
 	getGalleryFrame.appendChild(createDiv);
 	setTimeout(function(){
 		getGalleryFrame.removeChild(createDiv);
-	}, 100); // style.css > animationDurationSetting 세팅 똑같이 바꿔줘야 됨
+	}, 1000); // style.css > animationDurationSetting 세팅 똑같이 바꿔줘야 됨
 };
