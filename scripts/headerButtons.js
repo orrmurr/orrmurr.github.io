@@ -19,7 +19,7 @@ function headerButtons(getThis){
 			$("#gallery").load('../templates/gallery.html');
 			changeGalleryPageEffect();
 			setTimeout(function(){
-				getFileNameFromFolder.forEach(function(dataValue, dataIndex, dataArr){
+				getFileNameFromImagesFolder.forEach(function(dataValue, dataIndex, dataArr){
 					createGallery(dataValue, dataArr.length-dataIndex, dataArr);
 				});
 				setTimeout(function(){

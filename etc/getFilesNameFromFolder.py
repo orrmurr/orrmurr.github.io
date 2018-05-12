@@ -7,5 +7,5 @@ getFilesNameToArr = getFilesName.split("\n")
 getFilesNameToArrToStr = str(getFilesNameToArr)
 getFilesNameToArrToStrLine = getFilesNameToArrToStr.replace(" ","\n")
 
-with open("C:/Users/y2k-1/Downloads/git/ttegululu.github.io/scripts/getFilesNameFromFolder.js", "w") as f:
-    f.write("getFileNameFromFolder = "+getFilesNameToArrToStrLine)
+with open("C:/Users/y2k-1/Downloads/git/ttegululu.github.io/scripts/getFileNameFromImagesFolder.js", "w") as f:
+    f.write("getFileNameFromImagesFolder = "+getFilesNameToArrToStrLine)
