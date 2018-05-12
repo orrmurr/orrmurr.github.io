@@ -1,6 +1,6 @@
 /* css variable */
 :root {
-	--animationDurationSetting: 1000ms; /* changeGalleryPageEffect.js && galleryClick.js 세팅 똑같이 바꿔줘야 됨 */
+	--animationDurationSetting: 200ms; /* changeGalleryPageEffect.js && galleryClick.js 세팅 똑같이 바꿔줘야 됨 */
 }
 
 /* setting */

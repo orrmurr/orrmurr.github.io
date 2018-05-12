@@ -31,7 +31,7 @@ function galleryClick(getThis){
 };
 
 function galleryClickDivRemove(){
-  $("#galleryClickDiv").animate({ opacity : "0" },100, function(){ // style.css > animationDurationSetting 세팅 똑같이 바꿔줘야 됨
+  $("#galleryClickDiv").animate({ opacity : "0" },200, function(){ // style.css > animationDurationSetting 세팅 똑같이 바꿔줘야 됨
     $("#galleryClickDiv").remove();
   });
 };
