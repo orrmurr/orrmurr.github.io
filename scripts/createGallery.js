@@ -13,7 +13,7 @@ var createGallery = function(dataValue, dataIndex, dataArr){
   document.getElementById(createli.id).appendChild(createImg);
   // span
   createSpan = document.createElement("span");
-  createTextNode = document.createTextNode(dataIndex+". "+dataValue.slice(0, dataValue.lastIndexOf('.')));
+  createTextNode = document.createTextNode(dataIndex+". "+dataValue.slice(0, dataValue.lastIndexOf(".")));
   createSpan.appendChild(createTextNode);
   createSpan.setAttribute("class", "f-ng");
   createSpan.setAttribute("style", "width:100%; font-size:12px; text-align:right; color:#ccc; padding:0 9px 9px;");
