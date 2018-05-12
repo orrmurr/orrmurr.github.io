@@ -1,4 +1,4 @@
-setTimeoutDelay = 200;
+setTimeoutDelay = 300;
 function loadGallery(){
   $("#gallery").load('../templates/gallery.html');
   changeGalleryPageEffect();
@@ -8,7 +8,7 @@ function loadGallery(){
     scrollPaging();
     setTimeout(function(){
       $('#NewWaterfall').NewWaterfall();
-    }, setTimeoutDelay);
+    }, setTimeoutDelay/10);
   }, setTimeoutDelay);
 };
 
@@ -23,6 +23,6 @@ function loadAllGallery(){
     setTimeout(function(){
       $('#NewWaterfall').NewWaterfall();
       searchGalleryHide();
-    }, setTimeoutDelay);
+    }, setTimeoutDelay/10);
   }, setTimeoutDelay);
 };
