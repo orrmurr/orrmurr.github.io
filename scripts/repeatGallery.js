@@ -8,8 +8,8 @@ function repeatGalleryInitialize(){
 };
 function repeatGallery(){
 	if(page < maxPage){
-		var getParseJsonDataPaginate = getFileNameFromImagesFolder.slice(page*showPageInitialize, (page+1)*showPageInitialize);
-		getParseJsonDataPaginate.forEach(function(dataValue, dataIndex, dataArr){
+		var getFileNameFromImagesFolderPaginate = getFileNameFromImagesFolder.slice(page*showPageInitialize, (page+1)*showPageInitialize);
+		getFileNameFromImagesFolderPaginate.forEach(function(dataValue, dataIndex, dataArr){
 			indexing-=1;
 			createGallery(dataValue, indexing, dataArr);
 		});

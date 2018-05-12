@@ -15,23 +15,13 @@ function headerButtons(getThis){
 			document.getElementById("searchExtendIcon").style.display = "block";
 			document.getElementById("ttegululuIcon").style.visibility = "hidden";
 			document.getElementById("galleryIcon").style.visibility = "hidden";
-			// load all gallery (images 폴더 파일 전체 불러오기)
-			$("#gallery").load('../templates/gallery.html');
-			changeGalleryPageEffect();
-			setTimeout(function(){
-				getFileNameFromImagesFolder.forEach(function(dataValue, dataIndex, dataArr){
-					createGallery(dataValue, dataArr.length-dataIndex, dataArr);
-				});
-				setTimeout(function(){
-					$('#NewWaterfall').NewWaterfall();
-					searchGalleryHide();
-				}, setTimeoutDelay);
-			}, setTimeoutDelay);
+			loadAllGallery();
 		} else{
 			document.getElementById("searchExtendIcon").style.display = "none";
 			document.getElementById("ttegululuIcon").style.visibility = "visible";
 			document.getElementById("galleryIcon").style.visibility = "visible";
 			document.getElementById("searchExtendIconInput").value = null;
+			loadGallery();
 		}
 	}
 };
