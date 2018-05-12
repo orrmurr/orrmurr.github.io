@@ -1,4 +1,4 @@
-setTimeoutDelay = 10;
+setTimeoutDelay = 100;
 function loadGallery(){
   $("#gallery").load('../templates/gallery.html');
   changeGalleryPageEffect();
