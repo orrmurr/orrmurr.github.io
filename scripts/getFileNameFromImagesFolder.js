@@ -1,4 +1,5 @@
-getFileNameFromImagesFolder = ['001.jpeg',
+getFileNameFromImagesFolder = [
+'001.jpeg',
 '002.jpeg',
 '003.jpeg',
 '004.jpeg',
