@@ -9,7 +9,7 @@ function createGallery(dataValue, dataIndex, dataArr){
   // img
   createImg = document.createElement("img");
   createImg.setAttribute("style", "width:100%; border-radius:15px; padding:8px;");
-  createImg.setAttribute("src", "../images/"+dataValue);
+  createImg.setAttribute("src", "../gallery_images/"+dataValue);
   document.getElementById(createli.id).appendChild(createImg);
   // span
   createSpan = document.createElement("span");
