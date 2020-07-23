@@ -1,0 +1,5 @@
+{
+	"greeting": "안녕하세요!",
+	"greeting2": "{name} 안녕!",
+	"greeting3": "{0} 안녕!"
+}

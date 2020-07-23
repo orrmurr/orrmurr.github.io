@@ -1,58 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="styles/style.css">
-		<link rel="stylesheet" type="text/css" href="styles/font.css">
-		<link rel="stylesheet" type="text/css" href="styles/icon.css">
-	</head>
-
-	<body style="width:100%; height:100%;" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-		<div style="width:100%; height:100%;">
-			<!-- header -->
-			<div style="width:100%; height:100%; border-bottom:1px solid #eee; padding:10px 0 10px 0;">
-				<div style="left:50%; transform:translate(-50%, 0%);">
-					<!-- ttegululu icon -->
-					<div id="ttegululuIcon" class="buttonHover">
-						<img style="top:50%; left:50%; transform:translate(-50%, -50%); border-radius:50%;" src="../images/ttegululu_ball.png">
-					</div>
-					<!-- gallery icon -->
-					<div id="galleryIcon" class="buttonHover">
-						<i class="icon-gallery"></i>
-					</div>
-					<!-- search icon -->
-					<div id="searchIcon" class="buttonHover">
-						<i class="icon-search"></i>
-					</div>
-					<!-- search extend -->
-					<div id="searchExtendIcon">
-					<input id="searchExtendIconInput" class="f-ng" type="text" onkeyup="search(this);" placeholder="검색" style="width:100%; height:100%; color:#777; background:#eee; padding:10px 20px 10px 20px;">
-					</div>
-				</div>
-			</div>
-
-			<!-- gallery -->
-			<div id="galleryFrame" style="width:100%;">
-				<!-- change gallery page div -->
-				<div id="gallery" style="width:100%; left:50%; transform:translate(-50%,0%);"></div>
-			</div>
-		</div>
-
-		<!-- scripts -->
-		<script src="//code.jquery.com/jquery-latest.min.js"></script>
-		<script src="scripts/index.js"></script>
-		<!-- crossDomain 문제 때문에 url로 스크립트 실행 -->
-		<script src="scripts/getFileNameFromImagesFolder.js"></script>
-		<script src="scripts/addEventListnerMouseenterAndClick.js"></script>
-		<script src="scripts/toTopButton.js"></script>
-		<script src="scripts/search.js"></script>
-		<script src="scripts/newWaterfall.js"></script>
-		<script src="scripts/createGallery.js"></script>
-		<script src="scripts/changeGalleryPageEffect.js"></script>
-		<script src="scripts/repeatGallery.js"></script>
-		<script src="scripts/headerButtons.js"></script>
-		<script src="scripts/scrollPaging.js"></script>
-		<script src="scripts/galleryClick.js"></script>
-		<script src="scripts/loadGallery.js"></script>
-	</body>
+<!doctype html>
+<html data-n-head-ssr>
+  <head>
+    <title>orumeur</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" data-hid="description" name="description" content="## Build Setup"><base href="/"><link data-n-head="ssr" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/quasar@1.8.5/dist/quasar.min.css"><link data-n-head="ssr" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"><link rel="preload" href="/_nuxt/runtime.41ee3f8.js" as="script"><link rel="preload" href="/_nuxt/commons/app.30986dc.js" as="script"><link rel="preload" href="/_nuxt/vendors~app.734e7b7.js" as="script"><link rel="preload" href="/_nuxt/app.c524bf4.js" as="script"><link rel="preload" href="/_nuxt/pages/index.e9ec17c.js" as="script"><style data-vue-ssr-id="19d7a9c5:0 bf9da0b6:0 ee3c47b6:0 7e56e4e3:0 313c690d:0 c0b2e1f2:0">*{font:inherit;box-sizing:border-box}html{font-size:10px}body,html{width:100%;height:100%}a{text-decoration:none;color:#000}button{cursor:pointer;background-color:#fff;border:1px solid grey}img{background-size:cover;background-repeat:no-repeat;background-position:50%;-o-object-fit:contain;object-fit:contain}input{outline:0}table{border-collapse:collapse}td,th{border:1px solid grey}textarea{resize:none}button:focus,select:focus,textarea:focus{outline:0}.flex-break{flex:1 0 100%;height:0}body{font-family:NanumSquare,sans-serif}a,button,input,option,select,span{transform:skew(.1deg)}#__layout,#__nuxt{width:100%;height:100%}.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}#default[data-v-43d48448]{width:100%;min-width:1000px;max-width:100%;height:100%}#index[data-v-29500b20]{height:inherit}</style><link rel="preload" href="/_nuxt/static/1595470923/state.js" as="script"><link rel="preload" href="/_nuxt/static/1595470923/payload.js" as="script">
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div id="default" data-v-43d48448><div id="index" class="row justify-center content-center" data-v-29500b20 data-v-43d48448><h4 class="text-weight-bolder" data-v-29500b20>[orumeur]</h4></div></div></div></div><script defer src="/_nuxt/static/1595470923/state.js"></script><script src="/_nuxt/runtime.41ee3f8.js" defer></script><script src="/_nuxt/pages/index.e9ec17c.js" defer></script><script src="/_nuxt/commons/app.30986dc.js" defer></script><script src="/_nuxt/vendors~app.734e7b7.js" defer></script><script src="/_nuxt/app.c524bf4.js" defer></script>
+  </body>
 </html>
