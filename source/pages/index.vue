@@ -1,6 +1,6 @@
 <template lang="pug">
 .row.justify-center.content-center#index
-	h4.text-weight-bolder [ orumeur ]
+	h4.text-weight-bolder ORRMURR
 </template>
 
 <script>
