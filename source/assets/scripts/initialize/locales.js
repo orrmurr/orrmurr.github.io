@@ -1,9 +1,10 @@
-﻿import ko from "../../jsons/lang/ko"
-import en from "../../jsons/lang/en"
+﻿import en from "../../jsons/lang/en"
+import ko from "../../jsons/lang/ko"
 
 module.exports = {
 	vueI18n: {
-		fallbackLocale: "ko",
-		messages: { ko, en },
+		defaultLocale: "en",
+		fallbackLocale: "en",
+		messages: { en, ko },
 	},
 }

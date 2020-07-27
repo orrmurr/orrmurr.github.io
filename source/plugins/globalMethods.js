@@ -1,5 +1,6 @@
 // import Vue from "vue"
+// import test from "@/assets/scripts/initialize/test"
 
-// Vue.prototype.gMethods = () => {
-// 	console.log("gMethods")
+// Vue.prototype.gm = {
+// 	test,
 // }

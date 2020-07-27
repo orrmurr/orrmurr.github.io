@@ -33,9 +33,14 @@ export default {
 			{
 				rel: "stylesheet",
 				type: "text/css",
+				href: "https://use.fontawesome.com/releases/v5.0.13/css/all.css",
+			},
+			{
+				rel: "stylesheet",
+				type: "text/css",
 				href:
-					"https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
-			}
+					"https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css",
+			},
 		],
 	},
 	/*
@@ -55,6 +60,7 @@ export default {
 		"@plugins/globalDirectives",
 		"@plugins/globalMethods",
 		"@plugins/quasar",
+		"@plugins/serverInitialize",
 	],
 	/*
 	 ** Auto import components
@@ -82,6 +88,7 @@ export default {
 			},
 		],
 		["nuxt-i18n", require("./assets/scripts/initialize/locales.js")],
+		"@assets/scripts/modules/logs"
 	],
 	/*
 	 ** Axios module configuration
@@ -100,5 +107,5 @@ export default {
 	},
 	router: {
 		base: "/",
-	}
+	},
 }

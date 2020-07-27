@@ -1,5 +1,8 @@
 {
-	"greeting": "안녕하세요!",
-	"greeting2": "{name} 안녕!",
-	"greeting3": "{0} 안녕!"
+	"Introduce": "소개",
+	"Portfolio": "포트폴리오",
+	"Trash": "휴지통",
+	"Info": "정보",
+	"Setting": "설정",
+	"Menu": "메뉴"
 }
