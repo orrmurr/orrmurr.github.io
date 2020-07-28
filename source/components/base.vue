@@ -1,5 +1,5 @@
 <template lang="pug">
-	.row.content-start.base
+	.base.row.content-start
 		.col-12 base
 </template>
 

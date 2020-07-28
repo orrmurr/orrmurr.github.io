@@ -6,7 +6,7 @@
 <style lang="sass" scoped>
 #default
 	width: 100%
-	min-width: $minWidth
-	max-width: $maxWidth
+	// min-width: $minWidth
+	// max-width: $maxWidth
 	height: 100%
 </style>

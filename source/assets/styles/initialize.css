@@ -20,8 +20,9 @@ a {
 
 button {
 	cursor: pointer;
-	background-color: white;
+	background-color: unset;
 	border: 1px solid gray;
+	padding: unset;
 }
 
 img {

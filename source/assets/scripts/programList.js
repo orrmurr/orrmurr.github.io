@@ -1,78 +1,22 @@
-﻿const programList = {
-	left: [
-		{
-			icon: "fas fa-info-circle",
-			nameKey: "Info",
-			name: undefined,
-		},
-		{
-			icon: "fas fa-trash-alt",
-			nameKey: "Setting",
-			name: undefined,
-		},
-		{
-			icon: "fas fa-trash-alt",
-			nameKey: "Menu",
-			name: undefined,
-		},
-	],
-	desktop: [
-		{
-			icon: "fas fa-user-tie",
-			nameKey: "Introduce",
-			name: undefined,
-		},
-		{
-			icon: "fas fa-file-alt",
-			nameKey: "Portfolio",
-			name: undefined,
-		},
-	],
-	all: undefined,
+﻿import locale from "@/assets/scripts/locale"
+import programList from "@/assets/jsons/locale/programList"
+
+export default {
+	desktop: undefined,
+	dock: undefined,
+	launchpad: programList,
+	pushPrograms(getIndex) {
+		const setList = []
+		for (let i = 0; i < getIndex.length; i++)
+			setList.push(this.launchpad[getIndex[i]])
+		return setList
+	},
+	setLang() {
+		locale.setLang(programList, "nameKey", "name")
+	},
 	set() {
-		const self = window.$nuxt
-
-		for (let i = 0; i < this.left.length; i++)
-			this.left[i].name = self.$t(this.left[i].nameKey)
-
-		for (let i = 0; i < this.desktop.length; i++)
-			this.desktop[i].name = self.$t(this.desktop[i].nameKey)
-
-		this.all = this.left.concat(this.desktop).sort((a, b) => {
-			return a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-		})
+		this.setLang()
+		this.desktop = this.pushPrograms([1, 2])
+		this.dock = this.pushPrograms([0, 1, 2, 3, 4, 5])
 	},
 }
-
-export default programList
-
-// export default () => {
-// 	const self = window.$nuxt
-// 	const leftSidebarList = [
-// 		{
-// 			icon: "fas fa-trash-alt",
-// 			name: self.$t("Trash"),
-// 		},
-// 		{
-// 			icon: "fas fa-trash-alt",
-// 			name: self.$t("Trash"),
-// 		},
-// 	]
-// 	const DesktopList = [
-// 		{
-// 			icon: "fas fa-trash-alt",
-// 			name: self.$t("Trash"),
-// 		},
-// 		{
-// 			icon: "fas fa-trash-alt",
-// 			name: self.$t("Trash"),
-// 		},
-// 	]
-// 	const list = Array.from(new Set(leftSidebarList.concat(DesktopList)))
-
-// 	return {
-// 		leftSidebarList: leftSidebarList,
-// 		DesktopList: DesktopList,
-// 		list: list
-// 	}
-// }

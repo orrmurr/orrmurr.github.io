@@ -1,47 +1,73 @@
 <template lang="pug">
-.row.justify-center.content-center#index
+#index.row.justify-center.content-center
 	client-only
 		.clientOnlyPlaceholder(slot="placeholder")
 			span Loading...
 
-		leftSidebar
-		q-btn(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey", flat color="white", text-color='black').trash
-			q-icon(:name="desktopProgram.icon").trashIcon
-			q-separator.invisible
-			span.trashText.q-pt-md.text-capitalize {{ desktopProgram.name }}
+		menuBar
+		#desktop
+			button(@click="switchLocale") switch
+			button(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey").row.items-center.desktopProgram
+				q-icon(:name="desktopProgram.icon").col-12.desktopProgramIcon
+				span.col-12.q-pt-xs.text-capitalize.desktopProgramText {{ desktopProgram.name }}
+		dock(:dockProgramList="dockProgramList")
 </template>
 
 <script>
-import setLocale from "@/assets/scripts/initialize/setLocale"
-import leftSidebar from "@/components/leftSidebar"
+import locale from "@/assets/scripts/locale"
+import menuBar from "@/components/menuBar"
+import dock from "@/components/dock"
 import programList from "@/assets/scripts/programList"
 
 export default {
-	beforeMount() {
-		setLocale()
-		programList.set()
-		this.desktopProgramList = programList.desktop
-	},
 	components: {
-		leftSidebar,
+		menuBar,
+		dock,
 	},
 	data() {
 		return {
 			desktopProgramList: undefined,
-			leftSidebarCompData: {},
+			dockProgramList: undefined,
+			launchpadProgramList: undefined,
 		}
+	},
+	methods: {
+		switchLocale() {
+			locale.toggleEnKo()
+			programList.setLang()
+		},
+	},
+	beforeMount() {
+		locale.set()
+		programList.set()
+		this.desktopProgramList = programList.desktop
+		this.dockProgramList = programList.dock
+		this.launchpadProgramList = programList.launchpad
 	},
 }
 </script>
 
 <style lang="sass" scoped>
 #index
+	width: inherit
 	height: inherit
 	// background: linear-gradient(0deg, #c2351e 0%, #64013b 50%, #1c0015 100%) //ubuntu
 
-.trashIcon
+$menuBarHeight: 30px
+$desktopHeight: calc(100% - #{$menuBarHeight})
+
+#desktop
+	width: inherit
+	height: $desktopHeight
+
+.desktopProgram
+	width: 10rem
+	height: 10rem
+	border: unset
+
+.desktopProgramIcon
 	font-size: 5rem
 
-.trashText
-	font-size: 2rem
+.desktopProgramText
+	font-size: 1.4rem
 </style>

@@ -1,0 +1,32 @@
+[
+	{
+		"icon": "fas fa-user-tie",
+		"nameKey": "Introduce",
+		"name": ""
+	},
+	{
+		"icon": "fas fa-file-alt",
+		"nameKey": "Portfolio",
+		"name": ""
+	},
+	{
+		"icon": "fas fa-trash-alt",
+		"nameKey": "Trash",
+		"name": ""
+	},
+	{
+		"icon": "fas fa-info-circle",
+		"nameKey": "Info",
+		"name": ""
+	},
+	{
+		"icon": "fas fa-sliders-h",
+		"nameKey": "Setting",
+		"name": ""
+	},
+	{
+		"icon": "fas fa-th",
+		"nameKey": "Menu",
+		"name": ""
+	}
+]
