@@ -19,6 +19,7 @@ module.exports = {
 	rules: {
 		"vue/require-prop-types": "off",
 		"vue/order-in-components": "off",
+		"no-new-func": "off",
 		"no-console": "off",
 	},
 }
