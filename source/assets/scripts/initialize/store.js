@@ -12,27 +12,27 @@ methods: {
 
 2. usage
 2-1. use single depth key
-this.newSetKey(["dataKey", { dataValue: 0 }])
+this.newSetKey(["storeKey", { dataValue: 0 }])
 
-this.newGetKey("dataKey").then(response => {
+this.newGetKey("storeKey").then(response => {
 	console.log(response)
 })
 
 2-2. use multi depth key
-this.newSetKey([["dataKey2", "dataKey3", "dataKey4", "dataKey5"], { dataValue: 0 }])
+this.newSetKey([["storeKey2", "storeKey3", "storeKey4", "storeKey5"], { dataValue: 0 }])
 
 this.newGetKey([
-	"dataKey2",
-	"dataKey3",
-	"dataKey4",
-	"dataKey5"
+	"storeKey2",
+	"storeKey3",
+	"storeKey4",
+	"storeKey5"
 ]).then(response => {
 	console.log(response)
 })
 
-2-3. use synchronization(this.syncObj.syncKey === this.$store.state.path.dataKey.syncKey)
+2-3. use synchronization(this.syncObj.syncKey === this.$store.state.path.storeKey.syncKey)
 data() { return { syncObj: { syncKey: 0 } } }
-this.newSyncKey(["dataKey", this.syncObj, "syncKey"])
+this.newSyncKey([this.syncObj, "syncKey", "setSyncKey"])
 
 3. if add local scope function, add below code to file in @/store/
 mutations.newMutation = function() { }
@@ -40,7 +40,7 @@ actions.newAction = function() { }
 
 4. to use the data bindging function in webStorage, the key of the object to be bound must be declared in the @/store/webStorage.js file in advance.
 export const state = () => ({
-	dataKey: undefined
+	storeKey: undefined
 })
 */
 
@@ -98,17 +98,17 @@ const store = {
 			} else if (context.state[getKey]) return context.state[getKey]
 			else return false
 		},
-		sync(context, [getKey, syncObj, syncKey]) {
-			const getVaule = store.actions.get(context, getKey)
+		sync(context, [syncObj, syncKey, setSyncKey]) {
+			const getVaule = store.actions.get(context, setSyncKey)
 			if (getVaule[syncKey]) syncObj[syncKey] = getVaule[syncKey]
 			else if (getVaule) {
 				const copyGetVaule = JSON.parse(JSON.stringify(getVaule))
 				copyGetVaule[syncKey] = syncObj[syncKey]
-				store.actions.set(context, [getKey, copyGetVaule])
+				store.actions.set(context, [setSyncKey, copyGetVaule])
 			} else {
 				const setValue = {}
 				setValue[syncKey] = syncObj[syncKey]
-				store.actions.set(context, [getKey, setValue])
+				store.actions.set(context, [setSyncKey, setValue])
 			}
 		},
 	},

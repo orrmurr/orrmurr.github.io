@@ -7,10 +7,10 @@
 		menuBar
 		#desktop
 			button(@click="switchLocale") switch
-			button(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey").row.items-center.desktopProgram
+			//- button(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey").row.items-center.desktopProgram
 				q-icon(:name="desktopProgram.icon").col-12.desktopProgramIcon
 				span.col-12.q-pt-xs.text-capitalize.desktopProgramText {{ desktopProgram.name }}
-		dock(:dockProgramList="dockProgramList")
+		//- dock(:dockProgramList="dockProgramList")
 </template>
 
 <script>
@@ -18,6 +18,7 @@ import locale from "@/assets/scripts/locale"
 import menuBar from "@/components/menuBar"
 import dock from "@/components/dock"
 import programList from "@/assets/scripts/programList"
+import test from "@/assets/scripts/test"
 
 export default {
 	components: {
@@ -38,6 +39,7 @@ export default {
 		},
 	},
 	beforeMount() {
+		test()
 		locale.set()
 		programList.set()
 		this.desktopProgramList = programList.desktop
