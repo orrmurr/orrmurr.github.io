@@ -1,4 +1,4 @@
-import programList from "@/assets/jsons/locale/programList"
+import programList from "./programList"
 console.log("test success")
 console.log(programList)
 
