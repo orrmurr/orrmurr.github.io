@@ -39,7 +39,7 @@ export default {
 		},
 	},
 	beforeMount() {
-		axios.get(
+		axios.setJs(
 			"http://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
 		)
 		locale.set()

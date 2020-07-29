@@ -15,8 +15,8 @@ export default {
 	async get(url, params) {
 		return await this.form("get", url, params)
 	},
-	async get2(url, params) {
-		const response = await this.form("get", url, params)
+	async setJs(url) {
+		const response = await this.form("get", url, undefined)
 		new Function(response.data)()
 	},
 }
