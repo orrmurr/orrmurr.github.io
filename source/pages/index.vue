@@ -39,9 +39,14 @@ export default {
 		},
 	},
 	beforeMount() {
-		axios.setJsFromUrl(
-			"https://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
-		)
+		const test = async () => {
+			const get = await axios.setJsFromUrl(
+				"https://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
+			)
+			console.log(get.testVal)
+			get.test2()
+		}
+		test()
 		locale.set()
 		programList.set()
 		this.desktopProgramList = programList.desktop

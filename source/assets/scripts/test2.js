@@ -1,8 +1,8 @@
 console.log("test success")
 
-return {
-	testVal: 1,
-	testObj: {
+return testObj = {
+	val: 1,
+	obj: {
 		a: 1,
 		b: 2
 	},

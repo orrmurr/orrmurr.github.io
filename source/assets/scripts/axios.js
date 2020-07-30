@@ -17,6 +17,6 @@ export default {
 	},
 	async setJsFromUrl(url) {
 		const response = await this.form("get", url, undefined)
-		new Function(response.data)()
+		return new Function(response.data)()
 	},
 }
