@@ -42,11 +42,6 @@ export default {
 					"https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css",
 			},
 		],
-		script: [
-			{
-				src: "http://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
-			}
-		]
 	},
 	/*
 	 ** Global CSS
