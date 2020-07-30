@@ -1,6 +1,6 @@
 console.log("test success")
 
-return testObj = {
+testObj = {
 	val: 1,
 	obj: {
 		a: 1,

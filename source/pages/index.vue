@@ -18,7 +18,7 @@ import locale from "@/assets/scripts/locale"
 import menuBar from "@/components/menuBar"
 import dock from "@/components/dock"
 import programList from "@/assets/scripts/programList"
-import axios from "@/assets/scripts/axios"
+// import axios from "@/assets/scripts/axios"
 
 export default {
 	components: {
@@ -39,14 +39,14 @@ export default {
 		},
 	},
 	beforeMount() {
-		const test = async () => {
-			const get = await axios.setJsFromUrl(
-				"https://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
-			)
-			console.log(get.testVal)
-			get.test2()
-		}
-		test()
+		// const test = async () => {
+		// 	const get = await axios.setJsFromUrl(
+		// 		"https://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
+		// 	)
+		// 	console.log(get)
+		// 	get.test2()
+		// }
+		// test()
 		locale.set()
 		programList.set()
 		this.desktopProgramList = programList.desktop
