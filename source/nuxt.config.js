@@ -33,6 +33,11 @@ export default {
 			{
 				rel: "stylesheet",
 				type: "text/css",
+				href: "https://fonts.googleapis.com/css?family=Material+Icons",
+			},
+			{
+				rel: "stylesheet",
+				type: "text/css",
 				href: "https://use.fontawesome.com/releases/v5.0.13/css/all.css",
 			},
 			{
@@ -42,11 +47,6 @@ export default {
 					"https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css",
 			},
 		],
-		script: [
-			{
-				src: "https://rawcdn.githack.com/orrmurr/orrmurr.github.io/1d018a29cc35f4a792ed57847130f7b67b7b5579/source/assets/scripts/test2.js"
-			}
-		]
 	},
 	/*
 	 ** Global CSS

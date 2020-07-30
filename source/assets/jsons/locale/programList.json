@@ -1,31 +1,36 @@
 [
 	{
-		"icon": "fas fa-user-tie",
-		"nameKey": "Introduce",
+		"icon": "https://www.flaticon.com/premium-icon/icons/svg/2667/2667377.svg",
+		"nameKey": "Profile",
 		"name": ""
 	},
 	{
-		"icon": "fas fa-file-alt",
+		"icon": "https://image.flaticon.com/icons/svg/715/715563.svg",
 		"nameKey": "Portfolio",
 		"name": ""
 	},
 	{
-		"icon": "fas fa-trash-alt",
+		"icon": "https://icons.iconarchive.com/icons/iconshock/vista-general/128/trash-icon.png",
 		"nameKey": "Trash",
 		"name": ""
 	},
 	{
-		"icon": "fas fa-info-circle",
+		"icon": "https://image.flaticon.com/icons/svg/859/859043.svg",
 		"nameKey": "Info",
 		"name": ""
 	},
 	{
-		"icon": "fas fa-sliders-h",
+		"icon": "https://image.flaticon.com/icons/svg/1005/1005189.svg",
 		"nameKey": "Setting",
 		"name": ""
 	},
 	{
-		"icon": "fas fa-th",
+		"icon": "https://image.flaticon.com/icons/svg/906/906763.svg",
+		"nameKey": "Help",
+		"name": ""
+	},
+	{
+		"icon": "https://image.flaticon.com/icons/svg/3039/3039383.svg",
 		"nameKey": "Menu",
 		"name": ""
 	}

@@ -44,7 +44,7 @@ export const state = () => ({
 })
 */
 
-const store = {
+export default {
 	mutations: {
 		set(state, [setKey, setValue]) {
 			// state[setKey] = setValue
@@ -71,7 +71,7 @@ const store = {
 	actions: {
 		set(context, [setKey, setValue]) {
 			// context.commit("set", [setKey, setValue])
-			const getVaule = store.actions.get(context, setKey)
+			const getVaule = this.actions.get(context, setKey)
 			if (getVaule && setValue.constructor === Object) {
 				const copyGetVaule = JSON.parse(JSON.stringify(getVaule))
 				const keys = Object.keys(setValue)
@@ -99,19 +99,17 @@ const store = {
 			else return false
 		},
 		sync(context, [syncObj, syncKey, setSyncKey]) {
-			const getVaule = store.actions.get(context, setSyncKey)
+			const getVaule = this.actions.get(context, setSyncKey)
 			if (getVaule[syncKey]) syncObj[syncKey] = getVaule[syncKey]
 			else if (getVaule) {
 				const copyGetVaule = JSON.parse(JSON.stringify(getVaule))
 				copyGetVaule[syncKey] = syncObj[syncKey]
-				store.actions.set(context, [setSyncKey, copyGetVaule])
+				this.actions.set(context, [setSyncKey, copyGetVaule])
 			} else {
 				const setValue = {}
 				setValue[syncKey] = syncObj[syncKey]
-				store.actions.set(context, [setSyncKey, setValue])
+				this.actions.set(context, [setSyncKey, setValue])
 			}
 		},
 	},
 }
-
-export default store

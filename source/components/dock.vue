@@ -1,7 +1,7 @@
 <template lang="pug">
 	.dock
 		button(v-for="(dockProgram, dockProgramKey) in dockProgramList", :key="dockProgramKey").dockProgram
-			q-icon(:name="dockProgram.icon").dockIcon
+			q-img(:src="dockProgram.icon").dockIcon
 </template>
 
 <script>
@@ -42,5 +42,6 @@ export default {
 		margin: 0 2rem
 
 .dockIcon
+	width: 6rem
 	font-size: 5rem
 </style>

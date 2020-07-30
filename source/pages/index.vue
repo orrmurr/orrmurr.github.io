@@ -4,21 +4,21 @@
 		.clientOnlyPlaceholder(slot="placeholder")
 			span Loading...
 
-		menuBar
-		#desktop
-			button(@click="switchLocale") switch
-			//- button(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey").row.items-center.desktopProgram
-				q-icon(:name="desktopProgram.icon").col-12.desktopProgramIcon
+		menuBar.col-12
+		#desktop.col-12.row.justify-center.content-center
+			button(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey").row.justify-center.desktopProgram
+				q-img(:src="desktopProgram.icon").col-12.desktopProgramIcon
 				span.col-12.q-pt-xs.text-capitalize.desktopProgramText {{ desktopProgram.name }}
-		//- dock(:dockProgramList="dockProgramList")
+		dock(:dockProgramList="dockProgramList")
 </template>
 
 <script>
-import locale from "@/assets/scripts/locale"
+import { initialize as localeInitialize } from "@/assets/scripts/locale"
+import programList, {
+	set as programListSet,
+} from "@/assets/scripts/programList"
 import menuBar from "@/components/menuBar"
 import dock from "@/components/dock"
-import programList from "@/assets/scripts/programList"
-// import axios from "@/assets/scripts/axios"
 
 export default {
 	components: {
@@ -32,23 +32,9 @@ export default {
 			launchpadProgramList: undefined,
 		}
 	},
-	methods: {
-		switchLocale() {
-			locale.toggleEnKo()
-			programList.setLang()
-		},
-	},
 	beforeMount() {
-		// const test = async () => {
-		// 	const get = await axios.setJsFromUrl(
-		// 		"https://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
-		// 	)
-		// 	console.log(get)
-		// 	get.test2()
-		// }
-		// test()
-		locale.set()
-		programList.set()
+		localeInitialize()
+		programListSet()
 		this.desktopProgramList = programList.desktop
 		this.dockProgramList = programList.dock
 		this.launchpadProgramList = programList.launchpad
@@ -62,7 +48,7 @@ export default {
 	height: inherit
 	// background: linear-gradient(0deg, #c2351e 0%, #64013b 50%, #1c0015 100%) //ubuntu
 
-$menuBarHeight: 30px
+$menuBarHeight: 32px
 $desktopHeight: calc(100% - #{$menuBarHeight})
 
 #desktop
@@ -75,6 +61,7 @@ $desktopHeight: calc(100% - #{$menuBarHeight})
 	border: unset
 
 .desktopProgramIcon
+	width: 8rem
 	font-size: 5rem
 
 .desktopProgramText

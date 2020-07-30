@@ -1,22 +1,27 @@
-﻿import locale from "@/assets/scripts/locale"
-import programList from "@/assets/jsons/locale/programList"
+﻿import { setLang as localeSetLang } from "@/assets/scripts/locale"
+import programListJson from "@/assets/jsons/locale/programList"
 
-export default {
+function setListFromIndex(getIndex) {
+	const newList = []
+	for (let i = 0; i < getIndex.length; i++)
+		newList.push(programList.launchpad[getIndex[i]])
+	return newList
+}
+
+export function setLang() {
+	localeSetLang(programListJson, "nameKey", "name")
+}
+
+export function set() {
+	setLang()
+	programList.desktop = setListFromIndex([1, 2])
+	programList.dock = setListFromIndex([0, 1, 2, 3, 4, 5, 6])
+}
+
+const programList = {
 	desktop: undefined,
 	dock: undefined,
-	launchpad: programList,
-	pushPrograms(getIndex) {
-		const setList = []
-		for (let i = 0; i < getIndex.length; i++)
-			setList.push(this.launchpad[getIndex[i]])
-		return setList
-	},
-	setLang() {
-		locale.setLang(programList, "nameKey", "name")
-	},
-	set() {
-		this.setLang()
-		this.desktop = this.pushPrograms([1, 2])
-		this.dock = this.pushPrograms([0, 1, 2, 3, 4, 5])
-	},
+	launchpad: programListJson,
 }
+
+export default programList
