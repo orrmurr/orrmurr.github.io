@@ -18,7 +18,7 @@ import locale from "@/assets/scripts/locale"
 import menuBar from "@/components/menuBar"
 import dock from "@/components/dock"
 import programList from "@/assets/scripts/programList"
-import axios from "@/assets/scripts/axios"
+// import axios from "@/assets/scripts/axios"
 
 export default {
 	components: {
@@ -39,9 +39,9 @@ export default {
 		},
 	},
 	beforeMount() {
-		axios.setJs(
-			"http://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
-		)
+		// axios.setJsFromUrl(
+		// 	"http://raw.githubusercontent.com/orrmurr/orrmurr.github.io/master/source/assets/scripts/test2.js"
+		// )
 		locale.set()
 		programList.set()
 		this.desktopProgramList = programList.desktop
