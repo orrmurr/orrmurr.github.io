@@ -43,5 +43,4 @@ export default {
 
 .dockIcon
 	width: 6rem
-	font-size: 5rem
 </style>

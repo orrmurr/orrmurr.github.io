@@ -4,10 +4,15 @@
 		.clientOnlyPlaceholder(slot="placeholder")
 			span Loading...
 
+		.lt-md.fit.row.justify-center.content-center
+			mobileMenuBar.col-12
+			mobile(:mainProgramList="mainProgramList")
+			mobileDock(:dockProgramList="dockProgramList")
+			
 		.gt-sm.fit.row.justify-center.content-center
-			menuBar.col-12
+			desktopMenuBar.col-12
 			desktop(:mainProgramList="mainProgramList")
-			dock(:dockProgramList="dockProgramList")
+			desktopDock(:dockProgramList="dockProgramList")
 </template>
 
 <script>
@@ -15,15 +20,21 @@ import { initialize as localeInitialize } from "@/assets/scripts/locale"
 import programList, {
 	set as programListSet,
 } from "@/assets/scripts/programList"
-import menuBar from "@/components/main/desktop/menuBar"
+import mobileMenuBar from "@/components/main/mobile/menuBar"
+import mobile from "@/components/main/mobile"
+import mobileDock from "@/components/main/mobile/dock"
+import desktopMenuBar from "@/components/main/desktop/menuBar"
 import desktop from "@/components/main/desktop"
-import dock from "@/components/main/desktop/dock"
+import desktopDock from "@/components/main/desktop/dock"
 
 export default {
 	components: {
-		menuBar,
+		mobileMenuBar,
+		mobile,
+		mobileDock,
+		desktopMenuBar,
 		desktop,
-		dock,
+		desktopDock,
 	},
 	data() {
 		return {
