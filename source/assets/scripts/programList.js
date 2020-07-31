@@ -15,7 +15,7 @@ export function setLang() {
 export function set() {
 	setLang()
 	programList.desktop = setListFromIndex([1, 2])
-	programList.dock = setListFromIndex([0, 1, 2, 3, 4, 5, 6])
+	programList.dock = setListFromIndex([0, 3, 4, 5, 6])
 }
 
 const programList = {

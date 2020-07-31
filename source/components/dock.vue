@@ -1,5 +1,5 @@
 <template lang="pug">
-	.dock
+	.dock.gt-sm
 		button(v-for="(dockProgram, dockProgramKey) in dockProgramList", :key="dockProgramKey").dockProgram
 			q-img(:src="dockProgram.icon").dockIcon
 </template>

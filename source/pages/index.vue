@@ -8,7 +8,7 @@
 		#desktop.col-12.row.justify-center.content-center
 			button(v-for="(desktopProgram, desktopProgramKey) in desktopProgramList", :key="desktopProgramKey").row.justify-center.desktopProgram
 				q-img(:src="desktopProgram.icon").col-12.desktopProgramIcon
-				span.col-12.q-pt-xs.text-capitalize.desktopProgramText {{ desktopProgram.name }}
+				span.col-12.q-pt-xs.text-capitalize.non-selectable.desktopProgramText {{ desktopProgram.name }}
 		dock(:dockProgramList="dockProgramList")
 </template>
 
