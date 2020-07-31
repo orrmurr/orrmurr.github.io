@@ -1,6 +1,6 @@
 <template lang="pug">
-	.base.row.content-start
-		.col-12 base
+.base.row.content-start
+	.col-12 base
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template lang="pug">
-	.dock.gt-sm
-		button(v-for="(dockProgram, dockProgramKey) in dockProgramList", :key="dockProgramKey").dockProgram
-			q-img(:src="dockProgram.icon").dockIcon
+.dock
+	button(v-for="(dockProgram, dockProgramKey) in dockProgramList", :key="dockProgramKey").dockProgram
+		q-img(:src="dockProgram.icon").dockIcon
 </template>
 
 <script>

@@ -17,22 +17,22 @@ selectCompData: {
 -->
 
 <template lang="pug">
-	select(
-		:id="compData.id"
-		:class="compData.class"
-		@change="selectChange"
-		v-model="compData.selectedText"
-		:multiple="this.compData.selectedText && this.compData.selectedText.constructor === Array"
-		:disabled="this.compData.disabled"
-	)
-		option(v-if="compData.placeholder", disabled, :value="compData.placeholder") {{ compData.placeholder }}
-		//- :value="option.value?option.value:option"
-		option(
-			v-for="(option, optionKey) in compData.options"
-			:key="optionKey"
-			:id="compData.id?compData.id+optionKey:undefined"
-			:value="option.value === 0 ? '0' : option.value ? option.value : option === 0 ? '0' : option"
-		) {{ option.text?option.text:option }}
+select(
+	:id="compData.id"
+	:class="compData.class"
+	@change="selectChange"
+	v-model="compData.selectedText"
+	:multiple="this.compData.selectedText && this.compData.selectedText.constructor === Array"
+	:disabled="this.compData.disabled"
+)
+	option(v-if="compData.placeholder", disabled, :value="compData.placeholder") {{ compData.placeholder }}
+	//- :value="option.value?option.value:option"
+	option(
+		v-for="(option, optionKey) in compData.options"
+		:key="optionKey"
+		:id="compData.id?compData.id+optionKey:undefined"
+		:value="option.value === 0 ? '0' : option.value ? option.value : option === 0 ? '0' : option"
+	) {{ option.text?option.text:option }}
 </template>
 
 <script>

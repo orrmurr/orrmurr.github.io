@@ -14,12 +14,12 @@ export function setLang() {
 
 export function set() {
 	setLang()
-	programList.desktop = setListFromIndex([1, 2])
+	programList.main = setListFromIndex([1, 2])
 	programList.dock = setListFromIndex([0, 3, 4, 5, 6])
 }
 
 const programList = {
-	desktop: undefined,
+	main: undefined,
 	dock: undefined,
 	launchpad: programListJson,
 }
