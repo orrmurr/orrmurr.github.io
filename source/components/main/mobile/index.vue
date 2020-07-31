@@ -1,8 +1,8 @@
 <template lang="pug">
-.desktop.col-12.row.justify-center.content-center
-	button(v-for="(desktopProgram, desktopProgramKey) in mainProgramList", :key="desktopProgramKey").row.justify-center.desktopProgram
-		q-img(:src="desktopProgram.icon").col-12.desktopProgramIcon
-		span.col-12.q-pt-xs.text-capitalize.non-selectable.desktopProgramText {{ desktopProgram.name }}
+.mobile.col-12.row.justify-center.content-center
+	button(v-for="(mobileApp, mobileAppKey) in mainProgramList", :key="mobileAppKey").row.justify-center.mobileApp
+		q-img(:src="mobileApp.icon").col-12.mobileAppIcon
+		span.col-12.q-pt-xs.text-capitalize.non-selectable.mobileAppText {{ mobileApp.name }}
 </template>
 
 <script>
@@ -18,21 +18,21 @@ export default {
 
 <style lang="sass" scoped>
 $menuBarHeight: 32px
-$desktopHeight: calc(100% - #{$menuBarHeight})
+$mobileHeight: calc(100% - #{$menuBarHeight})
 
-.desktop
+.mobile
 	width: inherit
-	height: $desktopHeight
+	height: $mobileHeight
 
-.desktopProgram
+.mobileApp
 	width: 10rem
 	height: 10rem
 	border: unset
 
-.desktopProgramIcon
+.mobileAppIcon
 	width: 8rem
 	font-size: 5rem
 
-.desktopProgramText
+.mobileAppText
 	font-size: 1.4rem
 </style>

@@ -13,17 +13,7 @@
 </template>
 
 <script>
-import { toggleEnKo as localeToggleEnKo } from "@/assets/scripts/locale"
-import { setLang } from "@/assets/scripts/programList"
-
-export default {
-	methods: {
-		switchLocale() {
-			localeToggleEnKo()
-			setLang()
-		},
-	},
-}
+export default {}
 </script>
 
 <style lang="sass" scoped></style>
