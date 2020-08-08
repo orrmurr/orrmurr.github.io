@@ -1,37 +1,30 @@
 [
 	{
 		"icon": "https://image.flaticon.com/icons/svg/3231/3231661.svg",
-		"nameKey": "Profile",
-		"name": ""
+		"name": "Profile"
 	},
 	{
 		"icon": "https://image.flaticon.com/icons/svg/715/715563.svg",
-		"nameKey": "Portfolio",
-		"name": ""
+		"name": "Portfolio"
 	},
 	{
 		"icon": "https://icons.iconarchive.com/icons/iconshock/vista-general/128/trash-icon.png",
-		"nameKey": "Trash",
-		"name": ""
+		"name": "Trash"
 	},
 	{
 		"icon": "https://image.flaticon.com/icons/svg/859/859043.svg",
-		"nameKey": "Info",
-		"name": ""
+		"name": "Info"
 	},
 	{
 		"icon": "https://image.flaticon.com/icons/svg/1005/1005189.svg",
-		"nameKey": "Setting",
-		"name": ""
+		"name": "Setting"
 	},
 	{
 		"icon": "https://image.flaticon.com/icons/svg/906/906763.svg",
-		"nameKey": "Help",
-		"name": ""
+		"name": "Help"
 	},
 	{
 		"icon": "https://image.flaticon.com/icons/svg/3039/3039383.svg",
-		"nameKey": "Menu",
-		"name": ""
+		"name": "Menu"
 	}
 ]

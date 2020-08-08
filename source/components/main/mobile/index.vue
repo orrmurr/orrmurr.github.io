@@ -1,28 +1,18 @@
 <template lang="pug">
-.mobile.col-12.row.justify-center.content-center
-	button(v-for="(mobileApp, mobileAppKey) in mainProgramList", :key="mobileAppKey").row.justify-center.mobileApp
+.mobile.row.justify-center.items-center
+	button(v-for="(mobileApp, mobileAppKey) in $store.state.sessionStorage.programList.main", :key="mobileAppKey").row.justify-center.mobileApp
 		q-img(:src="mobileApp.icon").col-12.mobileAppIcon
-		span.col-12.q-pt-xs.text-capitalize.non-selectable.mobileAppText {{ mobileApp.name }}
+		span.col-12.q-pt-xs.text-capitalize.non-selectable.mobileAppText {{ $t(mobileApp.name) }}
 </template>
 
 <script>
-export default {
-	props: {
-		mainProgramList: {
-			type: Array,
-			required: true,
-		},
-	},
-}
+export default {}
 </script>
 
 <style lang="sass" scoped>
-$menuBarHeight: 32px
-$mobileHeight: calc(100% - #{$menuBarHeight})
 
 .mobile
 	width: inherit
-	height: $mobileHeight
 
 .mobileApp
 	width: 10rem

@@ -93,7 +93,7 @@ export default {
 			},
 		],
 		["nuxt-i18n", require("./assets/scripts/initialize/locales.js")],
-		"@assets/scripts/modules/logs"
+		"@assets/scripts/modules/logs",
 	],
 	/*
 	 ** Axios module configuration

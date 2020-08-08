@@ -3,5 +3,5 @@
 		console.log(...args)
 	}
 
-	inject('log', logs)
+	inject("log", logs)
 }

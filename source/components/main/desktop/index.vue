@@ -1,29 +1,22 @@
 <template lang="pug">
-.desktop.col-12.row.justify-center.content-center
-	button(v-for="(desktopProgram, desktopProgramKey) in mainProgramList", :key="desktopProgramKey").row.justify-center.desktopProgram
+.desktop.row.justify-center.items-center
+	button(v-for="(desktopProgram, desktopProgramKey) in $store.state.sessionStorage.programList.main", :key="desktopProgramKey", @click="desktopProgramClick").row.justify-center.desktopProgram
 		q-img(:src="desktopProgram.icon").col-12.desktopProgramIcon
-		span.col-12.q-pt-xs.text-capitalize.non-selectable.desktopProgramText {{ desktopProgram.name }}
+		span.col-12.q-pt-xs.text-capitalize.non-selectable.desktopProgramText {{ $t(desktopProgram.name) }}
 </template>
 
 <script>
 export default {
-	props: {
-		mainProgramList: {
-			type: Array,
-			required: true,
+	methods: {
+		desktopProgramClick(event) {
+			console.log(event.target)
+			this.$store.state.sessionStorage.programList.main.pop()
 		},
 	},
 }
 </script>
 
 <style lang="sass" scoped>
-$menuBarHeight: 32px
-$desktopHeight: calc(100% - #{$menuBarHeight})
-
-.desktop
-	width: inherit
-	height: $desktopHeight
-
 .desktopProgram
 	width: 10rem
 	height: 10rem

@@ -17,8 +17,3 @@ export function toggleEnKo() {
 	if (sessionStorage.getItem("locale") === "en") set("ko")
 	else set("en")
 }
-
-export function setLang(getList, textKey, text) {
-	for (let i = 0; i < getList.length; i++)
-		getList[i][text] = window.$nuxt.$t(getList[i][textKey])
-}

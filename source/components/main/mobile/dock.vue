@@ -1,24 +1,15 @@
 <template lang="pug">
-.dock.col-12.row
-	button(v-for="(dockProgram, dockProgramKey) in dockProgramList", :key="dockProgramKey").dockProgram.col
+.dock.row
+	button(v-for="(dockProgram, dockProgramKey) in $store.state.sessionStorage.programList.dock", :key="dockProgramKey").dockProgram.col
 		q-img(:src="dockProgram.icon").dockIcon
 </template>
 
 <script>
-export default {
-	props: {
-		dockProgramList: {
-			type: Array,
-			required: true,
-		},
-	},
-}
+export default {}
 </script>
 
 <style lang="sass" scoped>
 .dock
-	position: absolute
-	bottom: 0
 	padding: 1.6rem
 
 .dockProgram

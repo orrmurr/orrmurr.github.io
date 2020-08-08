@@ -4,22 +4,21 @@
 		.clientOnlyPlaceholder(slot="placeholder")
 			span Loading...
 
-		.lt-md.fit.row.justify-center.content-center
-			mobileMenuBar.col-12
-			mobile(:mainProgramList="mainProgramList")
-			mobileDock(:dockProgramList="dockProgramList")
-			
-		.gt-sm.fit.row.justify-center.content-center
-			desktopMenuBar.col-12
-			desktop(:mainProgramList="mainProgramList")
-			desktopDock(:dockProgramList="dockProgramList")
+		#mobileContainer.lt-md.fit.column
+			mobileMenuBar.col-auto
+			mobile.col
+			mobileDock.col-auto
+
+		#desktopContainer.gt-sm.fit.column
+			desktopMenuBar.col-auto
+			desktop.col
+			desktopDock.col-auto
 </template>
 
 <script>
+import { mapActions } from "vuex"
 import { initialize as localeInitialize } from "@/assets/scripts/locale"
-import programList, {
-	set as programListSet,
-} from "@/assets/scripts/programList"
+import programList from "@/assets/scripts/programList"
 import mobileMenuBar from "@/components/main/mobile/menuBar"
 import mobile from "@/components/main/mobile"
 import mobileDock from "@/components/main/mobile/dock"
@@ -38,17 +37,20 @@ export default {
 	},
 	data() {
 		return {
-			mainProgramList: undefined,
-			dockProgramList: undefined,
-			launchpadProgramList: undefined,
+			jiggle: false,
 		}
+	},
+	methods: {
+		...mapActions("sessionStorage", {
+			sessionStorageSet: "set",
+		}),
+		jiggleSwitch() {
+			this.jiggle = !this.jiggle
+		},
 	},
 	beforeMount() {
 		localeInitialize()
-		programListSet()
-		this.mainProgramList = programList.main
-		this.dockProgramList = programList.dock
-		this.launchpadProgramList = programList.launchpad
+		this.sessionStorageSet(["programList", programList])
 	},
 }
 </script>
