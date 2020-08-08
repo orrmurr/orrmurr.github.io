@@ -16,9 +16,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
 import { initialize as localeInitialize } from "@/assets/scripts/locale"
-import programList from "@/assets/scripts/programList"
 import mobileMenuBar from "@/components/main/mobile/menuBar"
 import mobile from "@/components/main/mobile"
 import mobileDock from "@/components/main/mobile/dock"
@@ -41,16 +39,12 @@ export default {
 		}
 	},
 	methods: {
-		...mapActions("sessionStorage", {
-			sessionStorageSet: "set",
-		}),
 		jiggleSwitch() {
 			this.jiggle = !this.jiggle
 		},
 	},
 	beforeMount() {
 		localeInitialize()
-		this.sessionStorageSet(["programList", programList])
 	},
 }
 </script>

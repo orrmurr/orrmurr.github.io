@@ -9,8 +9,24 @@
 export default {
 	methods: {
 		desktopProgramClick(event) {
-			console.log(event.target)
-			this.$store.state.sessionStorage.programList.main.pop()
+			// ;(async () => {
+			// 	const sessionStorageGet = await this.$store.dispatch(
+			// 		"sessionStorage/get",
+			// 		"programList"
+			// 	)
+			// 	console.log(sessionStorageGet)
+			// })()
+
+			this.$store.dispatch("sessionStorage/set", [
+				["programList", "main"],
+				[
+					{
+						icon: "https://image.flaticon.com/icons/svg/3231/3231661.svg",
+						name: "Profile",
+					},
+				],
+			])
+			console.log(this.$store.state.sessionStorage.programList.main)
 		},
 	},
 }
