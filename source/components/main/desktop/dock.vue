@@ -1,6 +1,6 @@
 <template lang="pug">
 .dock.self-center
-	button(v-for="(dockProgram, dockProgramKey) in $store.state.sessionStorage.programList.dock", :key="dockProgramKey").dockProgram
+	button(v-if="dockProgram.show.dock" v-for="(dockProgram, dockProgramKey) in $store.state.sessionStorage.programList" :key="dockProgramKey").dockProgram
 		q-img(:src="dockProgram.icon").dockIcon
 </template>
 

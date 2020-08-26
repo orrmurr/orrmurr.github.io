@@ -1,6 +1,6 @@
 <template lang="pug">
 .dock.row
-	button(v-for="(dockProgram, dockProgramKey) in $store.state.sessionStorage.programList.dock", :key="dockProgramKey").dockProgram.col
+	button(v-if="dockProgram.show.dock" v-for="(dockProgram, dockProgramKey) in $store.state.sessionStorage.programList" :key="dockProgramKey").dockProgram.col
 		q-img(:src="dockProgram.icon").dockIcon
 </template>
 

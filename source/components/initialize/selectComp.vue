@@ -25,7 +25,7 @@ select(
 	:multiple="this.compData.selectedText && this.compData.selectedText.constructor === Array"
 	:disabled="this.compData.disabled"
 )
-	option(v-if="compData.placeholder", disabled, :value="compData.placeholder") {{ compData.placeholder }}
+	option(v-if="compData.placeholder" disabled :value="compData.placeholder") {{ compData.placeholder }}
 	//- :value="option.value?option.value:option"
 	option(
 		v-for="(option, optionKey) in compData.options"

@@ -1,8 +1,8 @@
 import store from "@/assets/scripts/initialize/store"
-import getProgramList from "@/assets/scripts/programList"
+import programListJson from "@/assets/jsons/locale/programList"
 
 export const state = () => ({
-	programList: getProgramList,
+	programList: programListJson,
 	sessionStorageValue: 0,
 	sessionStorageValueExpire: {
 		sessionStorageValueExpireValue: 0,

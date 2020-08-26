@@ -33,16 +33,6 @@ export default {
 		desktop,
 		desktopDock,
 	},
-	data() {
-		return {
-			jiggle: false,
-		}
-	},
-	methods: {
-		jiggleSwitch() {
-			this.jiggle = !this.jiggle
-		},
-	},
 	beforeMount() {
 		localeInitialize()
 	},

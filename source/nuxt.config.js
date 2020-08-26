@@ -25,6 +25,7 @@ export default {
 			},
 		],
 		link: [
+			{ rel: "icon", type: "image/x-icon", href: "/ice-water.svg" },
 			{
 				rel: "stylesheet",
 				type: "text/css",
