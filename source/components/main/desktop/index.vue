@@ -6,30 +6,18 @@
 </template>
 
 <script>
+import { dragStart, drag, dragEnd } from "@/assets/scripts/drag"
+
 export default {
-	data() {
-		return {
-			mousePositionForSelectedProgram: { x: 0, y: 0 },
-		}
-	},
 	methods: {
-		desktopProgramDragStart(event) {
-			this.mousePositionForSelectedProgram.x = event.offsetX
-			this.mousePositionForSelectedProgram.y = event.offsetY
+		desktopProgramDragStart() {
+			dragStart()
 		},
-		desktopDrag(event) {
-			event.target.style.zIndex = 1
-			this.setProgramPosition()
+		desktopDrag() {
+			drag()
 		},
-		desktopDragEnd(event) {
-			event.target.style.zIndex = ""
-			this.setProgramPosition()
-		},
-		setProgramPosition() {
-			event.target.style.top =
-				event.clientY - this.mousePositionForSelectedProgram.y + "px"
-			event.target.style.left =
-				event.clientX - this.mousePositionForSelectedProgram.x + "px"
+		desktopDragEnd() {
+			dragEnd()
 		},
 		desktopProgramClick(event) {
 			// ;(async () => {
@@ -61,11 +49,21 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+$desktopProgramSize: 10rem
+
 .desktopProgram
 	position: absolute
-	width: 10rem
-	height: 10rem
+	width: $desktopProgramSize
+	height: $desktopProgramSize
 	border: unset
+
+	&:nth-child(1)
+		top: 6rem
+		right: 3rem
+
+	&:nth-child(2)
+		top: $desktopProgramSize + 9rem
+		right: 3rem
 
 .desktopProgramIcon
 	width: 8rem

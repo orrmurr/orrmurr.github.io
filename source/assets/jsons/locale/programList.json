@@ -10,7 +10,7 @@
 	},
 	{
 		"icon": "https://image.flaticon.com/icons/svg/715/715563.svg",
-		"name": "Portfolio",
+		"name": "Projects",
 		"show": {
 			"main": true,
 			"dock": false,
