@@ -1,46 +1,51 @@
-﻿const mousePositionForSelected = {
-	leftAxis: { x: 0, y: 0 },
-	rightAxis: { x: 0, y: 0 },
-	setLeftAxis() {
-		this.leftAxis.x = event.offsetX
-		this.leftAxis.y = event.offsetY
+﻿const position = {
+	selected: {
+		size: 100,
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
 	},
-	setRightAxis() {
-		const selectedSize = 100
-		this.rightAxis.x = selectedSize - event.offsetX
-		this.rightAxis.y = selectedSize - event.offsetY
+	setSelected() {
+		this.selected.top = event.offsetY
+		this.selected.right = this.selected.size - event.offsetX
+		this.selected.bottom = this.selected.size - event.offsetY
+		this.selected.left = event.offsetX
 	},
-}
-
-const position = {
+	boundary: {
+		weight: {
+			top: 40,
+			right: 0,
+			bottom: 100,
+			left: 0,
+		},
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+	},
+	setBoundary() {
+		this.boundary.top = this.selected.top + this.boundary.weight.top
+		this.boundary.right =
+			window.innerWidth - this.selected.right - this.boundary.weight.right
+		this.boundary.bottom =
+			window.innerHeight - this.selected.bottom - this.boundary.weight.bottom
+		this.boundary.left = this.selected.left + this.boundary.weight.left
+	},
 	x: 0,
 	y: 0,
-	getBoundary() {
-		return {
-			left: {
-				x: event.clientX - mousePositionForSelected.leftAxis.x,
-				y: event.clientY - mousePositionForSelected.leftAxis.y,
-			},
-			right: {
-				x: event.clientX + mousePositionForSelected.rightAxis.x,
-				y: event.clientY + mousePositionForSelected.rightAxis.y,
-			},
-		}
-	},
 	set() {
-		const currentBoundary = this.getBoundary()
+		if (
+			event.clientX > this.boundary.left &&
+			event.clientX < this.boundary.right
+		)
+			this.x = event.clientX - this.selected.left
 
 		if (
-			currentBoundary.left.x >= 0 &&
-			currentBoundary.right.x <= window.innerWidth
+			event.clientY > this.boundary.top &&
+			event.clientY < this.boundary.bottom
 		)
-			this.x = currentBoundary.left.x
-
-		if (
-			currentBoundary.left.y >= 0 &&
-			currentBoundary.right.y <= window.innerHeight
-		)
-			this.y = currentBoundary.left.y
+			this.y = event.clientY - this.selected.top
 
 		event.target.style.left = this.x + "px"
 		event.target.style.top = this.y + "px"
@@ -54,8 +59,8 @@ function setDragImage() {
 
 export function dragStart() {
 	setDragImage()
-	mousePositionForSelected.setLeftAxis()
-	mousePositionForSelected.setRightAxis()
+	position.setSelected()
+	position.setBoundary()
 }
 
 export function drag() {
