@@ -21,5 +21,6 @@ module.exports = {
 		"vue/order-in-components": "off",
 		"no-new-func": "off",
 		"no-console": "off",
+		"no-undef-init": "off",
 	},
 }
