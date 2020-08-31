@@ -12,9 +12,12 @@ import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouch
 
 export default {
 	mounted() {
-		setDraggingAndTouching(document.getElementsByClassName("mobileApp"), {
-			padding: { x: [0, 0], y: [50, 100] },
-		})
+		setDraggingAndTouching(
+			document.getElementsByClassName("mobileAppContainer"),
+			{
+				padding: { x: [0, 0], y: [50, 100] },
+			}
+		)
 	},
 }
 </script>
@@ -25,6 +28,19 @@ export default {
 	padding: 2rem
 
 $mobileAppWidth: 6rem
+
+.mobileAppContainer
+	position: absolute
+	// width: $mobileAppWidth
+	// border: unset
+
+	&:nth-child(1)
+		top: 6rem
+		left: 3rem
+
+	&:nth-child(2)
+		top: 6rem
+		left: $mobileAppWidth+ 9rem
 
 .mobileApp
 	// position: absolute
