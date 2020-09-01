@@ -1,17 +1,25 @@
 <template lang="pug">
 .desktop.row.justify-center.items-center
-	button(v-if="desktopProgram.show.main" v-for="(desktopProgram, desktopProgramKey) in $store.state.sessionStorage.programList" :key="desktopProgramKey" @click="desktopProgramClick").row.justify-center.desktopProgram
+	button(v-if="desktopProgram.show.main" v-for="(desktopProgram, desktopProgramKey) in $store.state.sessionStorage.programList" :key="desktopProgramKey" @dblclick="desktopProgramDoubleClick(desktopProgram)").row.justify-center.desktopProgram
 		q-img(:src="desktopProgram.icon").col-12.desktopProgramIcon
 		span.col-12.q-pt-xs.text-capitalize.non-selectable.desktopProgramText {{ $t(desktopProgram.name) }}
 		.desktopProgramClickArea.fit
+	component(v-for="(desktopWindow, desktopWindowKey) in desktopWindows" :is="desktopWindow")
 </template>
 
 <script>
 import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
+import managerWindow from "@/components/main/desktop/windows/manager"
+// import projectsWindow from "@/components/main/desktop/windows/projects"
 
 export default {
+	data() {
+		return {
+			desktopWindows: [],
+		}
+	},
 	methods: {
-		desktopProgramClick(event) {
+		desktopProgramDoubleClick(desktopProgram) {
 			// ;(async () => {
 			// 	const sessionStorageGet = await this.$store.dispatch(
 			// 		"sessionStorage/get",
@@ -34,6 +42,8 @@ export default {
 			// 	],
 			// ])
 			// console.log(this.$store.state.sessionStorage.programList)
+			// if (desktopProgram.name === "Projects")
+			this.desktopWindows.push(managerWindow)
 		},
 	},
 	mounted() {

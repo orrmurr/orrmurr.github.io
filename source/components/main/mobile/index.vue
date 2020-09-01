@@ -31,8 +31,6 @@ $mobileAppWidth: 6rem
 
 .mobileAppContainer
 	position: absolute
-	// width: $mobileAppWidth
-	// border: unset
 
 	&:nth-child(1)
 		top: 6rem
@@ -43,17 +41,8 @@ $mobileAppWidth: 6rem
 		left: $mobileAppWidth+ 9rem
 
 .mobileApp
-	// position: absolute
 	width: $mobileAppWidth
 	border: unset
-
-	// &:nth-child(1)
-	// 	top: 6rem
-	// 	left: 3rem
-
-	// &:nth-child(2)
-	// 	top: 6rem
-	// 	left: $mobileAppWidth+ 9rem
 
 .mobileAppIcon
 	width: 8rem

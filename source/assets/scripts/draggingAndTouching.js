@@ -1,6 +1,5 @@
 ﻿let defaultOptions = {
-	// isMobile: false,
-	grid: 0,
+	grid: { x: 0, y: 0 },
 	padding: { x: [0, 0], y: [0, 0] },
 }
 
@@ -8,17 +7,20 @@ let selectedElement = undefined
 const cursor = { x: 0, y: 0 }
 const limit = { x: [0, 0], y: [0, 0] }
 
-// function setEventOffset() {
-// 	return {
-// 		x: event.changedTouches ? event.target.offsetX : event.offsetX,
-// 		y: event.changedTouches ? event.target.offsetY : event.offsetY,
-// 	}
-// }
-
-function getEventClient() {
-	return {
-		x: event.changedTouches ? event.changedTouches[0].clientX : event.clientX,
-		y: event.changedTouches ? event.changedTouches[0].clientY : event.clientY,
+function getEventClient(getAxis) {
+	switch (getAxis) {
+		case "x":
+			return event.changedTouches
+				? event.changedTouches[0].clientX
+				: event.clientX
+		case "y":
+			return event.changedTouches
+				? event.changedTouches[0].clientY
+				: event.clientY
+		default:
+			console.error(
+				"draggingAndTouching.js - getEventClient(): getAxis is undefined"
+			)
 	}
 }
 
@@ -38,67 +40,91 @@ function setLimit() {
 		selectedElement.offsetHeight +
 		cursor.y -
 		defaultOptions.padding.y[1]
-	console.log(limit.x[0], limit.x[1], limit.y[0], limit.y[1])
 }
-
-// function getEventClient() {
-// 	return {
-// 		x: event.changedTouches ? event.changedTouches[0].clientX : event.clientX,
-// 		y: event.changedTouches ? event.changedTouches[0].clientY : event.clientY,
-// 	}
-// }
 
 function isMoveable(getAxis) {
 	switch (getAxis) {
 		case "x":
-			if (getEventClient().x > limit.x[0] && getEventClient().x < limit.x[1])
+			if (getEventClient("x") > limit.x[0] && getEventClient("x") < limit.x[1])
 				return true
 			else return false
 		case "y":
-			if (getEventClient().y > limit.y[0] && getEventClient().y < limit.y[1])
+			if (getEventClient("y") > limit.y[0] && getEventClient("y") < limit.y[1])
 				return true
 			else return false
 		default:
-			console.error("draggingAndTouching.js: getAxis is undefined")
+			console.error(
+				"draggingAndTouching.js - isMoveable(): getAxis is undefined"
+			)
+	}
+}
+
+function setPosition(getAxis) {
+	switch (getAxis) {
+		case "x":
+			selectedElement.style.left = getEventClient("x") - cursor.x + "px"
+			break
+		case "y":
+			selectedElement.style.top = getEventClient("y") - cursor.y + "px"
+			break
+		default:
+			console.error(
+				"draggingAndTouching.js - setPosition(): getAxis is undefined"
+			)
+	}
+}
+
+function setPositionInGrid() {
+	if (defaultOptions.grid.x) {
+		const gridModularX = selectedElement.offsetLeft % defaultOptions.grid.x
+		const halfGridXValue = defaultOptions.grid.x / 2
+		const positionXInGrid = selectedElement.offsetLeft - gridModularX
+		const nextPositionXInGrid = positionXInGrid + defaultOptions.grid.x
+		const limitPositionXInGrid = nextPositionXInGrid + defaultOptions.grid.x
+
+		if (
+			(gridModularX < halfGridXValue && positionXInGrid > limit.x[0]) ||
+			limitPositionXInGrid > limit.x[1]
+		)
+			selectedElement.style.left = positionXInGrid + "px"
+		else selectedElement.style.left = nextPositionXInGrid + "px"
+	}
+	if (defaultOptions.grid.y) {
+		const gridModularY = selectedElement.offsetTop % defaultOptions.grid.y
+		const halfGridYValue = defaultOptions.grid.y / 2
+		const positionYInGrid = selectedElement.offsetTop - gridModularY
+		const nextPositionYInGrid = positionYInGrid + defaultOptions.grid.y
+		const limitPositionYInGrid = nextPositionYInGrid + defaultOptions.grid.y
+
+		if (
+			(gridModularY < halfGridYValue && positionYInGrid > limit.y[0]) ||
+			limitPositionYInGrid > limit.y[1]
+		)
+			selectedElement.style.top = positionYInGrid + "px"
+		else selectedElement.style.top = nextPositionYInGrid + "px"
 	}
 }
 
 const events = {
 	start() {
-		// console.log(this.offsetLeft)
-		// console.log(this.offsetWidth)
 		selectedElement = this
 
-		// cursor.x = event.offsetX
-		// cursor.y = event.offsetY
-		// cursor.x = setEventOffset().x
-		// cursor.y = setEventOffset().y
-		cursor.x = getEventClient().x - this.offsetLeft
-		cursor.y = getEventClient().y - this.offsetTop
+		cursor.x = getEventClient("x") - this.offsetLeft
+		cursor.y = getEventClient("y") - this.offsetTop
 
 		setLimit()
 		selectedElement.style.zIndex = 1
 	},
 	move() {
 		if (selectedElement) {
-			// if (isMoveable("x"))
-			// 	selectedElement.style.left = getEventClient().x - cursor.x + "px"
-			// if (isMoveable("y"))
-			// 	selectedElement.style.top = getEventClient().y - cursor.y + "px"
-
-			// if (isMoveable("x"))
-			// 	selectedElement.style.left = getEventClient().x + "px"
-			// if (isMoveable("y")) selectedElement.style.top = getEventClient().y + "px"
-
-			if (isMoveable("x"))
-				selectedElement.style.left = getEventClient().x - cursor.x + "px"
-			if (isMoveable("y"))
-				selectedElement.style.top = getEventClient().y - cursor.y + "px"
+			if (isMoveable("x")) setPosition("x")
+			if (isMoveable("y")) setPosition("y")
 		}
 	},
 	end() {
 		if (selectedElement) {
 			selectedElement.style.zIndex = ""
+			setPositionInGrid()
 			selectedElement = undefined
 		}
 	},
@@ -133,12 +159,14 @@ function addEventListener(element, type, listener) {
 
 export function set(targetElements, getOptions) {
 	if (!targetElements)
-		return console.error("draggingAndTouching.js: targetElements is undefined")
+		return console.error(
+			"draggingAndTouching.js - set(): targetElements is undefined"
+		)
 
 	for (let i = 0; i < targetElements.length; i++) {
 		if (!isElement(targetElements[i]))
 			return console.error(
-				"draggingAndTouching.js: targetElements is not element"
+				"draggingAndTouching.js - set(): targetElements is not element"
 			)
 	}
 
