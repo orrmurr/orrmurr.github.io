@@ -1,16 +1,15 @@
 <template lang="pug">
-.desktop.row.justify-center.items-center
-	button(v-if="desktopProgram.show.main" v-for="(desktopProgram, desktopProgramKey) in $store.state.sessionStorage.programList" :key="desktopProgramKey" @dblclick="desktopProgramDoubleClick(desktopProgram)").row.justify-center.desktopProgram
-		q-img(:src="desktopProgram.icon").col-12.desktopProgramIcon
-		span.col-12.q-pt-xs.text-capitalize.non-selectable.desktopProgramText {{ $t(desktopProgram.name) }}
+.desktop().row.justify-center.items-center
+	button(v-if="desktopProgram.show.desktop.main" v-for="(desktopProgram, desktopProgramKey) in $store.state.programList" :key="desktopProgramKey" @dblclick="desktopProgramDoubleClick(desktopProgram)").desktopProgram.row.justify-center
+		q-img(:src="desktopProgram.icon").desktopProgramIcon.col-12
+		span.desktopProgramText.col-12.q-pt-xs.text-capitalize.non-selectable {{ $t(desktopProgram.name) }}
 		.desktopProgramClickArea.fit
 	component(v-for="(desktopWindow, desktopWindowKey) in desktopWindows" :is="desktopWindow")
 </template>
 
 <script>
 import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
-import managerWindow from "@/components/main/desktop/windows/manager"
-// import projectsWindow from "@/components/main/desktop/windows/projects"
+import windowsManager from "@/components/main/desktop/windowsManager"
 
 export default {
 	data() {
@@ -43,13 +42,23 @@ export default {
 			// ])
 			// console.log(this.$store.state.sessionStorage.programList)
 			// if (desktopProgram.name === "Projects")
-			this.desktopWindows.push(managerWindow)
+			this.desktopWindows.push(windowsManager)
 		},
 	},
 	mounted() {
-		setDraggingAndTouching(document.getElementsByClassName("desktopProgram"), {
-			padding: { x: [0, 0], y: [50, 100] },
-		})
+		setDraggingAndTouching(
+			"add",
+			document.getElementsByClassName("desktopProgram"),
+			{
+				padding: { x: [0, 0], y: [50, 100] },
+			}
+		)
+	},
+	beforeDestroy() {
+		setDraggingAndTouching(
+			"remove",
+			document.getElementsByClassName("desktopProgram")
+		)
 	},
 }
 </script>
@@ -63,12 +72,12 @@ $desktopProgramWidth: 10rem
 	border: unset
 
 	&:nth-child(1)
-		top: 6rem
-		right: 3rem
+		top: calc(50% - 8rem)
+		right: calc(50% + 1rem)
 
 	&:nth-child(2)
-		top: $desktopProgramWidth + 9rem
-		right: 3rem
+		top: calc(50% - 8rem)
+		right: calc(50% - #{$desktopProgramWidth} - 1rem)
 
 .desktopProgramIcon
 	width: 8rem
@@ -76,6 +85,9 @@ $desktopProgramWidth: 10rem
 
 .desktopProgramText
 	font-size: 1.4rem
+	font-weight: bold
+	color: white
+	text-shadow: 0px 1px 6px #777
 
 .desktopProgramClickArea
 	position: absolute

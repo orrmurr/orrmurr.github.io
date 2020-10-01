@@ -25,7 +25,7 @@ export default {
 				params: getParams,
 			})
 		} catch (error) {
-			console.error("axios.js error" + error)
+			console.error(error + "\n\t at axios.js")
 		}
 	},
 	async get(url, params) {

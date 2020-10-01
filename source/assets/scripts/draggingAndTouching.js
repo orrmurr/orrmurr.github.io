@@ -18,9 +18,7 @@ function getEventClient(getAxis) {
 				? event.changedTouches[0].clientY
 				: event.clientY
 		default:
-			console.error(
-				"draggingAndTouching.js - getEventClient(): getAxis is undefined"
-			)
+			console.error("getAxis is undefined \n\t at draggingAndTouching.js")
 	}
 }
 
@@ -53,9 +51,7 @@ function isMoveable(getAxis) {
 				return true
 			else return false
 		default:
-			console.error(
-				"draggingAndTouching.js - isMoveable(): getAxis is undefined"
-			)
+			console.error("getAxis is undefined \n\t at draggingAndTouching.js")
 	}
 }
 
@@ -68,9 +64,7 @@ function setPosition(getAxis) {
 			selectedElement.style.top = getEventClient("y") - cursor.y + "px"
 			break
 		default:
-			console.error(
-				"draggingAndTouching.js - setPosition(): getAxis is undefined"
-			)
+			console.error("getAxis is undefined \n\t at draggingAndTouching.js")
 	}
 }
 
@@ -152,40 +146,52 @@ function isElement(getElement) {
 	)
 }
 
-function addEventListener(element, type, listener) {
+function setEventListener(setType, element, type, listener) {
 	for (let i = 0; i < type.length; i++)
-		element.addEventListener(type[i], listener[i])
+		switch (setType) {
+			case "add":
+				element.addEventListener(type[i], listener[i])
+				break
+			case "remove":
+				element.removeEventListener(type[i], listener[i])
+				break
+			default:
+				console.error("setType is undefined \n\t at draggingAndTouching.js")
+		}
 }
 
-export function set(targetElements, getOptions) {
+export function set(setType, targetElements, getOptions) {
 	if (!targetElements)
 		return console.error(
-			"draggingAndTouching.js - set(): targetElements is undefined"
+			"targetElements is undefined \n\t at draggingAndTouching.js"
 		)
 
 	for (let i = 0; i < targetElements.length; i++) {
 		if (!isElement(targetElements[i]))
 			return console.error(
-				"draggingAndTouching.js - set(): targetElements is not element"
+				"targetElements is not element \n\t at draggingAndTouching.js"
 			)
 	}
 
 	if (getOptions) defaultOptions = Object.assign({}, defaultOptions, getOptions)
 
-	addEventListener(
+	setEventListener(
+		setType,
 		document,
 		Object.keys(eventHandlers.move),
 		Object.values(eventHandlers.move)
 	)
 
-	addEventListener(
+	setEventListener(
+		setType,
 		document,
 		Object.keys(eventHandlers.end),
 		Object.values(eventHandlers.end)
 	)
 
 	for (let i = 0; i < targetElements.length; i++) {
-		addEventListener(
+		setEventListener(
+			setType,
 			targetElements[i],
 			Object.keys(eventHandlers.start),
 			Object.values(eventHandlers.start)

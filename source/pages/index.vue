@@ -42,4 +42,9 @@ export default {
 <style lang="sass" scoped>
 #index
 	// background: linear-gradient(0deg, #c2351e 0%, #64013b 50%, #1c0015 100%) //ubuntu
+	// background-image: url("https://images.unsplash.com/photo-1496737018672-b1a6be2e949c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2592&q=60 2592w")
+	background-image: url("../assets/images/background.jpg")
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
 </style>

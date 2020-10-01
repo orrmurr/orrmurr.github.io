@@ -1,6 +1,6 @@
 <template lang="pug">
 .dock.self-center
-	button(v-if="dockProgram.show.dock" v-for="(dockProgram, dockProgramKey) in $store.state.sessionStorage.programList" :key="dockProgramKey").dockProgram
+	button(v-if="dockProgram.show.desktop.dock" v-for="(dockProgram, dockProgramKey) in $store.state.programList" :key="dockProgramKey").dockProgram
 		q-img(:src="dockProgram.icon").dockIcon
 </template>
 
@@ -15,8 +15,8 @@ export default {}
 	border-radius: 1rem 1rem 0 0
 	background-color: rgba(235,235,235,0.7)
 	box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.25)
-	// grid-gap: 1rem
 	padding: 1.6rem
+	backdrop-filter: blur(2px)
 
 .dockProgram
 	border: unset

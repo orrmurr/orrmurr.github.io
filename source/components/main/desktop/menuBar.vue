@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.menuBar
+	background-image: linear-gradient(to right, #ddd, #eee)
+	backdrop-filter: blur(2px)
+
 .orrmurrIcon
 	width: 2rem
 

@@ -1,0 +1,114 @@
+[
+	{
+		"icon": "https://image.flaticon.com/icons/svg/3231/3231661.svg",
+		"name": "Profile",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": false,
+				"dock": true
+			},
+			"desktop": {
+				"main": false,
+				"dock": true,
+				"launchpad": true
+			}
+		}
+	},
+	{
+		"icon": "https://image.flaticon.com/icons/svg/715/715563.svg",
+		"name": "Projects",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": true,
+				"dock": false
+			},
+			"desktop": {
+				"main": true,
+				"dock": false,
+				"launchpad": true
+			}
+		}
+	},
+	{
+		"icon": "https://icons.iconarchive.com/icons/iconshock/vista-general/128/trash-icon.png",
+		"name": "Trash",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": true,
+				"dock": false
+			},
+			"desktop": {
+				"main": true,
+				"dock": false,
+				"launchpad": true
+			}
+		}
+	},
+	{
+		"icon": "https://image.flaticon.com/icons/svg/859/859043.svg",
+		"name": "Info",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": false,
+				"dock": true
+			},
+			"desktop": {
+				"main": false,
+				"dock": true,
+				"launchpad": true
+			}
+		}
+	},
+	{
+		"icon": "https://image.flaticon.com/icons/svg/1005/1005189.svg",
+		"name": "Setting",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": false,
+				"dock": true
+			},
+			"desktop": {
+				"main": false,
+				"dock": true,
+				"launchpad": true
+			}
+		}
+	},
+	{
+		"icon": "https://image.flaticon.com/icons/svg/906/906763.svg",
+		"name": "Help",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": false,
+				"dock": true
+			},
+			"desktop": {
+				"main": false,
+				"dock": true,
+				"launchpad": true
+			}
+		}
+	},
+	{
+		"icon": "https://image.flaticon.com/icons/svg/1053/1053621.svg",
+		"name": "Launchpad",
+		"isOpened": false,
+		"show": {
+			"mobile": {
+				"main": false,
+				"dock": false
+			},
+			"desktop": {
+				"main": false,
+				"dock": true,
+				"launchpad": true
+			}
+		}
+	}
+]

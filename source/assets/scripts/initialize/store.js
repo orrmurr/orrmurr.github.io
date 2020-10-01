@@ -88,8 +88,9 @@ const store = {
 				for (let i = 1; i <= getKey.length - 1; i++) {
 					if (!Object.prototype.hasOwnProperty.call(editSetKey, getKey[i]))
 						return console.error(
-							"undefined " + getKey[i] + "\n in ",
-							editSetKey
+							getKey[i] + " is undefined in \n",
+							editSetKey,
+							"\n\t at store.js"
 						)
 					editSetKey = editSetKey[getKey[i]]
 				}

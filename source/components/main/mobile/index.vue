@@ -1,44 +1,24 @@
 <template lang="pug">
-.mobile.row.items-start
-	.mobileAppContainer(v-if="mobileApp.show.main" v-for="(mobileApp, mobileAppKey) in $store.state.sessionStorage.programList" :key="mobileAppKey").col-3.row.justify-center.items-center
-		button.row.justify-center.mobileApp
-			q-img(:src="mobileApp.icon").col-12.mobileAppIcon
-			span.col-12.q-pt-xs.text-capitalize.non-selectable.mobileAppText {{ $t(mobileApp.name) }}
+.mobile.items-center
+	button(v-if="mobileApp.show.mobile.main" v-for="(mobileApp, mobileAppKey) in $store.state.programList" :key="mobileAppKey").mobileApp.col-auto.row.justify-center
+		q-img(:src="mobileApp.icon").col-12.mobileAppIcon
+		span.mobileAppText.col-12.q-pt-xs.text-capitalize.non-selectable {{ $t(mobileApp.name) }}
 			.mobileAppClickArea.fit
 </template>
 
 <script>
-import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
-
-export default {
-	mounted() {
-		setDraggingAndTouching(
-			document.getElementsByClassName("mobileAppContainer"),
-			{
-				padding: { x: [0, 0], y: [50, 100] },
-			}
-		)
-	},
-}
+export default {}
 </script>
 
 <style lang="sass" scoped>
 .mobile
-	width: inherit
+	display: grid
+	grid-template-rows: repeat(6, 1fr)
+	grid-template-columns: repeat(4, 1fr)
+	justify-items: center
 	padding: 2rem
 
 $mobileAppWidth: 6rem
-
-.mobileAppContainer
-	position: absolute
-
-	&:nth-child(1)
-		top: 6rem
-		left: 3rem
-
-	&:nth-child(2)
-		top: 6rem
-		left: $mobileAppWidth+ 9rem
 
 .mobileApp
 	width: $mobileAppWidth
@@ -50,6 +30,9 @@ $mobileAppWidth: 6rem
 
 .mobileAppText
 	font-size: 1.4rem
+	font-weight: bold
+	color: white
+	text-shadow: 0px 1px 6px #777
 
 .mobileAppClickArea
 	position: absolute

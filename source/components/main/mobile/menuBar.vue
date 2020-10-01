@@ -1,5 +1,5 @@
 <template lang="pug">
-q-bar.menuBar.shadow-6
+q-bar.menuBar
 	q-icon(name="fas fa-signal")
 	div.text-weight-bolder.non-selectable ORRMURR
 	q-icon(name="fas fa-wifi")
@@ -15,4 +15,7 @@ q-bar.menuBar.shadow-6
 export default {}
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.menuBar
+	background-color: unset
+</style>
