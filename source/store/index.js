@@ -1,7 +1,6 @@
 // export const strict = false
-import programListJson from "@/assets/jsons/programList"
-
 import store from "@/assets/scripts/initialize/store"
+import programListJson from "@/assets/jsons/programList"
 
 export const state = () => ({
 	programList: programListJson,

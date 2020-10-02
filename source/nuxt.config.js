@@ -1,30 +1,16 @@
 export default {
-	/*
-	 ** Nuxt rendering mode
-	 ** See https://nuxtjs.org/api/configuration-mode
-	 */
-	mode: "universal",
-	/*
-	 ** Nuxt target
-	 ** See https://nuxtjs.org/api/configuration-target
-	 */
-	target: "static",
-	/*
-	 ** Headers of the page
-	 ** See https://nuxtjs.org/api/configuration-head
-	 */
-	head: {
-		title: process.env.npm_package_name || "",
-		meta: [
-			{ charset: "utf-8" },
-			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{
-				hid: "description",
-				name: "description",
-				content: process.env.npm_package_description || "",
-			},
-		],
-		link: [
+  // Target (https://go.nuxtjs.dev/config-target)
+  target: 'static',
+
+  // Global page headers (https://go.nuxtjs.dev/config-head)
+  head: {
+    title: process.env.npm_package_name || "",
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+    ],
+    link: [
 			{ rel: "icon", type: "image/x-icon", href: "/ice-water.svg" },
 			{
 				rel: "stylesheet",
@@ -48,44 +34,37 @@ export default {
 					"https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css",
 			},
 		],
-	},
-	/*
-	 ** Global CSS
-	 */
-	css: [
+  },
+
+  // Global CSS (https://go.nuxtjs.dev/config-css)
+  css: [
 		"@assets/styles/initialize",
 		"@assets/styles/font",
 		"@assets/styles/nuxt",
 	],
-	/*
-	 ** Plugins to load before mounting the App
-	 ** https://nuxtjs.org/guide/plugins
-	 */
-	plugins: [
+
+  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+  plugins: [
 		"@plugins/globalComponents",
 		"@plugins/globalDirectives",
 		"@plugins/globalMethods",
 		"@plugins/quasar",
 		"@plugins/serverInitialize",
 	],
-	/*
-	 ** Auto import components
-	 ** See https://nuxtjs.org/api/configuration-components
-	 */
-	components: true,
-	/*
-	 ** Nuxt.js dev-modules
-	 */
-	buildModules: [
-		// Doc: https://github.com/nuxt-community/eslint-module
-		"@nuxtjs/eslint-module",
-	],
-	/*
-	 ** Nuxt.js modules
-	 */
-	modules: [
-		// Doc: https://axios.nuxtjs.org/usage
-		"@nuxtjs/axios",
+
+  // Auto import components (https://go.nuxtjs.dev/config-components)
+  components: true,
+
+  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
+  buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
+  ],
+
+  // Modules (https://go.nuxtjs.dev/config-modules)
+  modules: [
+    // https://go.nuxtjs.dev/axios
+		'@nuxtjs/axios',
 		"@nuxtjs/style-resources",
 		[
 			"nuxt-vuex-localstorage",
@@ -95,18 +74,14 @@ export default {
 		],
 		["nuxt-i18n", require("./assets/scripts/initialize/locales.js")],
 		"@assets/scripts/modules/logs",
-	],
-	/*
-	 ** Axios module configuration
-	 ** See https://axios.nuxtjs.org/options
-	 */
-	axios: {
+  ],
+
+  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
+  axios: {
 		baseURL: "/",
 	},
-	/*
-	 ** Build configuration
-	 ** See https://nuxtjs.org/api/configuration-build/
-	 */
+
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
 	build: {},
 	styleResources: {
 		sass: ["@assets/styles/initialize.sass"],
