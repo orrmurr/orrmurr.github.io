@@ -4,35 +4,48 @@ import { mapActions } from "vuex"
 
 methods: {
 ...mapActions("path", {
-	newSetKey: "set",
-	newGetKey: "get",
-	newSyncKey: "sync"
+	setStore: "set",
+	getStore: "get",
+	syncStore: "sync"
 })
 }
 
 2. usage
-2-1. use single depth key
-this.newSetKey(["storeKey", { dataValue: 0 }])
+2-1. without mapActions
+this.$store.dispatch("path/set", ["key", { value: 0 }])
 
-this.newGetKey("storeKey").then(response => {
+;(async () => {
+	const response = await this.$store.dispatch("path/get", "key")
+	console.log(response)
+})()
+
+2-2. use single depth key
+this.setStore(["key", { value: 0 }])
+
+this.getStore("key").then(response => {
 	console.log(response)
 })
 
-2-2. use multi depth key
-this.newSetKey([["storeKey2", "storeKey3", "storeKey4", "storeKey5"], { dataValue: 0 }])
+;(async () => {
+	const response = await this.getStore("key")
+	console.log(response)
+})()
 
-this.newGetKey([
-	"storeKey2",
-	"storeKey3",
-	"storeKey4",
-	"storeKey5"
+2-3. use multi depth key
+this.setStore([["key2", "key3", "key4", "key5"], { value: 0 }])
+
+this.getStore([
+	"key2",
+	"key3",
+	"key4",
+	"key5"
 ]).then(response => {
 	console.log(response)
 })
 
-2-3. use synchronization(this.syncObj.syncKey === this.$store.state.path.storeKey.syncKey)
-data() { return { syncObj: { syncKey: 0 } } }
-this.newSyncKey([this.syncObj, "syncKey", "setSyncKey"])
+2-4. use synchronization(this.syncStoreObj.key === this.$store.state.path.storeKey.key)
+data() { return { syncStoreObj: { key: 0 } } }
+this.syncStore([this.syncStoreObj, "key", "storeKey"])
 
 3. if add local scope function, add below code to file in @/store/
 mutations.newMutation = function() { }
@@ -40,76 +53,84 @@ actions.newAction = function() { }
 
 4. to use the data bindging function in webStorage, the key of the object to be bound must be declared in the @/store/webStorage.js file in advance.
 export const state = () => ({
-	storeKey: undefined
+	key: undefined
 })
 */
 
 const store = {
 	mutations: {
-		set(state, [setKey, setValue]) {
-			// state[setKey] = setValue
-			if (setKey.constructor === Array && setKey.length !== 1) {
+		set(state, [key, value]) {
+			// state[key] = value
+			if (key.constructor === Array && key.length !== 1) {
 				if (
-					!Object.prototype.hasOwnProperty.call(state, setKey[0]) ||
-					state[setKey[0]].constructor !== Object
+					!Object.prototype.hasOwnProperty.call(state, key[0]) ||
+					state[key[0]].constructor !== Object
 				)
-					state[setKey[0]] = {}
-				let editSetKey = state[setKey[0]]
+					state[key[0]] = {}
+				let editkey = state[key[0]]
 
-				for (let i = 1; i <= setKey.length - 2; i++) {
+				for (let i = 1; i <= key.length - 2; i++) {
 					if (
-						!Object.prototype.hasOwnProperty.call(editSetKey, setKey[i]) ||
-						editSetKey[setKey[i]].constructor !== Object
+						!Object.prototype.hasOwnProperty.call(editkey, key[i]) ||
+						editkey[key[i]].constructor !== Object
 					)
-						editSetKey[setKey[i]] = {}
-					editSetKey = editSetKey[setKey[i]]
+						editkey[key[i]] = {}
+					editkey = editkey[key[i]]
 				}
-				editSetKey[setKey[setKey.length - 1]] = setValue
-			} else state[setKey] = setValue
+				editkey[key[key.length - 1]] = value
+			} else state[key] = value
 		},
 	},
 	actions: {
-		set(context, [setKey, setValue]) {
-			// context.commit("set", [setKey, setValue])
-			const getVaule = store.actions.get(context, setKey)
-			if (getVaule && setValue.constructor === Object) {
+		set(context, [key, value]) {
+			// context.commit("set", [key, value])
+			const getVaule = store.actions.get(context, key)
+			if (getVaule && value.constructor === Object) {
 				const copyGetVaule = JSON.parse(JSON.stringify(getVaule))
-				const keys = Object.keys(setValue)
-				const values = Object.values(setValue)
+				const keys = Object.keys(value)
+				const values = Object.values(value)
 				for (let i = 0; i < keys.length; i++) {
 					copyGetVaule[keys[i]] = values[i]
 				}
-				context.commit("set", [setKey, copyGetVaule])
-			} else context.commit("set", [setKey, setValue])
+				context.commit("set", [key, copyGetVaule])
+				console.log(`changed "${key}"\n`, getVaule, "\n\tto\n", copyGetVaule)
+			} else {
+				context.commit("set", [key, value])
+				console.log(`set "${key}"\n`, value)
+			}
 		},
-		get(context, getKey) {
-			if (getKey.constructor === Array && getKey.length !== 1) {
-				let editSetKey = context.state[getKey[0]]
-				for (let i = 1; i <= getKey.length - 1; i++) {
-					if (!Object.prototype.hasOwnProperty.call(editSetKey, getKey[i]))
+		get(context, key) {
+			if (key.constructor === Array && key.length > 1) {
+				let currentKey = context.state[key[0]]
+				if (!currentKey)
+					return console.error(`"${key[0]}" is undefined\n\t at store.js`)
+
+				for (let i = 1; i <= key.length - 1; i++) {
+					if (!Object.prototype.hasOwnProperty.call(currentKey, key[i]))
 						return console.error(
-							getKey[i] + " is undefined in \n",
-							editSetKey,
+							key[i] + " is undefined in \n",
+							currentKey,
 							"\n\t at store.js"
 						)
-					editSetKey = editSetKey[getKey[i]]
+					currentKey = currentKey[key[i]]
 				}
-				if (editSetKey || editSetKey === 0) return editSetKey
-				else return false
-			} else if (context.state[getKey]) return context.state[getKey]
-			else return false
+				return currentKey
+			} else if (context.state[key] || context.state[key] === 0)
+				return context.state[key]
+			else return console.error(`"${key}" is undefined\n\t at store.js`)
 		},
-		sync(context, [syncObj, syncKey, setSyncKey]) {
-			const getVaule = store.actions.get(context, setSyncKey)
-			if (getVaule[syncKey]) syncObj[syncKey] = getVaule[syncKey]
+		sync(context, [obj, key, storeKey]) {
+			const getVaule = store.actions.get(context, storeKey)
+			if (!getVaule) return console.error("sync error \n\t at store.js")
+			else if (getVaule[key]) obj[key] = getVaule[key]
 			else if (getVaule) {
 				const copyGetVaule = JSON.parse(JSON.stringify(getVaule))
-				copyGetVaule[syncKey] = syncObj[syncKey]
-				store.actions.set(context, [setSyncKey, copyGetVaule])
+				copyGetVaule[key] = obj[key]
+				store.actions.set(context, [storeKey, copyGetVaule])
 			} else {
 				const setValue = {}
-				setValue[syncKey] = syncObj[syncKey]
-				store.actions.set(context, [setSyncKey, setValue])
+				setValue[key] = obj[key]
+				store.actions.set(context, [storeKey, setValue])
 			}
 		},
 	},

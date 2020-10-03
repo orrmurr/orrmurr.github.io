@@ -16,12 +16,12 @@ q-bar.menuBar.shadow-6
 </template>
 
 <script>
-import { toggleEnKo as localeToggleEnKo } from "@/assets/scripts/locale"
+import { toggle as toggleLocale } from "@/assets/scripts/locale"
 
 export default {
 	methods: {
 		switchLocale() {
-			localeToggleEnKo()
+			toggleLocale("en", "ko")
 		},
 	},
 }

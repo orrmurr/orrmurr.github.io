@@ -1,5 +1,4 @@
-﻿import axios from "axios"
-/*
+﻿/*
 1. push file.js to gitgub
 return {
 	functionKey() {}
@@ -7,23 +6,25 @@ return {
 
 2. change to cdn path at https://raw.githack.com
 
-2. usage
+3. usage
 import axios from "@/assets/scripts/axios"
 
-const setJsFromUrl = async () => {
-	const response = await axios.setJsFromUrl("cdn path")
+const getUrlFunction = async () => {
+	const response = await axios.getUrlFunction("cdn path")
 	response.functionKey()
 }
 */
 
+import axios from "axios"
+
 export default {
-	async form(getMethod, getUrl, getParams) {
+	async form(method, url, params) {
 		try {
-			return await axios({
-				method: getMethod,
-				url: getUrl,
-				params: getParams,
-			})
+			const setParams = {}
+			setParams.method = method
+			setParams.url = url
+			setParams.params = method
+			return await axios(setParams)
 		} catch (error) {
 			console.error(error + "\n\t at axios.js")
 		}
@@ -31,7 +32,7 @@ export default {
 	async get(url, params) {
 		return await this.form("get", url, params)
 	},
-	async setJsFromUrl(url) {
+	async getUrlFunction(url) {
 		const response = await this.form("get", url, undefined)
 		return new Function(response.data)()
 	},

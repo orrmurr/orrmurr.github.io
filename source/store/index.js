@@ -4,6 +4,10 @@ import programListJson from "@/assets/jsons/programList"
 
 export const state = () => ({
 	programList: programListJson,
+	mobile: {
+		disabled: true,
+	},
+	desktop: {},
 })
 
 export const mutations = store.mutations

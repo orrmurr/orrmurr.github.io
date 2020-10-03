@@ -1,5 +1,7 @@
 <template lang="pug">
-.manager(:style="{ width: defaultDesktopWindowOptions.width + 'px', height: defaultDesktopWindowOptions.height + 'px' }").bg-grey-5
+.manager.bg-grey-5(
+	:style="{ width: defaultDesktopWindowOptions.width + 'px', height: defaultDesktopWindowOptions.height + 'px' }"
+)
 	span projects
 </template>
 
@@ -18,7 +20,6 @@ export default {
 	props: {
 		desktopWindowOptions: {
 			type: Object,
-			required: false,
 		},
 	},
 	beforeMount() {

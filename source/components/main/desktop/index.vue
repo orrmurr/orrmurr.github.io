@@ -1,15 +1,24 @@
 <template lang="pug">
-.desktop().row.justify-center.items-center
-	button(v-if="desktopProgram.show.desktop.main" v-for="(desktopProgram, desktopProgramKey) in $store.state.programList" :key="desktopProgramKey" @dblclick="desktopProgramDoubleClick(desktopProgram)").desktopProgram.row.justify-center
-		q-img(:src="desktopProgram.icon").desktopProgramIcon.col-12
+.desktop.row.justify-center.items-center
+	button.desktopProgram.row.justify-center(
+		v-if="desktopProgram.show.desktop.main",
+		v-for="(desktopProgram, desktopProgramKey) in $store.state.programList",
+		:key="desktopProgramKey",
+		@dblclick="desktopProgramDoubleClick(desktopProgram)"
+	)
+		q-img.desktopProgramIcon.col-12(:src="desktopProgram.icon")
 		span.desktopProgramText.col-12.q-pt-xs.text-capitalize.non-selectable {{ $t(desktopProgram.name) }}
 		.desktopProgramClickArea.fit
-	component(v-for="(desktopWindow, desktopWindowKey) in desktopWindows" :is="desktopWindow")
+	component(
+		v-for="(desktopWindow, desktopWindowKey) in desktopWindows",
+		:key="desktopWindowKey",
+		:is="desktopWindow"
+	)
 </template>
 
 <script>
 import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
-import windowsManager from "@/components/main/desktop/windowsManager"
+// import windowsManager from "@/components/main/desktop/windowsManager"
 
 export default {
 	data() {
@@ -42,7 +51,7 @@ export default {
 			// ])
 			// console.log(this.$store.state.sessionStorage.programList)
 			// if (desktopProgram.name === "Projects")
-			this.desktopWindows.push(windowsManager)
+			// this.desktopWindows.push(windowsManager)
 		},
 	},
 	mounted() {

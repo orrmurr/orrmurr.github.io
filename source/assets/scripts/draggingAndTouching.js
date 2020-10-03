@@ -1,4 +1,27 @@
-﻿let defaultOptions = {
+﻿/*
+1. setting
+import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
+
+2. usage
+mounted() {
+	setDraggingAndTouching(
+		"add",
+		document.getElementsByClassName("element"),
+		{
+			grid: { x: 0, y: 0 },
+			padding: { x: [0, 0], y: [0, 0] },
+		}
+	)
+},
+beforeDestroy() {
+	setDraggingAndTouching(
+		"remove",
+		document.getElementsByClassName("element")
+	)
+},
+*/
+
+let defaultOptions = {
 	grid: { x: 0, y: 0 },
 	padding: { x: [0, 0], y: [0, 0] },
 }
@@ -7,8 +30,8 @@ let selectedElement = undefined
 const cursor = { x: 0, y: 0 }
 const limit = { x: [0, 0], y: [0, 0] }
 
-function getEventClient(getAxis) {
-	switch (getAxis) {
+function getEventClient(axis) {
+	switch (axis) {
 		case "x":
 			return event.changedTouches
 				? event.changedTouches[0].clientX
@@ -18,7 +41,7 @@ function getEventClient(getAxis) {
 				? event.changedTouches[0].clientY
 				: event.clientY
 		default:
-			console.error("getAxis is undefined \n\t at draggingAndTouching.js")
+			console.error("axis is undefined \n\t at draggingAndTouching.js")
 	}
 }
 
@@ -40,8 +63,8 @@ function setLimit() {
 		defaultOptions.padding.y[1]
 }
 
-function isMoveable(getAxis) {
-	switch (getAxis) {
+function isMoveable(axis) {
+	switch (axis) {
 		case "x":
 			if (getEventClient("x") > limit.x[0] && getEventClient("x") < limit.x[1])
 				return true
@@ -51,12 +74,12 @@ function isMoveable(getAxis) {
 				return true
 			else return false
 		default:
-			console.error("getAxis is undefined \n\t at draggingAndTouching.js")
+			console.error("axis is undefined \n\t at draggingAndTouching.js")
 	}
 }
 
-function setPosition(getAxis) {
-	switch (getAxis) {
+function setPosition(axis) {
+	switch (axis) {
 		case "x":
 			selectedElement.style.left = getEventClient("x") - cursor.x + "px"
 			break
@@ -64,7 +87,7 @@ function setPosition(getAxis) {
 			selectedElement.style.top = getEventClient("y") - cursor.y + "px"
 			break
 		default:
-			console.error("getAxis is undefined \n\t at draggingAndTouching.js")
+			console.error("axis is undefined \n\t at draggingAndTouching.js")
 	}
 }
 
@@ -139,16 +162,16 @@ const eventHandlers = {
 	},
 }
 
-function isElement(getElement) {
+function isElement(element) {
 	return (
-		getElement instanceof Element ||
-		(typeof HTMLDocument !== "undefined" && getElement instanceof HTMLDocument)
+		element instanceof Element ||
+		(typeof HTMLDocument !== "undefined" && element instanceof HTMLDocument)
 	)
 }
 
-function setEventListener(setType, element, type, listener) {
+function setEventListener(condition, element, type, listener) {
 	for (let i = 0; i < type.length; i++)
-		switch (setType) {
+		switch (condition) {
 			case "add":
 				element.addEventListener(type[i], listener[i])
 				break
@@ -156,11 +179,11 @@ function setEventListener(setType, element, type, listener) {
 				element.removeEventListener(type[i], listener[i])
 				break
 			default:
-				console.error("setType is undefined \n\t at draggingAndTouching.js")
+				console.error("type is undefined \n\t at draggingAndTouching.js")
 		}
 }
 
-export function set(setType, targetElements, getOptions) {
+export function set(condition, targetElements, options) {
 	if (!targetElements)
 		return console.error(
 			"targetElements is undefined \n\t at draggingAndTouching.js"
@@ -173,17 +196,17 @@ export function set(setType, targetElements, getOptions) {
 			)
 	}
 
-	if (getOptions) defaultOptions = Object.assign({}, defaultOptions, getOptions)
+	if (options) defaultOptions = Object.assign({}, defaultOptions, options)
 
 	setEventListener(
-		setType,
+		condition,
 		document,
 		Object.keys(eventHandlers.move),
 		Object.values(eventHandlers.move)
 	)
 
 	setEventListener(
-		setType,
+		condition,
 		document,
 		Object.keys(eventHandlers.end),
 		Object.values(eventHandlers.end)
@@ -191,7 +214,7 @@ export function set(setType, targetElements, getOptions) {
 
 	for (let i = 0; i < targetElements.length; i++) {
 		setEventListener(
-			setType,
+			condition,
 			targetElements[i],
 			Object.keys(eventHandlers.start),
 			Object.values(eventHandlers.start)

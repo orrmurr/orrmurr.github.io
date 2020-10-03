@@ -1,17 +1,80 @@
 <template lang="pug">
-.mobile.items-center
-	button(v-if="mobileApp.show.mobile.main" v-for="(mobileApp, mobileAppKey) in $store.state.programList" :key="mobileAppKey").mobileApp.col-auto.row.justify-center
-		q-img(:src="mobileApp.icon").col-12.mobileAppIcon
-		span.mobileAppText.col-12.q-pt-xs.text-capitalize.non-selectable {{ $t(mobileApp.name) }}
-			.mobileAppClickArea.fit
+.mobile
+	draggable.full-height(
+		v-bind="dragOptions",
+		:disabled="$store.state.mobile.disabled"
+	)
+		transition-group.transitionGroup.items-center.fit(tag="div")
+			button.mobileApp.col-auto.row.justify-center(
+				v-if="mobileApp.show.mobile.main",
+				v-for="(mobileApp, mobileAppKey) in $store.state.programList",
+				:key="mobileApp.name",
+				:class="[!$store.state.mobile.disabled ? 'jiggle' : undefined]"
+			)
+				q-img.col-12.mobileAppIcon(:src="mobileApp.icon")
+				span.mobileAppText.col-12.q-pt-xs.text-capitalize.non-selectable {{ $t(mobileApp.name) }}
+				.mobileAppClickArea.fit(
+					@mousedown="mobileAppMouseDown",
+					@mouseup="mobileAppMouseUp",
+					@touchstart="mobileAppMouseDown",
+					@touchend="mobileAppMouseUp"
+				)
+	.cancelDraggableButtonContainer.full-width(
+		v-if="!$store.state.mobile.disabled"
+	)
+		button.cancelDraggableButton.full-width.text-bold(
+			@click="cancelDraggableButtonClick",
+			@touchend="cancelDraggableButtonClick"
+		) Cancel
 </template>
 
 <script>
-export default {}
+import draggable from "vuedraggable"
+import pressedTimeCounting from "@/assets/scripts/pressedTimeCounting"
+import { mapActions } from "vuex"
+
+export default {
+	components: {
+		draggable,
+	},
+	data() {
+		return {
+			dragOptions: {
+				animation: 200,
+				group: "mobileApp",
+				ghostClass: "ghost",
+			},
+		}
+	},
+	methods: {
+		...mapActions({
+			setStore: "set",
+			getStore: "get",
+		}),
+		mobileAppMouseDown() {
+			;(async () => {
+				const response = await this.getStore(["mobile", "disabled"])
+				if (response)
+					pressedTimeCounting.start(500, pressedTime => {
+						if (pressedTime >= 1000) {
+							pressedTimeCounting.isMouseDown = false
+							this.setStore([["mobile", "disabled"], false])
+						}
+					})
+			})()
+		},
+		mobileAppMouseUp() {
+			pressedTimeCounting.isMouseDown = false
+		},
+		cancelDraggableButtonClick() {
+			this.setStore([["mobile", "disabled"], true])
+		},
+	},
+}
 </script>
 
 <style lang="sass" scoped>
-.mobile
+.transitionGroup
 	display: grid
 	grid-template-rows: repeat(6, 1fr)
 	grid-template-columns: repeat(4, 1fr)
@@ -36,4 +99,21 @@ $mobileAppWidth: 6rem
 
 .mobileAppClickArea
 	position: absolute
+
+.cancelDraggableButtonContainer
+	position: absolute
+	bottom: 10rem
+	// text-align: center
+	padding: 0 1rem
+
+.cancelDraggableButton
+	background-color: white
+	padding: 2rem 0
+	border: unset
+	border-radius: 3rem
+	box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1)
+	backdrop-filter: blur(2px)
+
+.ghost
+	visibility: hidden
 </style>
