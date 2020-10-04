@@ -41,7 +41,7 @@ function getEventClient(axis) {
 				? event.changedTouches[0].clientY
 				: event.clientY
 		default:
-			console.error("axis is undefined \n\t at draggingAndTouching.js")
+			console.error("axis is undefined\n\t at draggingAndTouching.js")
 	}
 }
 
@@ -74,7 +74,7 @@ function isMoveable(axis) {
 				return true
 			else return false
 		default:
-			console.error("axis is undefined \n\t at draggingAndTouching.js")
+			console.error("axis is undefined\n\t at draggingAndTouching.js")
 	}
 }
 
@@ -87,7 +87,7 @@ function setPosition(axis) {
 			selectedElement.style.top = getEventClient("y") - cursor.y + "px"
 			break
 		default:
-			console.error("axis is undefined \n\t at draggingAndTouching.js")
+			console.error("axis is undefined\n\t at draggingAndTouching.js")
 	}
 }
 
@@ -179,20 +179,20 @@ function setEventListener(condition, element, type, listener) {
 				element.removeEventListener(type[i], listener[i])
 				break
 			default:
-				console.error("type is undefined \n\t at draggingAndTouching.js")
+				console.error("type is undefined\n\t at draggingAndTouching.js")
 		}
 }
 
 export function set(condition, targetElements, options) {
 	if (!targetElements)
 		return console.error(
-			"targetElements is undefined \n\t at draggingAndTouching.js"
+			"targetElements is undefined\n\t at draggingAndTouching.js"
 		)
 
 	for (let i = 0; i < targetElements.length; i++) {
 		if (!isElement(targetElements[i]))
 			return console.error(
-				"targetElements is not element \n\t at draggingAndTouching.js"
+				"targetElements is not element\n\t at draggingAndTouching.js"
 			)
 	}
 

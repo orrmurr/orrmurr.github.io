@@ -43,6 +43,11 @@ this.getStore([
 	console.log(response)
 })
 
+;(async () => {
+	const response = await this.getStore(["key2", "key3", "key4", "key5"])
+	console.log(response)
+})()
+
 2-4. use synchronization(this.syncStoreObj.key === this.$store.state.path.storeKey.key)
 data() { return { syncStoreObj: { key: 0 } } }
 this.syncStore([this.syncStoreObj, "key", "storeKey"])
@@ -67,17 +72,17 @@ const store = {
 					state[key[0]].constructor !== Object
 				)
 					state[key[0]] = {}
-				let editkey = state[key[0]]
+				let currentKey = state[key[0]]
 
 				for (let i = 1; i <= key.length - 2; i++) {
 					if (
-						!Object.prototype.hasOwnProperty.call(editkey, key[i]) ||
-						editkey[key[i]].constructor !== Object
+						!Object.prototype.hasOwnProperty.call(currentKey, key[i]) ||
+						currentKey[key[i]].constructor !== Object
 					)
-						editkey[key[i]] = {}
-					editkey = editkey[key[i]]
+						currentKey[key[i]] = {}
+					currentKey = currentKey[key[i]]
 				}
-				editkey[key[key.length - 1]] = value
+				currentKey[key[key.length - 1]] = value
 			} else state[key] = value
 		},
 	},
@@ -93,10 +98,20 @@ const store = {
 					copyGetVaule[keys[i]] = values[i]
 				}
 				context.commit("set", [key, copyGetVaule])
-				console.log(`changed "${key}"\n`, getVaule, "\n\tto\n", copyGetVaule)
+				console.log(
+					`changed "${key.constructor === Array ? key.join(".") : key}"\n`,
+					getVaule,
+					"to",
+					copyGetVaule
+				)
 			} else {
 				context.commit("set", [key, value])
-				console.log(`set "${key}"\n`, value)
+				console.log(
+					`changed "${key.constructor === Array ? key.join(".") : key}"\n`,
+					getVaule,
+					"to",
+					value
+				)
 			}
 		},
 		get(context, key) {
@@ -121,7 +136,7 @@ const store = {
 		},
 		sync(context, [obj, key, storeKey]) {
 			const getVaule = store.actions.get(context, storeKey)
-			if (!getVaule) return console.error("sync error \n\t at store.js")
+			if (!getVaule) return console.error("sync error\n\t at store.js")
 			else if (getVaule[key]) obj[key] = getVaule[key]
 			else if (getVaule) {
 				const copyGetVaule = JSON.parse(JSON.stringify(getVaule))

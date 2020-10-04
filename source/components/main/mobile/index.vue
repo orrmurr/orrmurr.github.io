@@ -55,7 +55,7 @@ export default {
 			;(async () => {
 				const response = await this.getStore(["mobile", "disabled"])
 				if (response)
-					pressedTimeCounting.start(500, pressedTime => {
+					pressedTimeCounting.start(200, pressedTime => {
 						if (pressedTime >= 1000) {
 							pressedTimeCounting.isMouseDown = false
 							this.setStore([["mobile", "disabled"], false])
@@ -107,6 +107,7 @@ $mobileAppWidth: 6rem
 	padding: 0 1rem
 
 .cancelDraggableButton
+	color: #fc5021
 	background-color: white
 	padding: 2rem 0
 	border: unset

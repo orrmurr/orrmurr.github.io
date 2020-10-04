@@ -20,13 +20,11 @@ export default {
 		let pressedTime = 0
 
 		if (!delay)
-			return console.error(
-				'"delay" is undefined \n\t at pressedTimeCounting.js'
-			)
+			return console.error('"delay" is undefined\n\t at pressedTimeCounting.js')
 
 		if (callback && callback.constructor !== Function)
 			return console.error(
-				'"callback" is not function \n\t at pressedTimeCounting.js'
+				'"callback" is not function\n\t at pressedTimeCounting.js'
 			)
 
 		this.isMouseDown = true

@@ -101,7 +101,7 @@
 		"isOpened": false,
 		"show": {
 			"mobile": {
-				"main": true,
+				"main": false,
 				"dock": false
 			},
 			"desktop": {
