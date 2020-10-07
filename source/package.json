@@ -18,6 +18,7 @@
     "nuxt-i18n": "^6.15.1",
     "nuxt-vuex-localstorage": "^1.2.7",
     "quasar": "^1.14.0",
+    "vue-slick-carousel": "^1.0.6",
     "vuedraggable": "^2.24.1"
   },
   "devDependencies": {

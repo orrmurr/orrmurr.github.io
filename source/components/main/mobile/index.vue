@@ -1,120 +1,85 @@
 <template lang="pug">
-.mobile
-	draggable.full-height(
-		v-bind="dragOptions",
-		:disabled="$store.state.mobile.disabled"
-	)
-		transition-group.transitionGroup.items-center.fit(tag="div")
-			button.mobileApp.col-auto.row.justify-center(
-				v-if="mobileApp.show.mobile.main",
-				v-for="(mobileApp, mobileAppKey) in $store.state.programList",
-				:key="mobileApp.name",
-				:class="[!$store.state.mobile.disabled ? 'jiggle' : undefined]"
-			)
-				q-img.col-12.mobileAppIcon(:src="mobileApp.icon")
-				span.mobileAppText.col-12.q-pt-xs.text-capitalize.non-selectable {{ $t(mobileApp.name) }}
-				.mobileAppClickArea.fit(
-					@mousedown="mobileAppMouseDown",
-					@mouseup="mobileAppMouseUp",
-					@touchstart="mobileAppMouseDown",
-					@touchend="mobileAppMouseUp"
-				)
-	.cancelDraggableButtonContainer.full-width(
-		v-if="!$store.state.mobile.disabled"
-	)
-		button.cancelDraggableButton.full-width.text-bold(
-			@click="cancelDraggableButtonClick",
-			@touchend="cancelDraggableButtonClick"
-		) Cancel
+.mobile.row
+	VueSlickCarousel.col(v-bind="vueSlickCarouselSettings", @reInit="stopSwipe")
+		mobileView(:programList="$store.state.programList")
+		mobileView(:programList="[]")
 </template>
 
 <script>
-import draggable from "vuedraggable"
-import pressedTimeCounting from "@/assets/scripts/pressedTimeCounting"
-import { mapActions } from "vuex"
+import VueSlickCarousel from "vue-slick-carousel"
+import "vue-slick-carousel/dist/vue-slick-carousel.css"
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css"
+import mobileView from "@/components/main/mobile/view"
 
 export default {
 	components: {
-		draggable,
+		VueSlickCarousel,
+		mobileView,
 	},
 	data() {
 		return {
-			dragOptions: {
-				animation: 200,
-				group: "mobileApp",
-				ghostClass: "ghost",
+			vueSlickCarouselSettings: {
+				arrows: false,
+				dots: true,
+				edgeFriction: 0.1,
+				infinite: false,
+				speed: 500,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// swipe: true, //모바일 앱 위치 수정 중 화면이동 막기위해 이 옵션 사용 시 페이지 다시 불러와서 수정 사항 미적용 됨
 			},
 		}
 	},
+	// 계산된 속성을 사용해서 swipe 설정하려해도 문제 발생 동일, 패키지 자체 문제인지 구조 문제인지 파악 필요
+	// computed: {
+	// 	vueSlickCarouselSettings() {
+	// 		return {
+	// 			arrows: false,
+	// 			dots: true,
+	// 			edgeFriction: 0.1,
+	// 			infinite: false,
+	// 			speed: 500,
+	// 			slidesToShow: 1,
+	// 			slidesToScroll: 1,
+	// 			swipe: this.$store.state.mobile.disabled,
+	// 		}
+	// 	},
+	// },
 	methods: {
-		...mapActions({
-			setStore: "set",
-			getStore: "get",
-		}),
-		mobileAppMouseDown() {
-			;(async () => {
-				const response = await this.getStore(["mobile", "disabled"])
-				if (response)
-					pressedTimeCounting.start(200, pressedTime => {
-						if (pressedTime >= 1000) {
-							pressedTimeCounting.isMouseDown = false
-							this.setStore([["mobile", "disabled"], false])
-						}
-					})
-			})()
-		},
-		mobileAppMouseUp() {
-			pressedTimeCounting.isMouseDown = false
-		},
-		cancelDraggableButtonClick() {
-			this.setStore([["mobile", "disabled"], true])
+		stopSwipe() {
+			// 임시로 강제 스타일 적용으로 문제 해결
+			if (!this.$store.state.mobile.swipe)
+				document.getElementsByClassName("slick-track")[0].style.transform =
+					"unset"
 		},
 	},
 }
 </script>
 
+<style lang="sass">
+.slick-list,
+.slick-track,
+.slick-slide > div,
+	height: 100%
+
+.slick-slide > div,
+	outline: none
+
+.slick-dots
+	>li.slick-active
+		>button:before
+			color: white
+			opacity: 1
+
+	>li
+		>button
+			&:before,
+				color: white
+				opacity: 0.5
+</style>
+
 <style lang="sass" scoped>
-.transitionGroup
-	display: grid
-	grid-template-rows: repeat(6, 1fr)
-	grid-template-columns: repeat(4, 1fr)
-	justify-items: center
-	padding: 2rem
-
-$mobileAppWidth: 6rem
-
-.mobileApp
-	width: $mobileAppWidth
-	border: unset
-
-.mobileAppIcon
-	width: 8rem
-	font-size: 5rem
-
-.mobileAppText
-	font-size: 1.4rem
-	font-weight: bold
-	color: white
-	text-shadow: 0px 1px 6px #777
-
-.mobileAppClickArea
-	position: absolute
-
-.cancelDraggableButtonContainer
-	position: absolute
-	bottom: 10rem
-	// text-align: center
-	padding: 0 1rem
-
-.cancelDraggableButton
-	color: #fc5021
-	background-color: white
-	padding: 2rem 0
-	border: unset
-	border-radius: 3rem
-	box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1)
-	backdrop-filter: blur(2px)
-
-.ghost
-	visibility: hidden
+.mobile
+	width: inherit
+	padding-bottom: 4rem
 </style>

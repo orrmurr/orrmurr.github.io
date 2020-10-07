@@ -5,7 +5,7 @@
 		"isOpened": false,
 		"show": {
 			"mobile": {
-				"main": true,
+				"main": false,
 				"dock": true
 			},
 			"desktop": {
@@ -53,7 +53,7 @@
 		"isOpened": false,
 		"show": {
 			"mobile": {
-				"main": true,
+				"main": false,
 				"dock": true
 			},
 			"desktop": {
@@ -69,7 +69,7 @@
 		"isOpened": false,
 		"show": {
 			"mobile": {
-				"main": true,
+				"main": false,
 				"dock": true
 			},
 			"desktop": {
@@ -85,7 +85,7 @@
 		"isOpened": false,
 		"show": {
 			"mobile": {
-				"main": true,
+				"main": false,
 				"dock": true
 			},
 			"desktop": {

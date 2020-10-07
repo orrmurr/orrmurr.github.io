@@ -6,6 +6,7 @@ export const state = () => ({
 	programList: programListJson,
 	mobile: {
 		disabled: true,
+		swipe: true,
 	},
 	desktop: {},
 })
