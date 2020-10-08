@@ -8,7 +8,7 @@ draggable.view.full-height(
 		button.mobileApp.col(
 			v-if="mobileApp.show.mobile.main",
 			v-for="(mobileApp, mobileAppKey) in programList",
-			:key="mobileApp.name",
+			:key="mobileApp.name + mobileAppKey",
 			@mousedown="mobileAppMouseDown",
 			@mouseup="mobileAppMouseUp",
 			@touchstart="mobileAppMouseDown",
@@ -26,6 +26,7 @@ draggable.view.full-height(
 import draggable from "vuedraggable"
 import pressedTimeCounting from "@/assets/scripts/pressedTimeCounting"
 import { mapActions } from "vuex"
+import getDeviceType from "@/assets/scripts/getDeviceType"
 
 export default {
 	components: {
@@ -44,7 +45,7 @@ export default {
 				group: "mobileApp",
 				disabled: this.$store.state.mobile.disabled,
 				ghostClass: "ghost",
-				dragClass: "drag",
+				dragClass: getDeviceType() === "mobile" ? "drag" : "",
 			}
 		},
 	},
@@ -68,15 +69,27 @@ export default {
 		mobileAppMouseUp() {
 			pressedTimeCounting.isMouseDown = false
 		},
+		getCurrentMousePosition() {
+			const offsetXArea = 30
+			const getEventClientX = event.changedTouches
+				? event.changedTouches[0].clientX
+				: event.clientX
+			if (
+				getEventClientX < offsetXArea ||
+				getEventClientX > window.innerWidth - offsetXArea
+			)
+				console.log(getEventClientX)
+		},
 		draggableStart() {
-			console.log("start")
-			// console.log(event)
 			this.setStore([["mobile", "swipe"], false])
+			document.addEventListener("mousemove", this.getCurrentMousePosition)
+			document.addEventListener("touchmove", this.getCurrentMousePosition)
+			console.log(getDeviceType() === "mobile")
 		},
 		draggableEnd() {
-			console.log("end")
-			// console.log(event)
 			this.setStore([["mobile", "swipe"], true])
+			document.removeEventListener("mousemove", this.getCurrentMousePosition)
+			document.removeEventListener("touchmove", this.getCurrentMousePosition)
 		},
 	},
 }
@@ -113,5 +126,5 @@ $mobileAppWidth: 6rem
 // 	position: absolute
 
 .drag
-	visibility: hidden
+	visibility: hidden //드래그 패키지 오류로 인한 설정(드래그하는 모션 숨기기, 웹에서 드래그 시 정상 작동하지만 모바일에서 부자연스럽게 작동, 다른 아이템 영역 진입 시 드래그 하는 아이템이 초기 드래그 시작한 위치로 이동하려고 함)
 </style>

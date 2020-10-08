@@ -6,7 +6,7 @@
 			button.dockProgram.col(
 				v-if="dockProgram.show.mobile.dock",
 				v-for="(dockProgram, dockProgramKey) in $store.state.programList",
-				:key="dockProgram.name",
+				:key="dockProgram.name + dockProgramKey",
 				@mousedown="mobileAppMouseDown",
 				@mouseup="mobileAppMouseUp",
 				@touchstart="mobileAppMouseDown",
@@ -23,6 +23,7 @@ import draggable from "vuedraggable"
 import pressedTimeCounting from "@/assets/scripts/pressedTimeCounting"
 import { mapActions } from "vuex"
 import cancelDraggableButton from "@/components/main/mobile/cancelDraggableButton"
+import getDeviceType from "@/assets/scripts/getDeviceType"
 
 export default {
 	components: {
@@ -36,7 +37,7 @@ export default {
 				group: "mobileApp",
 				disabled: this.$store.state.mobile.disabled,
 				ghostClass: "ghost",
-				dragClass: "drag",
+				dragClass: getDeviceType() === "mobile" ? "drag" : "",
 			}
 		},
 	},
@@ -79,5 +80,5 @@ export default {
 	width: 6rem
 
 .drag
-	visibility: hidden
+	visibility: hidden //드래그 패키지 오류로 인한 설정(드래그하는 모션 숨기기, 웹에서 드래그 시 정상 작동하지만 모바일에서 부자연스럽게 작동, 다른 아이템 영역 진입 시 드래그 하는 아이템이 초기 드래그 시작한 위치로 이동하려고 함)
 </style>

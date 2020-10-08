@@ -7,6 +7,7 @@ export const state = () => ({
 	mobile: {
 		disabled: true,
 		swipe: true,
+		maxAppsCountOnView: 24,
 	},
 	desktop: {},
 })
