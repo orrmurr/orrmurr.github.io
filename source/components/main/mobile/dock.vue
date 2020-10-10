@@ -1,7 +1,11 @@
 <template lang="pug">
 .dock
 	cancelDraggableButton
-	draggable.draggable(v-bind="dragOptions")
+	draggable.draggable(
+		v-bind="dragOptions",
+		@start="draggableStart",
+		@end="draggableEnd"
+	)
 		transition-group.row(tag="div")
 			button.dockProgram.col(
 				v-if="dockProgram.show.mobile.dock",
@@ -23,7 +27,8 @@ import draggable from "vuedraggable"
 import pressedTimeCounting from "@/assets/scripts/pressedTimeCounting"
 import { mapActions } from "vuex"
 import cancelDraggableButton from "@/components/main/mobile/cancelDraggableButton"
-import getDeviceType from "@/assets/scripts/getDeviceType"
+import detectDeviceType from "@/assets/scripts/detectDeviceType"
+import detectCursorOnBorder from "@/assets/scripts/detectCursorOnBorder"
 
 export default {
 	components: {
@@ -37,7 +42,7 @@ export default {
 				group: "mobileApp",
 				disabled: this.$store.state.mobile.disabled,
 				ghostClass: "ghost",
-				dragClass: getDeviceType() === "mobile" ? "drag" : "",
+				dragClass: detectDeviceType() === "mobile" ? "drag" : "",
 			}
 		},
 	},
@@ -60,6 +65,12 @@ export default {
 		},
 		mobileAppMouseUp() {
 			pressedTimeCounting.isMouseDown = false
+		},
+		draggableStart() {
+			detectCursorOnBorder.add([30, 30], [0, 90])
+		},
+		draggableEnd() {
+			detectCursorOnBorder.remove()
 		},
 	},
 }

@@ -21,56 +21,58 @@ beforeDestroy() {
 },
 */
 
+import cursor from "@/assets/scripts/cursor"
+
 let defaultOptions = {
 	grid: { x: 0, y: 0 },
 	padding: { x: [0, 0], y: [0, 0] },
 }
 
 let selectedElement = undefined
-const cursor = { x: 0, y: 0 }
+const offsetCursor = { x: 0, y: 0 }
 const limit = { x: [0, 0], y: [0, 0] }
 
-function getEventClient(axis) {
-	switch (axis) {
-		case "x":
-			return event.changedTouches
-				? event.changedTouches[0].clientX
-				: event.clientX
-		case "y":
-			return event.changedTouches
-				? event.changedTouches[0].clientY
-				: event.clientY
-		default:
-			console.error("axis is undefined\n\t at draggingAndTouching.js")
-	}
-}
+// function getEventClient(axis) {
+// 	switch (axis) {
+// 		case "x":
+// 			return event.changedTouches
+// 				? event.changedTouches[0].clientX
+// 				: event.clientX
+// 		case "y":
+// 			return event.changedTouches
+// 				? event.changedTouches[0].clientY
+// 				: event.clientY
+// 		default:
+// 			console.error("axis is undefined\n\t at draggingAndTouching.js")
+// 	}
+// }
 
 function setLimit() {
-	limit.x[0] = cursor.x + defaultOptions.padding.x[0]
+	limit.x[0] = offsetCursor.x + defaultOptions.padding.x[0]
 
 	limit.x[1] =
 		window.innerWidth -
 		selectedElement.offsetWidth +
-		cursor.x -
+		offsetCursor.x -
 		defaultOptions.padding.x[1]
 
-	limit.y[0] = cursor.y + defaultOptions.padding.y[0]
+	limit.y[0] = offsetCursor.y + defaultOptions.padding.y[0]
 
 	limit.y[1] =
 		window.innerHeight -
 		selectedElement.offsetHeight +
-		cursor.y -
+		offsetCursor.y -
 		defaultOptions.padding.y[1]
 }
 
 function isMoveable(axis) {
 	switch (axis) {
 		case "x":
-			if (getEventClient("x") > limit.x[0] && getEventClient("x") < limit.x[1])
+			if (cursor.clientX() > limit.x[0] && cursor.clientX() < limit.x[1])
 				return true
 			else return false
 		case "y":
-			if (getEventClient("y") > limit.y[0] && getEventClient("y") < limit.y[1])
+			if (cursor.clientY() > limit.y[0] && cursor.clientY() < limit.y[1])
 				return true
 			else return false
 		default:
@@ -81,10 +83,10 @@ function isMoveable(axis) {
 function setPosition(axis) {
 	switch (axis) {
 		case "x":
-			selectedElement.style.left = getEventClient("x") - cursor.x + "px"
+			selectedElement.style.left = cursor.clientX() - offsetCursor.x + "px"
 			break
 		case "y":
-			selectedElement.style.top = getEventClient("y") - cursor.y + "px"
+			selectedElement.style.top = cursor.clientY() - offsetCursor.y + "px"
 			break
 		default:
 			console.error("axis is undefined\n\t at draggingAndTouching.js")
@@ -126,8 +128,8 @@ const events = {
 	start() {
 		selectedElement = this
 
-		cursor.x = getEventClient("x") - this.offsetLeft
-		cursor.y = getEventClient("y") - this.offsetTop
+		offsetCursor.x = cursor.clientX() - this.offsetLeft
+		offsetCursor.y = cursor.clientY() - this.offsetTop
 
 		setLimit()
 		selectedElement.style.zIndex = 1

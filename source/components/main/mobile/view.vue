@@ -26,7 +26,8 @@ draggable.view.full-height(
 import draggable from "vuedraggable"
 import pressedTimeCounting from "@/assets/scripts/pressedTimeCounting"
 import { mapActions } from "vuex"
-import getDeviceType from "@/assets/scripts/getDeviceType"
+import detectDeviceType from "@/assets/scripts/detectDeviceType"
+import detectCursorOnBorder from "@/assets/scripts/detectCursorOnBorder"
 
 export default {
 	components: {
@@ -45,7 +46,7 @@ export default {
 				group: "mobileApp",
 				disabled: this.$store.state.mobile.disabled,
 				ghostClass: "ghost",
-				dragClass: getDeviceType() === "mobile" ? "drag" : "",
+				dragClass: detectDeviceType() === "mobile" ? "drag" : "",
 			}
 		},
 	},
@@ -69,27 +70,13 @@ export default {
 		mobileAppMouseUp() {
 			pressedTimeCounting.isMouseDown = false
 		},
-		getCurrentMousePosition() {
-			const offsetXArea = 30
-			const getEventClientX = event.changedTouches
-				? event.changedTouches[0].clientX
-				: event.clientX
-			if (
-				getEventClientX < offsetXArea ||
-				getEventClientX > window.innerWidth - offsetXArea
-			)
-				console.log(getEventClientX)
-		},
 		draggableStart() {
 			this.setStore([["mobile", "swipe"], false])
-			document.addEventListener("mousemove", this.getCurrentMousePosition)
-			document.addEventListener("touchmove", this.getCurrentMousePosition)
-			console.log(getDeviceType() === "mobile")
+			detectCursorOnBorder.add([30, 30], [0, 90])
 		},
 		draggableEnd() {
 			this.setStore([["mobile", "swipe"], true])
-			document.removeEventListener("mousemove", this.getCurrentMousePosition)
-			document.removeEventListener("touchmove", this.getCurrentMousePosition)
+			detectCursorOnBorder.remove()
 		},
 	},
 }

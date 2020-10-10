@@ -1,14 +1,15 @@
 ﻿/*
-1. push file.js to gitgub
+1. setting
+1-1. push file.js to gitgub
 return {
 	functionKey() {}
 }
 
-2. change to cdn path at https://raw.githack.com
+1-2. change to cdn path at https://raw.githack.com
 
-3. usage
-import axios from "@/assets/scripts/axios"
+1-3. import axios from "@/assets/scripts/axios"
 
+2. usage
 const getUrlFunction = async () => {
 	const response = await axios.getUrlFunction("cdn path")
 	response.functionKey()
