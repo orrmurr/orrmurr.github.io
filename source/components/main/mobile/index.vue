@@ -1,15 +1,15 @@
 <template lang="pug">
 .mobile.row
 	VueSlickCarousel.col(
-		v-if="components.length",
+		v-if="$store.state.mobile.apps.length",
 		v-bind="vueSlickCarouselSettings",
 		@reInit="VueSlickCarouselReInit"
 	)
 		component.views(
-			v-for="(component, componentKey) in components",
+			v-for="(component, componentKey) in $store.state.mobile.apps",
 			:key="component.name + componentKey",
 			:is="component.name",
-			:programList="component.programList"
+			:apps="component.apps"
 		)
 		//- mobileView(:programList="$store.state.programList")
 		//- mobileView(:programList="[]")
@@ -44,24 +44,23 @@ export default {
 	},
 	methods: {
 		setComponent() {
-			let getProgramList = this.$store.state.programList
+			const getProgramList = this.$store.state.programList
 
-			getProgramList = getProgramList.reduce((accumulator, currentValue) => {
+			const getApps = getProgramList.reduce((accumulator, currentValue) => {
 				if (currentValue.show.mobile.main) accumulator.push(currentValue)
 				return accumulator
 			}, [])
 
-			const chunkProgramList = chunkArray(
-				getProgramList,
+			const chunkApps = chunkArray(
+				getApps,
 				this.$store.state.mobile.maxAppsCountOnView
 			)
 
-			for (let i = 0; i < chunkProgramList.length; i++) {
-				const componentObj = { name: "mobileView", programList: [] }
-				for (let j = 0; j < chunkProgramList[i].length; j++)
-					componentObj.programList.push(chunkProgramList[i][j])
-
-				this.components.push(componentObj)
+			for (let i = 0; i < chunkApps.length; i++) {
+				const componentObj = { name: "mobileView", apps: [] }
+				for (let j = 0; j < chunkApps[i].length; j++)
+					componentObj.apps.push(chunkApps[i][j])
+				this.$store.commit("push", [["mobile", "apps"], componentObj])
 			}
 		},
 		stopSwipe() {

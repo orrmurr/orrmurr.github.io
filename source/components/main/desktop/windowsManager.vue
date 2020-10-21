@@ -1,36 +1,45 @@
 <template lang="pug">
-.manager.bg-grey-5(
-	:style="{ width: defaultDesktopWindowOptions.width + 'px', height: defaultDesktopWindowOptions.height + 'px' }"
+.manager.column.bg-grey-1.shadow-4(
+	:style="{ width: options.width + 'px', height: options.height + 'px' }"
 )
-	span projects
+	q-bar.title.col-auto
+		q-space
+		q-btn(dense, flat, icon="minimize")
+		q-btn(dense, flat, icon="crop_square")
+		q-btn(@click="closeClick", dense, flat, icon="close")
+	iframe.col.no-border(src="/todo")
 </template>
 
 <script>
+import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
+
 export default {
-	data() {
-		return {
-			defaultDesktopWindowOptions: {
-				width: 0,
-				height: 0,
-				top: 0,
-				left: 0,
-			},
-		}
-	},
 	props: {
-		desktopWindowOptions: {
+		options: {
 			type: Object,
+			require: false,
+			default() {
+				return {
+					width: window.innerWidth / 2,
+					height: window.innerHeight / 2,
+					top: 0,
+					left: 0,
+				}
+			},
 		},
 	},
-	beforeMount() {
-		// console.log(this.desktopWindows.length)
-		// console.log(this.desktopWindowOptions)
-		if (this.desktopWindowOptions)
-			this.defaultDesktopWindowOptions = this.desktopWindowOptions
-		else {
-			this.defaultDesktopWindowOptions.width = window.innerWidth / 2
-			this.defaultDesktopWindowOptions.height = window.innerHeight / 2
-		}
+	methods: {
+		closeClick() {
+			console.log("close")
+		},
+	},
+	mounted() {
+		setDraggingAndTouching("add", document.getElementsByClassName("title"), {
+			padding: { x: [0, 0], y: [0, 0] },
+		})
+	},
+	beforeDestroy() {
+		setDraggingAndTouching("remove", document.getElementsByClassName("title"))
 	},
 }
 </script>
@@ -38,4 +47,5 @@ export default {
 <style lang="sass" scoped>
 .manager
 	position: absolute
+	border-radius: 1rem
 </style>

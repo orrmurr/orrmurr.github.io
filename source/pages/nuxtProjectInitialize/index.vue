@@ -67,4 +67,8 @@ export default {
 <style lang="sass" scoped>
 .flex-break
 	margin-top: 2rem
+
+::-webkit-scrollbar-thumb
+	background: red
+	border-radius: 10px
 </style>

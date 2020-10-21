@@ -11,29 +11,38 @@ methods: {
 }
 
 2. usage
-2-1. without mapActions
+2-1. push multi depth key
+this.$store.commit("path/push", [
+	["key", "key2"], [{ value: 0 }]
+])
+
+2-2-1. set single depth key
 this.$store.dispatch("path/set", ["key", { value: 0 }])
 
+2-2-2. set single depth key with mapActions
+this.setStore(["key", { value: 0 }])
+
+2-2-3. set multi depth key with mapActions
+this.setStore([["key2", "key3", "key4", "key5"], { value: 0 }])
+
+2-3-1. get single depth key
 ;(async () => {
 	const response = await this.$store.dispatch("path/get", "key")
 	console.log(response)
 })()
 
-2-2. use single depth key
-this.setStore(["key", { value: 0 }])
-
+2-3-2. get single depth with mapActions
 this.getStore("key").then(response => {
 	console.log(response)
 })
 
+2-3-3. get single depth key with mapActions
 ;(async () => {
 	const response = await this.getStore("key")
 	console.log(response)
 })()
 
-2-3. use multi depth key
-this.setStore([["key2", "key3", "key4", "key5"], { value: 0 }])
-
+2-3-4. get multi depth key with mapActions
 this.getStore([
 	"key2",
 	"key3",
@@ -43,12 +52,13 @@ this.getStore([
 	console.log(response)
 })
 
+2-3-5. get multi depth key with mapActions2
 ;(async () => {
 	const response = await this.getStore(["key2", "key3", "key4", "key5"])
 	console.log(response)
 })()
 
-2-4. use synchronization(this.syncStoreObj.key === this.$store.state.path.storeKey.key)
+2-4. sync(synchronization, this.syncStoreObj.key === this.$store.state.path.storeKey)
 data() { return { syncStoreObj: { key: 0 } } }
 this.syncStore([this.syncStoreObj, "key", "storeKey"])
 
@@ -84,6 +94,22 @@ const store = {
 				}
 				currentKey[key[key.length - 1]] = value
 			} else state[key] = value
+		},
+		push(state, [key, value]) {
+			// 에러발생(Error: [vuex] do not mutate vuex store state outside mutation handlers.)
+			// if (key.constructor !== Array) {
+			// 	if (state[key]) state[key].push(value)
+			// 	else return console.error(key + " is undefined \n\t at store.js")
+			// } else if (!state[key[0]])
+			// 	return console.error(key[0] + " is undefined \n\t at store.js")
+			// else {
+			// 	let currentKey = state[key[0]]
+			// 	for (let i = 1; i < key.length; i++) {
+			// 		if (currentKey[key[i]]) currentKey = currentKey[key[i]]
+			// 		else return console.error([key[i]], " is undefined \n\t at store.js")
+			// 	}
+			// 	currentKey.push(value)
+			// }
 		},
 	},
 	actions: {

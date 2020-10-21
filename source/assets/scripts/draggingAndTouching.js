@@ -32,21 +32,6 @@ let selectedElement = undefined
 const offsetCursor = { x: 0, y: 0 }
 const limit = { x: [0, 0], y: [0, 0] }
 
-// function getEventClient(axis) {
-// 	switch (axis) {
-// 		case "x":
-// 			return event.changedTouches
-// 				? event.changedTouches[0].clientX
-// 				: event.clientX
-// 		case "y":
-// 			return event.changedTouches
-// 				? event.changedTouches[0].clientY
-// 				: event.clientY
-// 		default:
-// 			console.error("axis is undefined\n\t at draggingAndTouching.js")
-// 	}
-// }
-
 function setLimit() {
 	limit.x[0] = offsetCursor.x + defaultOptions.padding.x[0]
 

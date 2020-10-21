@@ -18,7 +18,7 @@
 
 <script>
 import { set as setDraggingAndTouching } from "@/assets/scripts/draggingAndTouching"
-// import windowsManager from "@/components/main/desktop/windowsManager"
+import windowsManager from "@/components/main/desktop/windowsManager"
 
 export default {
 	data() {
@@ -28,30 +28,7 @@ export default {
 	},
 	methods: {
 		desktopProgramDoubleClick(desktopProgram) {
-			// ;(async () => {
-			// 	const sessionStorageGet = await this.$store.dispatch(
-			// 		"sessionStorage/get",
-			// 		"programList"
-			// 	)
-			// 	console.log(sessionStorageGet)
-			// })()
-			// this.$store.dispatch("sessionStorage/set", [
-			// 	"programList",
-			// 	[
-			// 		{
-			// 			icon: "https://image.flaticon.com/icons/svg/3231/3231661.svg",
-			// 			name: "Profile",
-			// 			show: {
-			// 				main: true,
-			// 				dock: true,
-			// 				launchpad: true,
-			// 			},
-			// 		},
-			// 	],
-			// ])
-			// console.log(this.$store.state.sessionStorage.programList)
-			// if (desktopProgram.name === "Projects")
-			// this.desktopWindows.push(windowsManager)
+			this.desktopWindows.push(windowsManager)
 		},
 	},
 	mounted() {

@@ -67,7 +67,13 @@ export default {
 			pressedTimeCounting.isMouseDown = false
 		},
 		draggableStart() {
-			detectCursorOnBorder.add([30, 30], [0, 90])
+			// VueSlickCarousel 문제(component에 추가해도 미업데이트 됨)로 새로운 뷰 생성 UX 개발 불가
+			// detectCursorOnBorder.add([30, 30], [0, 150], () => {
+			// this.$store.commit("push", [
+			// 	["mobile", "apps"],
+			// 	[{ name: "mobileView", apps: [] }],
+			// ])
+			// })
 		},
 		draggableEnd() {
 			detectCursorOnBorder.remove()

@@ -25,39 +25,71 @@ changedTouches - 현재 이벤트를 포함하고 있는 손가락(touchend)
 
 export default {
 	clientX() {
-		return event.changedTouches
-			? event.changedTouches[0].clientX
-			: event.clientX
+		try {
+			return event.changedTouches
+				? event.changedTouches[0].clientX
+				: event.clientX
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	clientY() {
-		return event.changedTouches
-			? event.changedTouches[0].clientY
-			: event.clientY
+		try {
+			return event.changedTouches
+				? event.changedTouches[0].clientY
+				: event.clientY
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	offsetX() {
-		return event.changedTouches
-			? event.changedTouches[0].offsetX
-			: event.offsetX
+		try {
+			return event.changedTouches
+				? event.changedTouches[0].offsetX
+				: event.offsetX
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	offsetY() {
-		return event.changedTouches
-			? event.changedTouches[0].offsetY
-			: event.offsetY
+		try {
+			return event.changedTouches
+				? event.changedTouches[0].offsetY
+				: event.offsetY
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	pageX() {
-		return event.changedTouches ? event.changedTouches[0].pageX : event.pageX
+		try {
+			return event.changedTouches ? event.changedTouches[0].pageX : event.pageX
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	pageY() {
-		return event.changedTouches ? event.changedTouches[0].pageY : event.pageY
+		try {
+			return event.changedTouches ? event.changedTouches[0].pageY : event.pageY
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	screenX() {
-		return event.changedTouches
-			? event.changedTouches[0].screenX
-			: event.screenX
+		try {
+			return event.changedTouches
+				? event.changedTouches[0].screenX
+				: event.screenX
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 	screenY() {
-		return event.changedTouches
-			? event.changedTouches[0].screenY
-			: event.screenY
+		try {
+			return event.changedTouches
+				? event.changedTouches[0].screenY
+				: event.screenY
+		} catch (error) {
+			console.error(error + "\n\t at cursor.js")
+		}
 	},
 }

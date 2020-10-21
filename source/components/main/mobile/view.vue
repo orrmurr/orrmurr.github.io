@@ -7,7 +7,7 @@ draggable.view.full-height(
 	transition-group.transitionGroup.full-height(tag="div")
 		button.mobileApp.col(
 			v-if="mobileApp.show.mobile.main",
-			v-for="(mobileApp, mobileAppKey) in programList",
+			v-for="(mobileApp, mobileAppKey) in apps",
 			:key="mobileApp.name + mobileAppKey",
 			@mousedown="mobileAppMouseDown",
 			@mouseup="mobileAppMouseUp",
@@ -34,7 +34,7 @@ export default {
 		draggable,
 	},
 	props: {
-		programList: {
+		apps: {
 			type: Array,
 			required: true,
 		},
@@ -72,7 +72,13 @@ export default {
 		},
 		draggableStart() {
 			this.setStore([["mobile", "swipe"], false])
-			detectCursorOnBorder.add([30, 30], [0, 90])
+			// VueSlickCarousel 문제(component에 추가해도 미업데이트 됨)로 새로운 뷰 생성 UX 개발 불가
+			// detectCursorOnBorder.add([30, 30], [0, 150], () => {
+			// this.$store.commit("push", [
+			// 	["mobile", "apps"],
+			// 	[{ name: "mobileView", apps: [] }],
+			// ])
+			// })
 		},
 		draggableEnd() {
 			this.setStore([["mobile", "swipe"], true])
