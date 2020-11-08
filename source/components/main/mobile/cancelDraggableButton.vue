@@ -1,8 +1,5 @@
 <template lang="pug">
-.cancelDraggableButton.full-width(
-	v-if="!$store.state.mobile.disabled",
-	:style="{ transform: 'translateY(-' + ($store.state.programList.length > $store.state.mobile.maxAppsCountOnView ? 11 : 7) + 'rem)' }"
-)
+.cancelDraggableButton.full-width(v-if="!$store.state.mobile.disabled")
 	button.full-width.text-bold(
 		@click="cancelDraggableButtonClick",
 		@touchend="cancelDraggableButtonClick"
@@ -22,6 +19,7 @@ export default {
 <style lang="sass" scoped>
 .cancelDraggableButton
 	position: absolute
+	transform: translateY(-7rem)
 	// transform: translateY(-11rem)
 	padding: 0 1rem
 

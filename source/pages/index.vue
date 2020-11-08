@@ -2,7 +2,8 @@
 #index.fit.row.justify-center.content-center
 	client-only
 		.clientOnlyPlaceholder(slot="placeholder")
-			span Loading...
+			//- span Loading...
+			q-spinner-ios(color="primary", size="2em")
 
 		#mobileContainer.lt-md.fit.column
 			mobileMenuBar.col-auto

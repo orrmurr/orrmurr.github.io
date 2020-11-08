@@ -10,8 +10,7 @@
 			},
 			"desktop": {
 				"main": false,
-				"dock": true,
-				"launchpad": true
+				"dock": true
 			}
 		}
 	},
@@ -26,8 +25,7 @@
 			},
 			"desktop": {
 				"main": true,
-				"dock": false,
-				"launchpad": true
+				"dock": false
 			}
 		}
 	},
@@ -42,8 +40,7 @@
 			},
 			"desktop": {
 				"main": true,
-				"dock": false,
-				"launchpad": true
+				"dock": false
 			}
 		}
 	},
@@ -58,8 +55,7 @@
 			},
 			"desktop": {
 				"main": false,
-				"dock": true,
-				"launchpad": true
+				"dock": true
 			}
 		}
 	},
@@ -74,8 +70,7 @@
 			},
 			"desktop": {
 				"main": false,
-				"dock": true,
-				"launchpad": true
+				"dock": true
 			}
 		}
 	},
@@ -90,8 +85,7 @@
 			},
 			"desktop": {
 				"main": false,
-				"dock": true,
-				"launchpad": true
+				"dock": true
 			}
 		}
 	},
@@ -106,8 +100,7 @@
 			},
 			"desktop": {
 				"main": false,
-				"dock": true,
-				"launchpad": true
+				"dock": true
 			}
 		}
 	}
